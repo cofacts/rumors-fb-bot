@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should handle invalid reply ids 1`] = `
+Object {
+  "data": Object {
+    "foundArticleIds": Array [
+      "AWDZYXxAyCdS-nWhumlz",
+      "5483323992880-rumor",
+      "AV-Urc0jyCdS-nWhuity",
+      "AVsh8u7StKp96s659Dgq",
+    ],
+    "foundReplyIds": Array [
+      "AWDZeeV0yCdS-nWhuml8",
+    ],
+    "searchedText": "貼圖",
+    "selectedArticleId": "AWDZYXxAyCdS-nWhumlz",
+  },
+  "event": Object {
+    "input": "123",
+    "timestamp": 1518964687709,
+    "type": "text",
+  },
+  "isSkipUser": false,
+  "issuedAt": 1518964688672,
+  "replies": Array [
+    Object {
+      "content": Object {
+        "text": "請輸入 1～1 的數字，來選擇回應。",
+      },
+      "type": "text",
+    },
+  ],
+  "state": "CHOOSING_REPLY",
+  "userId": "Uaddc74df8a3a176b901d9d648b0fc4fe",
+}
+`;
+
+exports[`should select reply by replyId 1`] = `
+Object {
+  "data": Object {
+    "foundArticleIds": Array [
+      "AWDZYXxAyCdS-nWhumlz",
+      "5483323992880-rumor",
+      "AV-Urc0jyCdS-nWhuity",
+      "AVsh8u7StKp96s659Dgq",
+    ],
+    "foundReplyIds": Array [
+      "AWDZeeV0yCdS-nWhuml8",
+    ],
+    "searchedText": "貼圖",
+    "selectedArticleId": "AWDZYXxAyCdS-nWhumlz",
+    "selectedReplyId": "AWDZeeV0yCdS-nWhuml8",
+  },
+  "event": Object {
+    "input": 1,
+    "postback": Object {
+      "data": "{\\"input\\":1,\\"issuedAt\\":1518964675191}",
+    },
+    "timestamp": 1518964687709,
+    "type": "postback",
+  },
+  "isSkipUser": false,
+  "issuedAt": 1518964688672,
+  "replies": Array [
+    Object {
+      "content": Object {
+        "text": "有人標記這個訊息 ⚠️️ 不在查證範圍，理由是：",
+      },
+      "type": "text",
+    },
+    Object {
+      "content": Object {
+        "text": "這是商業活動廣告01 這是商業活動廣告02 這是商業活動廣告03 這是商業活動廣告04 這是商業活動廣告05 這是商業活動廣告06 這是商業活動廣告07 這是商業活動廣告08 這是商業活動廣告09 這是商業活動廣告10 這是商業活動廣告11 這是商業活動廣告12 這是商業活動廣告13 這是商業活動廣告14 這是商業活動廣告15 這是商業活動廣告16 這是商業活動廣告17 這是商業活動廣告18 這是商業活動廣告19 這是商業活動廣告20",
+      },
+      "type": "text",
+    },
+    Object {
+      "content": Object {
+        "text": "􀂅 ⚠️️ 此回應沒有出處，請自行斟酌回應之可信度。⚠️️  􀂅",
+      },
+      "type": "text",
+    },
+    Object {
+      "content": Object {
+        "text": "💁 以上訊息由好心人提供。建議至 https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz 觀看完整的訊息內容、其他鄉親的回應，以及他們各自所提出的理由與出處。",
+      },
+      "type": "text",
+    },
+    Object {
+      "content": Object {
+        "attachment": Object {
+          "payload": Object {
+            "buttons": Array [
+              Object {
+                "payload": "y",
+                "title": "是",
+                "type": "postback",
+              },
+              Object {
+                "payload": "n",
+                "title": "否",
+                "type": "postback",
+              },
+            ],
+            "template_type": "button",
+            "text": "請問上面回應是否有幫助？",
+          },
+          "type": "template",
+        },
+      },
+      "type": "buttons",
+    },
+  ],
+  "state": "ASKING_REPLY_FEEDBACK",
+  "userId": "Uaddc74df8a3a176b901d9d648b0fc4fe",
+}
+`;

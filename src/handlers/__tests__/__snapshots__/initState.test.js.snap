@@ -1,0 +1,235 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`article found 1`] = `
+Object {
+  "data": Object {
+    "foundArticleIds": Array [
+      "AVvY-yizyCdS-nWhuYWx",
+    ],
+    "searchedText": "計程車上有裝悠遊卡感應器，老人悠悠卡可以享受優惠部分由政府補助，不影響司機收入",
+  },
+  "event": Object {
+    "input": "計程車上有裝悠遊卡感應器，老人悠悠卡可以享受優惠部分由政府補助，不影響司機收入",
+    "message": Object {
+      "id": "6270464463537",
+      "text": "計程車上有裝悠遊卡感應器，老人悠悠卡可以享受優惠部分由政府補助，不影響司機收入",
+      "type": "text",
+    },
+    "timestamp": 1497994016356,
+    "type": "message",
+  },
+  "isSkipUser": false,
+  "issuedAt": 1497994017447,
+  "replies": Array [
+    Object {
+      "content": Object {
+        "text": "幫您查詢「計程車上有裝悠遊卡感⋯⋯」的相關回應。",
+      },
+      "type": "text",
+    },
+    Object {
+      "content": Object {
+        "text": "請問下列文章中，哪一篇是您剛才傳送的訊息呢？",
+      },
+      "type": "text",
+    },
+    Object {
+      "content": Object {
+        "attachment": Object {
+          "payload": Object {
+            "elements": Array [
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 1,
+                    "title": "選擇此則",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "[相似度:52.41%]",
+                "title": "計程車上有裝悠遊卡感應器，老人悠悠卡可以享受優惠部分由政府補助，不影響司機收入，下車時使用老人悠遊卡，跳錶車資105元，優惠32元，只扣73元，哈哈，這是屬於我",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 0,
+                    "title": "選擇",
+                    "type": "postback",
+                  },
+                ],
+                "title": "這裡沒有一篇是我傳的訊息。",
+              },
+            ],
+            "template_type": "generic",
+          },
+          "type": "template",
+        },
+      },
+      "type": "carousel",
+    },
+  ],
+  "state": "CHOOSING_ARTICLE",
+  "userId": "Uc76d8ae9ccd1ada4f06c4e1515d46466",
+}
+`;
+
+exports[`articles found with high similarity 1`] = `
+Object {
+  "data": Object {
+    "foundArticleIds": Array [
+      "AVvY-yizyCdS-nWhuYWx",
+      "AVvY-yizyCdS-nWhuYWy",
+    ],
+    "searchedText": "YouTube · 寻找健康人生",
+  },
+  "event": Object {
+    "input": "YouTube · 寻找健康人生",
+    "message": Object {
+      "id": "6270464463537",
+      "text": "YouTube · 寻找健康人生",
+      "type": "text",
+    },
+    "timestamp": 1497994016356,
+    "type": "message",
+  },
+  "isSkipUser": false,
+  "issuedAt": 1497994017447,
+  "replies": Array [
+    Object {
+      "content": Object {
+        "text": "幫您查詢「YouTube · ⋯⋯」的相關回應。",
+      },
+      "type": "text",
+    },
+    Object {
+      "content": Object {
+        "text": "請問下列文章中，哪一篇是您剛才傳送的訊息呢？",
+      },
+      "type": "text",
+    },
+    Object {
+      "content": Object {
+        "attachment": Object {
+          "payload": Object {
+            "elements": Array [
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 1,
+                    "title": "選擇此則",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "[相似度:100.00%]",
+                "title": "YouTube  ·  寻找健康人生",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 2,
+                    "title": "選擇此則",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "[相似度:100.00%]",
+                "title": "YouTube
+·
+寻找健康人生",
+              },
+            ],
+            "template_type": "generic",
+          },
+          "type": "template",
+        },
+      },
+      "type": "carousel",
+    },
+  ],
+  "state": "CHOOSING_ARTICLE",
+  "userId": "Uc76d8ae9ccd1ada4f06c4e1515d46466",
+}
+`;
+
+exports[`only one article found with high similarity 1`] = `
+Object {
+  "data": Object {
+    "foundArticleIds": Array [
+      "AVvY-yizyCdS-nWhuYWx",
+    ],
+    "searchedText": "YouTube · 寻找健康人生",
+  },
+  "event": Object {
+    "input": 1,
+    "message": Object {
+      "id": "6270464463537",
+      "text": "YouTube · 寻找健康人生",
+      "type": "text",
+    },
+    "timestamp": 1497994016356,
+    "type": "message",
+  },
+  "isSkipUser": true,
+  "issuedAt": 1497994017447,
+  "replies": undefined,
+  "state": "CHOOSING_ARTICLE",
+  "userId": "Uc76d8ae9ccd1ada4f06c4e1515d46466",
+}
+`;
+
+exports[`should handle article not found 1`] = `
+Object {
+  "data": Object {
+    "searchedText": "YouTube · 寻找健康人生",
+  },
+  "event": Object {
+    "input": "YouTube · 寻找健康人生",
+    "message": Object {
+      "id": "6270464463537",
+      "text": "YouTube · 寻找健康人生",
+      "type": "text",
+    },
+    "timestamp": 1497994016356,
+    "type": "message",
+  },
+  "isSkipUser": false,
+  "issuedAt": 1497994017447,
+  "replies": Array [
+    Object {
+      "content": Object {
+        "text": "找不到關於「YouTube · ⋯⋯」訊息耶 QQ",
+      },
+      "type": "text",
+    },
+    Object {
+      "content": Object {
+        "text": "【送出訊息到公開資料庫？】
+若這是「轉傳訊息」，而且您覺得這很可能是一則「謠言」，請將這則訊息送進公開資料庫建檔，讓好心人查證與回覆。
+
+雖然您不會立刻收到查證結果，但可以幫助到未來同樣收到這份訊息的人。
+
+請把「為何您會覺得這是一則謠言」的理由傳給我們，幫助闢謠編輯釐清您有疑惑之處。",
+      },
+      "type": "text",
+    },
+    Object {
+      "content": Object {
+        "payload": Object {
+          "buttons": Array [
+            Object {
+              "payload": "n",
+              "title": "放棄送出",
+              "type": "postback",
+            },
+          ],
+          "template_type": "button",
+          "text": "若要放棄，請按「放棄送出」。",
+        },
+        "type": "template",
+      },
+      "type": "buttons",
+    },
+  ],
+  "state": "ASKING_ARTICLE_SUBMISSION_REASON",
+  "userId": "Uc76d8ae9ccd1ada4f06c4e1515d46466",
+}
+`;
