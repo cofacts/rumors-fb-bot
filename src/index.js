@@ -1,10 +1,10 @@
 import Koa from 'koa';
-import BodyParser from 'koa-bodyparser';
 import Router from 'koa-router';
 import rollbar from './rollbar';
 import { version } from '../package.json';
 
 import redis from './redisClient';
+import checkSignatureAndParse from './checkSignatureAndParse';
 import fbClient from './fbClient';
 import handleInput from './handleInput';
 import { uploadImageFile } from './fileUpload';
@@ -14,7 +14,6 @@ const app = new Koa();
 const router = Router();
 const userIdBlacklist = (process.env.USERID_BLACKLIST || '').split(',');
 
-app.use(BodyParser());
 app.use(async (ctx, next) => {
   try {
     await next();
@@ -157,7 +156,7 @@ const messageHandler = async (req, userId, instance) => {
   }
 
   // Send replies.
-  // TODO: error handling
+  // Error handler inside
   //
   fbClient({
     receiver: userId,
@@ -174,68 +173,13 @@ const groupHandler = async (req, type, replyToken, userId, otherFields) => {
   // TODO
 };
 
-// Routes that is after protection of checkSignature
-//
+router.use('/callback', checkSignatureAndParse);
 router.post('/callback', ctx => {
-  //let body = ctx.body;
-  /*
-  // Checks this is an event from a page subscription
-  if (body.object === 'page') {
-    // Iterates over each entry - there may be multiple if batched
-    body.entry.forEach(function(entry) {
-      // Gets the message. entry.messaging is an array, but
-      // will only ever contain one message, so we get index 0
-      let instance = entry.messaging[0];
-      var sender = instance.sender.id;
-      let isText = true;
-      if (instance.message && instance.message.text) {
-        var msg_text = instance.message.text || instance.postback.payload;
-        console.log(msg_text);
-        if (msg_text === 'help') {
-          msg_text = 'Hello. I\'m a copycat bot. You can say anything you like here.';
-        } else if (msg_text === 'menu') {
-          isText = false;
-        }
-        sendMessage(sender, msg_text, isText);
-      } else if (instance.postback) {
-        sendMessage(sender, instance.postback.payload, isText);
-      }
-    });
-
-    // Returns a '200 OK' response to all requests
-    ctx.status = 200;
-  } else {
-    // Returns a '404 Not Found' if event is not from a page subscription
-    ctx.status = 404;
-  }
-  */
-
   const messageInstances = ctx.request.body.entry[0].messaging;
   messageInstances.forEach(instance => {
     const sender = instance.sender.id;
-    /*
-    let isText = true;
-    if (instance.message && instance.message.text) {
-      let msg_text = instance.message.text || instance.postback.payload;
-      sendMessage(sender, msg_text, isText);
-    } else if (instance.postback) {
-      sendMessage(sender, instance.postback.payload, isText);
-    }
-    */
     messageHandler(ctx.request, sender, instance);
   });
-  /*
-  ctx.request.body.events.forEach(
-    async ({ type, replyToken, source, ...otherFields }) => {
-      let { userId } = source;
-      if (source.type === 'user') {
-        singleUserHandler(ctx.request, type, replyToken, userId, otherFields);
-      } else if (source.type === 'group') {
-        groupHandler(ctx.request, type, replyToken, userId, otherFields);
-      }
-    }
-  );
-  */
   ctx.status = 200;
 });
 
