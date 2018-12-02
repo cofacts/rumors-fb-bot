@@ -1,5 +1,3 @@
-import urlRegex from 'url-regex';
-
 export function createPostbackAction(label, input) {
   return {
     type: 'postback',
@@ -57,8 +55,8 @@ export function createAskArticleSubmissionReply() {
     '【送出訊息到公開資料庫？】\n' +
     '若這是「轉傳訊息」，而且您覺得這很可能是一則「謠言」，請將這則訊息送進公開資料庫建檔，讓好心人查證與回覆。\n' +
     '\n' +
-    '雖然您不會立刻收到查證結果，但可以幫助到未來同樣收到這份訊息的人。\n' +
-    '\n' +
+    '雖然您不會立刻收到查證結果，但可以幫助到未來同樣收到這份訊息的人。';
+  const promptText =
     '請把「為何您會覺得這是一則謠言」的理由傳給我們，幫助闢謠編輯釐清您有疑惑之處。';
 
   return [
@@ -69,23 +67,29 @@ export function createAskArticleSubmissionReply() {
       },
     },
     {
+      type: 'text',
+      content: {
+        text: promptText,
+      },
+    },
+    {
       type: 'buttons',
       content: {
-        type: 'template',
-        payload: {
-          template_type: 'button',
-          text: '若要放棄，請按「放棄送出」。',
-          buttons: [createPostbackAction('放棄送出', 'n')],
+        attachment: {
+          type: 'template',
+          payload: {
+            template_type: 'button',
+            text: '若要放棄，請按「放棄送出」。',
+            buttons: [createPostbackAction('放棄送出', 'n')],
+          },
         },
       },
     },
   ];
 }
 
-export function isNonsenseText(text) {
-  let urls = text.match(urlRegex()) || [];
-  let sum = urls.reduce((sum, url) => sum + url.length, 0);
-  return text.length - sum < 15;
+export function isNonsenseText(/*text*/) {
+  return false;
 }
 
 const ELLIPSIS = '⋯⋯';

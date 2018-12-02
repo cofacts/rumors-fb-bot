@@ -188,9 +188,9 @@ export default async function choosingArticle(params) {
         '抱歉這篇訊息還沒有人回應過唷！\n' +
         '\n' +
         '若您覺得這是一則謠言，請指出您有疑惑之處，說服編輯這是一份應該被闢謠的訊息。\n' +
-        '\n' +
-        '請把「為何您會覺得這是一則謠言」的理由打字傳給我們，幫助闢謠編輯釐清您有疑惑之處；\n' +
-        '若想跳過，請按「我不想填理由」按鈕。';
+        '\n';
+      const promptText =
+        '請把「為何您會覺得這是一則謠言」的理由打字傳給我們，幫助闢謠編輯釐清您有疑惑之處；\n';
 
       replies = [
         {
@@ -200,13 +200,21 @@ export default async function choosingArticle(params) {
           },
         },
         {
+          type: 'text',
+          content: {
+            text: promptText,
+          },
+        },
+        {
           type: 'buttons',
           content: {
-            type: 'template',
-            payload: {
-              template_type: 'button',
-              text: '若要放棄，請按「我不想填理由」。',
-              buttons: [createPostbackAction('我不想填理由', 'n')],
+            attachment: {
+              type: 'template',
+              payload: {
+                template_type: 'button',
+                text: '若想跳過，請按「我不想填理由」。',
+                buttons: [createPostbackAction('我不想填理由', 'n')],
+              },
             },
           },
         },

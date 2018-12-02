@@ -65,11 +65,13 @@ export default async function askingNotUsefulFeedbackSubmission(params) {
       {
         type: 'buttons',
         content: {
-          type: 'template',
-          payload: {
-            template_type: 'button',
-            text: '好的，請重新填寫理由',
-            buttons: [createPostbackAction('我不想填了', 'n')],
+          attachment: {
+            type: 'template',
+            payload: {
+              template_type: 'button',
+              text: '好的，請重新填寫理由',
+              buttons: [createPostbackAction('我不想填了', 'n')],
+            },
           },
         },
       },
