@@ -2,6 +2,8 @@ import fetch from 'node-fetch';
 import FormData from 'form-data';
 import rollbar from './rollbar';
 
+const URL = 'https://graph.facebook.com';
+
 function wrapUpMessages(receipient, replies) {
   const batchMessages = [
     //whole request need to be stringified to attach to form
@@ -26,8 +28,7 @@ function wrapUpMessages(receipient, replies) {
   return JSON.stringify(batchMessages);
 }
 
-export default async function fbClient(params = {}, options = {}) {
-  const URL = 'https://graph.facebook.com';
+export async function sendFacebookMsg(params = {}, options = {}) {
   const receipient = `recipient=${encodeURIComponent(
     JSON.stringify({ id: params.receiver })
   )}`;
@@ -84,4 +85,42 @@ export default async function fbClient(params = {}, options = {}) {
   }
 
   return results;
+}
+
+export async function pagePublicContentAccess(postId) {
+  const fields = ['message', 'caption', 'link'];
+  const resp = await fetch(
+    `${URL}/v3.1/${postId}?access_token=${
+      process.env.PAGE_ACCESS_TOKEN
+    }&fields=${fields.join(',')}`
+  );
+  const results = await resp.json();
+  if (resp.status !== 200) {
+    console.error(JSON.stringify(results, null, '  '));
+    return '';
+  }
+
+  let msg = '';
+  for (let field of fields) {
+    if (results.hasOwnProperty(field)) {
+      msg += `${results[field]}\n`;
+    }
+  }
+  return msg;
+}
+
+export async function replyToComment(commentId, msg) {
+  const resp = await fetch(
+    `${URL}/v3.1/${commentId}/comments?access_token=${
+      process.env.PAGE_ACCESS_TOKEN
+    }&message=${msg.replace(' ', '+')}`,
+    { method: 'POST' }
+  );
+  const results = await resp.json();
+  if (resp.status !== 200) {
+    console.error(
+      'Error when replying to a comment: ' + JSON.stringify(results, null, '  ')
+    );
+    return '';
+  }
 }
