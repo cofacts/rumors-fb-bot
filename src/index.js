@@ -3,6 +3,7 @@ import Router from 'koa-router';
 import rollbar from './rollbar';
 import messageHandler from './messageHandler';
 import mentionEventHandler from './mentionEventHandler';
+import { getPageAccessToken } from './fbClient';
 import { version } from '../package.json';
 
 import checkSignatureAndParse from './checkSignatureAndParse';
@@ -44,8 +45,8 @@ router.post('/callback', ctx => {
   } else if (ctx.request.body.entry[0].hasOwnProperty('messaging')) {
     const messageInstances = ctx.request.body.entry[0].messaging;
     messageInstances.forEach(instance => {
-      const sender = instance.sender.id;
-      messageHandler(ctx.request, sender, instance, userIdBlacklist);
+      //const sender = instance.sender.id;
+      //messageHandler(ctx.request, sender, instance, userIdBlacklist);
     });
     ctx.status = 200;
   }
@@ -62,7 +63,14 @@ router.get('/callback', ctx => {
 app.use(router.routes());
 app.use(router.allowedMethods());
 
-app.listen(process.env.PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log('Listening port', process.env.PORT);
-});
+getPageAccessToken()
+  .then(() => {
+    app.listen(process.env.PORT, () => {
+      // eslint-disable-next-line no-console
+      console.log('Listening port', process.env.PORT);
+    });
+  })
+  .catch(e => {
+    console.error(e);
+    process.exit();
+  });
