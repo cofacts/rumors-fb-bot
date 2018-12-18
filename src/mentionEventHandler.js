@@ -1,41 +1,32 @@
-import { pagePublicContentAccess, replyToComment } from './fbClient';
+import {
+  pagePublicContentAccess,
+  checkCommentCommentable,
+  replyToComment,
+} from './fbClient';
 import handleInput from './handleInput';
 
 const mentionEventHandler = async (context, instance) => {
   console.log(instance);
   // get post content
-  const input = await pagePublicContentAccess(instance.value.post_id);
-  console.log('msg: ' + input);
-  try {
-    throw new Error();
-    /*
-    // TODO: query
-    // attempt to reply in message
-    const issuedAt = Date.now();
-    const result = await handleInput(
-      context,
-      { input, type: 'text' },
-      issuedAt,
-      userId,
+  const inputStr = await pagePublicContentAccess(instance.value.post_id);
+  console.log('msg: ' + inputStr);
+
+  // get analysed content
+  const params = await handleInput(
+    { state: '__INIT__' },
+    { input: inputStr },
+    instance.time,
+    0 // for comments
+  );
+  console.log(params)
+  // check if this comment is already a child comment
+  const canComment = await checkCommentCommentable(instance.value.comment_id);
+  if (canComment) {
+    // reply to her comment
+    await replyToComment(
+      instance.value.comment_id,
+      params.replies.content.text
     );
-
-    if (!result.replies) {
-      throw new Error(
-        'Returned replies is empty, please check processMessages() implementation.'
-      );
-    }
-
-    // Renew "issuedAt" of the resulting context if state changed
-    //
-    if (context.state !== result.context.state) {
-      result.context.issuedAt = issuedAt;
-    } else {
-      result.context.issuedAt = context.issuedAt;
-    }
-    */
-  } catch (e) {
-    // cannot send msg to the user so reply to her comment instead
-    await replyToComment(instance.value.comment_id, input);
   }
 };
 

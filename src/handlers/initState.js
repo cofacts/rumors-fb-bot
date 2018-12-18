@@ -72,6 +72,83 @@ export default async function initState(params) {
     const hasIdenticalDocs =
       edgesSortedWithSimilarity[0].similarity >= SIMILARITY_THRESHOLD;
 
+    if (userId === 0) {
+      // from facebook comment
+      console.log(edgesSortedWithSimilarity[0]);
+      const links = edgesSortedWithSimilarity.map(
+        ({ node: { id } }) => `https://cofacts.g0v.tw/article/${id}`
+      );
+      const {
+        data: { GetArticle },
+      } = await gql`
+        query($id: String!) {
+          GetArticle(id: $id) {
+            replyCount
+            articleReplies(status: NORMAL) {
+              reply {
+                id
+                type
+                text
+              }
+              positiveFeedbackCount
+              negativeFeedbackCount
+            }
+          }
+        }
+      `({
+        id: edgesSortedWithSimilarity[0].node.id,
+      });
+
+      const count = {};
+
+      GetArticle.articleReplies.forEach(ar => {
+        // Track which Reply is searched. And set tracking event as non-interactionHit.
+        ga(userId, { ec: 'Reply', ea: 'Search', el: ar.reply.id }, true);
+
+        const type = ar.reply.type;
+        if (!count[type]) {
+          count[type] = 1;
+        } else {
+          count[type]++;
+        }
+      });
+
+      let summary =
+        '，而且有：\n' +
+        `${count.RUMOR ? `${count.RUMOR} 個人覺得 ❌ 含有不實訊息\n` : ''}` +
+        `${
+          count.NOT_RUMOR ? `${count.NOT_RUMOR} 個人覺得 ⭕ 含有真實訊息\n` : ''
+        }` +
+        `${
+          count.OPINIONATED
+            ? `${count.OPINIONATED} 個人覺得 💬 含有個人意見\n`
+            : ''
+        }`;
+      if (count.NOT_ARTICLE) {
+        summary += `，不過有${
+          count.NOT_ARTICLE
+        } 個人覺得 ⚠️️ 不在 Cofacts查證範圍\n`;
+      }
+
+      const replies = {
+        type: 'text',
+        content: {
+          text: `Cofacts 上有訊息跟這則有 ${Math.round(
+            edgesSortedWithSimilarity[0].similarity * 100
+          )}% 像${summary}\n來看看相關訊息吧：${links.join('\n')}`,
+        },
+      };
+      return {
+        data,
+        state,
+        event,
+        issuedAt,
+        userId,
+        replies,
+        isSkipUser: false,
+      };
+    }
+
     if (edgesSortedWithSimilarity.length === 1 && hasIdenticalDocs) {
       // choose for user
       event.input = 1;

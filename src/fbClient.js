@@ -3,6 +3,7 @@ import FormData from 'form-data';
 import rollbar from './rollbar';
 
 const URL = 'https://graph.facebook.com';
+const graphApiVersion = 'v3.1';
 
 function wrapUpMessages(receipient, replies) {
   const batchMessages = [
@@ -90,7 +91,7 @@ export async function sendFacebookMsg(params = {}, options = {}) {
 export async function pagePublicContentAccess(postId) {
   const fields = ['message', 'caption', 'link'];
   const resp = await fetch(
-    `${URL}/v3.1/${postId}?access_token=${
+    `${URL}/${graphApiVersion}/${postId}?access_token=${
       process.env.PAGE_ACCESS_TOKEN
     }&fields=${fields.join(',')}`
   );
@@ -110,17 +111,71 @@ export async function pagePublicContentAccess(postId) {
 }
 
 export async function replyToComment(commentId, msg) {
+  if (msg === undefined) {
+    return '';
+  }
   const resp = await fetch(
-    `${URL}/v3.1/${commentId}/comments?access_token=${
+    `${URL}/${graphApiVersion}/${commentId}/comments?access_token=${
       process.env.PAGE_ACCESS_TOKEN
-    }&message=${msg.replace(' ', '+')}`,
+    }&message=${encodeURIComponent(msg)}`,
+    { method: 'POST' }
+  );
+  try {
+    const results = await resp.json();
+    if (resp.status !== 200) {
+      console.error(
+        'Error when replying to a comment: ' +
+          JSON.stringify(results, null, '  ')
+      );
+      return '';
+    }
+  } catch (error) {
+    console.error('Error when replying to a comment: ' + error.message);
+    return '';
+  }
+}
+
+export function getPageAccessToken() {
+  return new Promise((resolve, reject) => {
+    if (process.env.PAGE_ID === undefined) {
+      reject(new Error(`Invalid page id: ${process.env.PAGE_ID}`));
+      return;
+    }
+    fetch(
+      `${URL}/${graphApiVersion}/${process.env.PAGE_ID}?access_token=${
+        process.env.PAGE_ACCESS_TOKEN
+      }&fields=access_token`
+    )
+      .then(res => res.json())
+      .then(res => {
+        if (!res.hasOwnProperty('access_token')) {
+          throw new Error('Failed to get a page access token');
+        }
+        process.env.PAGE_ACCESS_TOKEN = res.access_token;
+        resolve();
+      })
+      .catch(e => {
+        reject(e);
+      });
+  });
+}
+
+export async function checkCommentCommentable(commentId) {
+  if (commentId === '' || typeof commentId !== typeof '') {
+    return false;
+  }
+  const resp = await fetch(
+    `${URL}/${graphApiVersion}/${commentId}?access_token=${
+      process.env.PAGE_ACCESS_TOKEN
+    }&fields=can_comment`,
     { method: 'POST' }
   );
   const results = await resp.json();
-  if (resp.status !== 200) {
+  if (resp.status !== 200 || !results.hasOwnProperty('can_comment')) {
     console.error(
-      'Error when replying to a comment: ' + JSON.stringify(results, null, '  ')
+      'Error when fetching comment meta: ' + JSON.stringify(results, null, '  ')
     );
     return '';
   }
+  return results.can_comment;
 }
