@@ -38,7 +38,21 @@
     "eslint-config-prettier": "^2.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-prettier": "^2.0.1",
-    "jest-cli": "^23.0.0",
+    "jest-cli": "^23.6.0",
     "prettier": "=1.12.1"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "roots": [
+      "src"
+    ],
+    "collectCoverage": true,
+    "coveragePathIgnorePatterns": [
+      "/__fixtures__/"
+    ]
+  },
+  "engines": {
+    "node": "8.11.1",
+    "npm": "6.3.0"
   }
 }

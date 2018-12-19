@@ -47,7 +47,7 @@ describe('createReferenceWords()', () => {
   });
 });
 
-describe('isNonsenseText()', () => {
+xdescribe('isNonsenseText()', () => {
   it('should detect a info-less text [1]', () => {
     let text = 'http://google.com';
     expect(isNonsenseText(text)).toBe(true);

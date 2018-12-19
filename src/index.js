@@ -45,8 +45,8 @@ router.post('/callback', ctx => {
   } else if (ctx.request.body.entry[0].hasOwnProperty('messaging')) {
     const messageInstances = ctx.request.body.entry[0].messaging;
     messageInstances.forEach(instance => {
-      //const sender = instance.sender.id;
-      //messageHandler(ctx.request, sender, instance, userIdBlacklist);
+      const sender = instance.sender.id;
+      messageHandler(ctx.request, sender, instance, userIdBlacklist);
     });
     ctx.status = 200;
   }
