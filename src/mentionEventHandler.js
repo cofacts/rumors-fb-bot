@@ -6,10 +6,8 @@ import {
 import handleInput from './handleInput';
 
 const mentionEventHandler = async (context, instance) => {
-  console.log(instance);
   // get post content
   const inputStr = await pagePublicContentAccess(instance.value.post_id);
-  console.log('msg: ' + inputStr);
 
   // get analysed content
   const params = await handleInput(
@@ -18,14 +16,14 @@ const mentionEventHandler = async (context, instance) => {
     instance.time,
     0 // for comments
   );
-  console.log(params)
+
   // check if this comment is already a child comment
   const canComment = await checkCommentCommentable(instance.value.comment_id);
   if (canComment) {
     // reply to her comment
     await replyToComment(
       instance.value.comment_id,
-      params.replies.content.text
+      params.replies[0].content.text
     );
   }
 };

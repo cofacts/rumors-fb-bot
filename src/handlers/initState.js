@@ -74,7 +74,6 @@ export default async function initState(params) {
 
     if (userId === 0) {
       // from facebook comment
-      console.log(edgesSortedWithSimilarity[0]);
       const links = edgesSortedWithSimilarity.map(
         ({ node: { id } }) => `https://cofacts.g0v.tw/article/${id}`
       );
@@ -130,14 +129,16 @@ export default async function initState(params) {
         } 個人覺得 ⚠️️ 不在 Cofacts查證範圍\n`;
       }
 
-      const replies = {
-        type: 'text',
-        content: {
-          text: `Cofacts 上有訊息跟這則有 ${Math.round(
-            edgesSortedWithSimilarity[0].similarity * 100
-          )}% 像${summary}\n來看看相關訊息吧：${links.join('\n')}`,
+      const replies = [
+        {
+          type: 'text',
+          content: {
+            text: `#Cofacts 上有訊息跟這則有 ${Math.round(
+              edgesSortedWithSimilarity[0].similarity * 100
+            )}% 像${summary}\n來看看相關訊息吧：${links.join('\n')}`,
+          },
         },
-      };
+      ];
       return {
         data,
         state,
@@ -149,6 +150,7 @@ export default async function initState(params) {
       };
     }
 
+    // message
     if (edgesSortedWithSimilarity.length === 1 && hasIdenticalDocs) {
       // choose for user
       event.input = 1;
@@ -232,15 +234,28 @@ export default async function initState(params) {
         el: 'ArticleNotFound',
       });
 
-      replies = [
-        {
-          type: 'text',
-          content: {
-            text: `找不到關於「${articleSummary}」訊息耶 QQ`,
+      if (userId === 0) {
+        // comment
+        replies = [
+          {
+            type: 'text',
+            content: {
+              text: `找不到關於「${articleSummary}」的訊息耶 QQ\n可以嘗試到這些地方找找相關訊息：\n
+              蘭姆酒吐司Rumor & Truth https://www.facebook.com/rumtoast/\n或者到 LINE 上面把謠言傳給我們~\n`,
+            },
           },
-        },
-      ].concat(createAskArticleSubmissionReply());
-      state = 'ASKING_ARTICLE_SUBMISSION_REASON';
+        ];
+      } else {
+        replies = [
+          {
+            type: 'text',
+            content: {
+              text: `找不到關於「${articleSummary}」訊息耶 QQ`,
+            },
+          },
+        ].concat(createAskArticleSubmissionReply());
+        state = 'ASKING_ARTICLE_SUBMISSION_REASON';
+      }
     }
   }
   return { data, state, event, issuedAt, userId, replies, isSkipUser };
