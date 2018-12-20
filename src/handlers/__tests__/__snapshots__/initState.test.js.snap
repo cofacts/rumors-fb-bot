@@ -179,13 +179,13 @@ Object {
 exports[`should handle article not found 1`] = `
 Object {
   "data": Object {
-    "searchedText": "YouTube · 寻找健康人生",
+    "searchedText": "YouTube · 寻找健康人生 驚！大批香蕉受到愛滋血污染！這種香蕉千萬不要吃！吃到可能會被 ...",
   },
   "event": Object {
-    "input": "YouTube · 寻找健康人生",
+    "input": "YouTube · 寻找健康人生 驚！大批香蕉受到愛滋血污染！這種香蕉千萬不要吃！吃到可能會被 ...",
     "message": Object {
       "id": "6270464463537",
-      "text": "YouTube · 寻找健康人生",
+      "text": "YouTube · 寻找健康人生 驚！大批香蕉受到愛滋血污染！這種香蕉千萬不要吃！吃到可能會被 ...",
       "type": "text",
     },
     "timestamp": 1497994016356,
@@ -205,26 +205,32 @@ Object {
         "text": "【送出訊息到公開資料庫？】
 若這是「轉傳訊息」，而且您覺得這很可能是一則「謠言」，請將這則訊息送進公開資料庫建檔，讓好心人查證與回覆。
 
-雖然您不會立刻收到查證結果，但可以幫助到未來同樣收到這份訊息的人。
-
-請把「為何您會覺得這是一則謠言」的理由傳給我們，幫助闢謠編輯釐清您有疑惑之處。",
+雖然您不會立刻收到查證結果，但可以幫助到未來同樣收到這份訊息的人。",
       },
       "type": "text",
     },
     Object {
       "content": Object {
-        "payload": Object {
-          "buttons": Array [
-            Object {
-              "payload": "n",
-              "title": "放棄送出",
-              "type": "postback",
-            },
-          ],
-          "template_type": "button",
-          "text": "若要放棄，請按「放棄送出」。",
+        "text": "請把「為何您會覺得這是一則謠言」的理由傳給我們，幫助闢謠編輯釐清您有疑惑之處。",
+      },
+      "type": "text",
+    },
+    Object {
+      "content": Object {
+        "attachment": Object {
+          "payload": Object {
+            "buttons": Array [
+              Object {
+                "payload": "n",
+                "title": "放棄送出",
+                "type": "postback",
+              },
+            ],
+            "template_type": "button",
+            "text": "若要放棄，請按「放棄送出」。",
+          },
+          "type": "template",
         },
-        "type": "template",
       },
       "type": "buttons",
     },

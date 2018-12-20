@@ -209,18 +209,20 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "payload": Object {
-          "buttons": Array [
-            Object {
-              "payload": "n",
-              "title": "我不想填了",
-              "type": "postback",
-            },
-          ],
-          "template_type": "button",
-          "text": "好的，請重新填寫理由",
+        "attachment": Object {
+          "payload": Object {
+            "buttons": Array [
+              Object {
+                "payload": "n",
+                "title": "我不想填了",
+                "type": "postback",
+              },
+            ],
+            "template_type": "button",
+            "text": "好的，請重新填寫理由",
+          },
+          "type": "template",
         },
-        "type": "template",
       },
       "type": "buttons",
     },
