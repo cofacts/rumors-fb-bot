@@ -81,7 +81,7 @@ export default async function initState(params) {
     const hasIdenticalDocs =
       edgesSortedWithSimilarity[0].similarity >= SIMILARITY_THRESHOLD;
 
-    if (userId === 0) {
+    if (userId === '0') {
       // from facebook comment
       const links = edgesSortedWithSimilarity.map(
         ({ node: { id } }) => `https://cofacts.g0v.tw/article/${id}`
@@ -135,7 +135,7 @@ export default async function initState(params) {
             : ''
         }`;
       if (count.NOT_ARTICLE) {
-        summary += `，不過有${
+        summary += `，不過有 ${
           count.NOT_ARTICLE
         } 個人覺得 ⚠️️ 不在 Cofacts查證範圍\n`;
       }
@@ -252,7 +252,7 @@ export default async function initState(params) {
         el: 'ArticleNotFound',
       });
 
-      if (userId === 0) {
+      if (userId === '0') {
         // comment
         replies = [
           {

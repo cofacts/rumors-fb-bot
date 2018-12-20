@@ -14,7 +14,7 @@ const mentionEventHandler = async (context, instance) => {
     { state: '__INIT__' },
     { input: inputStr },
     instance.time,
-    0 // for comments
+    '0' // for comments
   );
 
   // check if this comment is already a child comment
