@@ -486,6 +486,49 @@ Object {
 }
 `;
 
+exports[`should select article with exactly one reply 1`] = `
+Object {
+  "data": Object {
+    "foundArticleIds": Array [
+      "AV_4WX8vyCdS-nWhujyH",
+    ],
+    "foundReplyIds": Array [
+      "AV--O3nfyCdS-nWhujMD",
+    ],
+    "searchedText": "老司機車裡總備一塊香皂，知道內情的新手默默也準備了一塊",
+    "selectedArticleId": "AV_4WX8vyCdS-nWhujyH",
+    "selectedArticleText": "one reply article text",
+  },
+  "event": Object {
+    "input": 1,
+    "message": Object {
+      "id": "7049700770815",
+      "text": "1",
+      "type": "text",
+    },
+    "timestamp": 1511702208226,
+    "type": "message",
+  },
+  "isSkipUser": true,
+  "issuedAt": 1511702208730,
+  "replies": Array [
+    Object {
+      "content": Object {
+        "text": "這個訊息有：
+1 則回應標成 ❌ 含有不實訊息
+0 則回應標成 ⭕ 含有真實訊息
+0 則回應標成 💬 含有個人意見
+0 則回應標成 ⚠️️ 不在查證範圍
+",
+      },
+      "type": "text",
+    },
+  ],
+  "state": "CHOOSING_REPLY",
+  "userId": "Uc76d8ae9ccd1ada4f06c4e1515d46466",
+}
+`;
+
 exports[`should select article with no replies 1`] = `
 Object {
   "data": Object {

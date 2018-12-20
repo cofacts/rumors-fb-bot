@@ -14,6 +14,62 @@ export const longArticle = {
   },
 };
 
+export const fiveReplies = {
+  data: {
+    GetArticle: {
+      replyCount: 5,
+      text: 'five Replies article text',
+      articleReplies: [
+        {
+          reply: {
+            id: 'AV--O3nfyCdS-nWhujMD',
+            type: 'RUMOR',
+            text: '回應1',
+          },
+          positiveFeedbackCount: 0,
+          negativeFeedbackCount: 0,
+        },
+        {
+          reply: {
+            id: 'AV--O3nfyCdS-nWhujMD',
+            type: 'OPINIONATED',
+            text: '回應2',
+          },
+          positiveFeedbackCount: 0,
+          negativeFeedbackCount: 0,
+        },
+        {
+          reply: {
+            id: 'AV--O3nfyCdS-nWhujMD',
+            type: 'NOT_RUMOR',
+            text: '回應3',
+          },
+          positiveFeedbackCount: 0,
+          negativeFeedbackCount: 0,
+        },
+        {
+          reply: {
+            id: 'AV--O3nfyCdS-nWhujMD',
+            type: 'NOT_ARTICLE',
+            text: '回應4',
+          },
+          positiveFeedbackCount: 0,
+          negativeFeedbackCount: 0,
+        },
+        {
+          reply: {
+            id: 'AV--O3nfyCdS-nWhujMD',
+            type: 'NOT_ARTICLE',
+            text: '回應5',
+          },
+          positiveFeedbackCount: 0,
+          negativeFeedbackCount: 0,
+        },
+      ],
+    },
+  },
+};
+
 export const twoLongArticles = {
   data: {
     ListArticles: {

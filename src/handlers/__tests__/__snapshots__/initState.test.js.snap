@@ -73,6 +73,45 @@ Object {
 }
 `;
 
+exports[`article found for comments 1`] = `
+Object {
+  "data": Object {
+    "foundArticleIds": Array [
+      "AVvY-yizyCdS-nWhuYWx",
+    ],
+    "searchedText": "計程車上有裝悠遊卡感應器，老人悠悠卡可以享受優惠部分由政府補助，不影響司機收入",
+  },
+  "event": Object {
+    "input": "計程車上有裝悠遊卡感應器，老人悠悠卡可以享受優惠部分由政府補助，不影響司機收入",
+    "message": Object {
+      "id": "6270464463537",
+      "text": "計程車上有裝悠遊卡感應器，老人悠悠卡可以享受優惠部分由政府補助，不影響司機收入",
+      "type": "text",
+    },
+    "timestamp": 1497994016356,
+    "type": "message",
+  },
+  "isSkipUser": false,
+  "issuedAt": 1497994017447,
+  "replies": Array [
+    Object {
+      "content": Object {
+        "text": "#Cofacts 上有訊息跟這則有 52% 像，而且有：
+1 個人覺得 ❌ 含有不實訊息
+1 個人覺得 ⭕ 含有真實訊息
+1 個人覺得 💬 含有個人意見
+，不過有 2 個人覺得 ⚠️️ 不在 Cofacts查證範圍
+
+來看看相關訊息吧：https://cofacts.g0v.tw/article/AVvY-yizyCdS-nWhuYWx",
+      },
+      "type": "text",
+    },
+  ],
+  "state": "__INIT__",
+  "userId": "0",
+}
+`;
+
 exports[`articles found with high similarity 1`] = `
 Object {
   "data": Object {
@@ -237,5 +276,40 @@ Object {
   ],
   "state": "ASKING_ARTICLE_SUBMISSION_REASON",
   "userId": "Uc76d8ae9ccd1ada4f06c4e1515d46466",
+}
+`;
+
+exports[`should handle article not found for comments 1`] = `
+Object {
+  "data": Object {
+    "searchedText": "YouTube · 寻找健康人生 驚！大批香蕉受到愛滋血污染！這種香蕉千萬不要吃！吃到可能會被 ...",
+  },
+  "event": Object {
+    "input": "YouTube · 寻找健康人生 驚！大批香蕉受到愛滋血污染！這種香蕉千萬不要吃！吃到可能會被 ...",
+    "message": Object {
+      "id": "6270464463537",
+      "text": "YouTube · 寻找健康人生 驚！大批香蕉受到愛滋血污染！這種香蕉千萬不要吃！吃到可能會被 ...",
+      "type": "text",
+    },
+    "timestamp": 1497994016356,
+    "type": "message",
+  },
+  "isSkipUser": false,
+  "issuedAt": 1497994017447,
+  "replies": Array [
+    Object {
+      "content": Object {
+        "text": "找不到關於「YouTube · ⋯⋯」的訊息耶 QQ
+可以嘗試到這些地方找找相關訊息：
+
+              蘭姆酒吐司Rumor & Truth https://www.facebook.com/rumtoast/
+或者到 LINE 上面把謠言傳給我們~
+",
+      },
+      "type": "text",
+    },
+  ],
+  "state": "__INIT__",
+  "userId": "0",
 }
 `;

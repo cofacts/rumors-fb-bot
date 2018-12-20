@@ -191,6 +191,26 @@ export const elevenReplies = {
   },
 };
 
+export const oneReply = {
+  data: {
+    GetArticle: {
+      replyCount: 1,
+      text: 'one reply article text',
+      articleReplies: [
+        {
+          reply: {
+            id: 'AV--O3nfyCdS-nWhujMD',
+            type: 'RUMOR',
+            text: '回應1',
+          },
+          positiveFeedbackCount: 0,
+          negativeFeedbackCount: 0,
+        },
+      ],
+    },
+  },
+};
+
 export const noReplies = {
   data: {
     GetArticle: {

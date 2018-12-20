@@ -31,6 +31,34 @@ it('article found', async () => {
   expect(await initState(input)).toMatchSnapshot();
 });
 
+it('article found for comments', async () => {
+  gql.__push(apiResult.longArticle);
+  gql.__push(apiResult.fiveReplies);
+
+  const input = {
+    data: {},
+    state: '__INIT__',
+    event: {
+      type: 'message',
+      input:
+        '計程車上有裝悠遊卡感應器，老人悠悠卡可以享受優惠部分由政府補助，不影響司機收入',
+      timestamp: 1497994016356,
+      message: {
+        type: 'text',
+        id: '6270464463537',
+        text:
+          '計程車上有裝悠遊卡感應器，老人悠悠卡可以享受優惠部分由政府補助，不影響司機收入',
+      },
+    },
+    issuedAt: 1497994017447,
+    userId: '0',
+    replies: undefined,
+    isSkipUser: false,
+  };
+
+  expect(await initState(input)).toMatchSnapshot();
+});
+
 it('article found with 120 words limit', async () => {
   gql.__push(apiResult.twoLongArticles);
 
@@ -140,6 +168,33 @@ it('should handle article not found', async () => {
     },
     issuedAt: 1497994017447,
     userId: 'Uc76d8ae9ccd1ada4f06c4e1515d46466',
+    replies: undefined,
+    isSkipUser: false,
+  };
+
+  expect(await initState(input)).toMatchSnapshot();
+});
+
+it('should handle article not found for comments', async () => {
+  gql.__push(apiResult.notFound);
+
+  const input = {
+    data: {},
+    state: '__INIT__',
+    event: {
+      type: 'message',
+      input:
+        'YouTube · 寻找健康人生 驚！大批香蕉受到愛滋血污染！這種香蕉千萬不要吃！吃到可能會被 ...',
+      timestamp: 1497994016356,
+      message: {
+        type: 'text',
+        id: '6270464463537',
+        text:
+          'YouTube · 寻找健康人生 驚！大批香蕉受到愛滋血污染！這種香蕉千萬不要吃！吃到可能會被 ...',
+      },
+    },
+    issuedAt: 1497994017447,
+    userId: '0',
     replies: undefined,
     isSkipUser: false,
   };

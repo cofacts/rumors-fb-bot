@@ -115,3 +115,5 @@ Object {
   "userId": "Uaddc74df8a3a176b901d9d648b0fc4fe",
 }
 `;
+
+exports[`should throw error when reply ids are not set 1`] = `"foundReplyIds not set in data"`;
