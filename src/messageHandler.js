@@ -151,11 +151,13 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
         return;
       }
       // Track message attachment type sent by user
-      ga(userId, {
-        ec: 'UserInput',
-        ea: 'MessageType',
-        el: element.type,
-      });
+      ga(userId)
+        .event({
+          ec: 'UserInput',
+          ea: 'MessageType',
+          el: element.type,
+        })
+        .send();
       if (element.type === 'image') {
         uploadImageFile(instance.mid, idx, element.payload.url);
       } else if (element.type === 'video') {

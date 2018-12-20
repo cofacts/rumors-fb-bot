@@ -14,8 +14,11 @@ export default async function askingReplyFeedback(params) {
     throw new Error('selectedReply not set in data');
   }
 
+  const visitor = ga('FB-' + userId, data.selectedArticleText);
+  visitor.screenview({ screenName: state });
+
   // Track when user give feedback.
-  ga(userId, {
+  visitor.event({
     ec: 'UserInput',
     ea: 'Feedback-Vote',
     el: `${data.selectedArticleId}/${data.selectedReplyId}`,
@@ -45,7 +48,7 @@ export default async function askingReplyFeedback(params) {
       { userId }
     );
     const {
-      data: { GetReply, GetArticle },
+      data: { GetReply },
     } = await gql`
       query($replyId: String!, $articleId: String!) {
         GetReply(id: $replyId) {
@@ -53,22 +56,18 @@ export default async function askingReplyFeedback(params) {
           text
           reference
         }
-
-        GetArticle(id: $articleId) {
-          text
-        }
       }
     `({
-      articleId: data.selectedArticleId,
       replyId: data.selectedReplyId,
     });
 
     const articleUrl = getArticleURL(data.selectedArticleId);
 
     const sharedContent = {
-      title: `網路上有人說「${ellipsis(GetArticle.text, 15)}」${createTypeWords(
-        GetReply.type
-      )}喔！`,
+      title: `網路上有人說「${ellipsis(
+        data.selectedArticleText,
+        15
+      )}」${createTypeWords(GetReply.type)}喔！`,
       subtitle: `請至 ${articleUrl} 看看鄉親們針對這則訊息的回應、理由，與所找的出處唷！`,
       buttons: [
         {
@@ -124,6 +123,7 @@ export default async function askingReplyFeedback(params) {
     ];
 
     state = '__INIT__';
+    visitor.send();
     return { data, state, event, issuedAt, userId, replies, isSkipUser };
   }
   replies = [
@@ -144,5 +144,6 @@ export default async function askingReplyFeedback(params) {
   ];
 
   state = 'ASKING_NOT_USEFUL_FEEDBACK';
+  visitor.send();
   return { data, state, event, issuedAt, userId, replies, isSkipUser };
 }

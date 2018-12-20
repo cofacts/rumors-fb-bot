@@ -4,7 +4,18 @@ import { createPostbackAction } from './utils';
 export default async function askingArticleSubmission(params) {
   let { data, state, event, issuedAt, userId, replies, isSkipUser } = params;
 
-  if (event.input !== 'n') {
+  const visitor = ga('FB-' + userId, data.searchedText);
+  visitor.screenview({ screenName: state });
+
+  if (event.input === 'n') {
+    // Track whether user create Article or not if the Article is not found in DB.
+    visitor.event({ ec: 'Article', ea: 'Create', el: 'No' });
+
+    replies = [
+      { type: 'text', content: { text: '訊息沒有送出，謝謝您的使用。' } },
+    ];
+    state = '__INIT__';
+  } else {
     const reason = event.input;
 
     replies = [
@@ -42,15 +53,8 @@ export default async function askingArticleSubmission(params) {
     ];
     data.reasonText = reason;
     state = 'ASKING_ARTICLE_SUBMISSION';
-  } else {
-    // Track whether user create Article or not if the Article is not found in DB.
-    ga(userId, { ec: 'Article', ea: 'Create', el: 'No' });
-
-    replies = [
-      { type: 'text', content: { text: '訊息沒有送出，謝謝您的使用。' } },
-    ];
-    state = '__INIT__';
   }
 
+  visitor.send();
   return { data, state, event, issuedAt, userId, replies, isSkipUser };
 }
