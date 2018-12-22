@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest",
     "start": "node main.js",
-    "lint": "eslint"
+    "lint": "eslint ."
   },
   "author": "changhc",
   "license": "MIT",
