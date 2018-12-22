@@ -24,10 +24,11 @@ Please follow all the steps in [Facebook Messenger Platform](https://developers.
 
 First, install heroku toolbelt.
 
-Create .env file, copy the template below and `PAGE_ACCESS_TOKENT`, `VERIFY_TOKEN`, `APP_SECRET` inside.
+Create .env file from .env.sample template, at least fill in:
 ```
 API_URL=https://cofacts-api.g0v.tw/graphql
-PAGE_ACCESS_TOKEN=<paste your access token for your page here>
+PAGE_ID=<your Facebook page ID>
+USER_ACCESS_TOKEN=<paste your Facebook user access token here>
 VERIFY_TOKEN=<paste your token for webhook verification here>
 APP_SECRET=<paste your Facebook app secret here>
 ```
@@ -119,7 +120,8 @@ You will still have to set the following config vars manually:
 ```
 $ heroku config:set API_URL=https://cofacts-api.g0v.tw/graphql
 $ heroku config:set SITE_URL=https://cofacts.g0v.tw
-$ heroku config:set PAGE_ACCESS_TOKEN=<Your page access token>
+$ heroku config:set USER_ACCESS_TOKEN=<Your user access token>
+$ heroku config:set PAGE_ID=<Your Facebook page id>
 $ heroku config:set VERIFY_TOKEN=<Your webhook verification token>
 $ heroku config:set APP_SECRET=<Your Facebook app secret>
 $ heroku config:set GOOGLE_CREDENTIALS=<Your google credential (optional)>
