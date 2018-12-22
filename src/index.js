@@ -43,7 +43,7 @@ router.post('/callback', ctx => {
     });
     ctx.status = 200;
   } else if (ctx.request.body.entry[0].hasOwnProperty('messaging')) {
-    // uncomment this to enable chatbot
+    // uncomment to enable chatbot
     /*
     const messageInstances = ctx.request.body.entry[0].messaging;
     messageInstances.forEach(instance => {
@@ -55,6 +55,7 @@ router.post('/callback', ctx => {
   }
 });
 
+// for Facebook webhook verification
 router.get('/callback', ctx => {
   if (ctx.request.query['hub.verify_token'] === process.env.VERIFY_TOKEN) {
     ctx.body = ctx.request.query['hub.challenge'];
@@ -66,6 +67,7 @@ router.get('/callback', ctx => {
 app.use(router.routes());
 app.use(router.allowedMethods());
 
+// get page access token and then start listening
 getPageAccessToken()
   .then(() => {
     app.listen(process.env.PORT, () => {

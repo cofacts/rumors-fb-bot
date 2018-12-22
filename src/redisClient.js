@@ -33,7 +33,6 @@ function get(key) {
           resolve(JSON.parse(reply));
         } catch (e) {
           // Gracefully fallback, in case the stuff in redis is a mess
-          //
           console.error(e);
           rollbar.error(e);
           resolve({});

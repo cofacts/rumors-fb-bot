@@ -1,3 +1,8 @@
+/**
+ * @param {string} label The label of a postback action
+ * @param {string} input The value returned of a postback action
+ * @returns {object} The postback action object
+ */
 export function createPostbackAction(label, input) {
   return {
     type: 'postback',
@@ -19,6 +24,10 @@ export function createFeedbackWords(positive, negative) {
   return `[${result.trim()}]`;
 }
 
+/**
+ * @param {string} type the type of a reply
+ * @return {string} Description of the type
+ */
 export function createTypeWords(type) {
   switch (type) {
     case 'RUMOR':

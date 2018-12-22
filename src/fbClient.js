@@ -5,6 +5,12 @@ import rollbar from './rollbar';
 const URL = 'https://graph.facebook.com';
 const graphApiVersion = 'v3.1';
 
+/**
+ * Wrap reply objects into a response body.
+ * @param {string} receipient The receipient of our reply
+ * @param {array} replies An array of reply objects
+ * @returns {string} The full response body string
+ */
 function wrapUpMessages(receipient, replies) {
   const batchMessages = [
     //whole request need to be stringified to attach to form
@@ -29,6 +35,12 @@ function wrapUpMessages(receipient, replies) {
   return JSON.stringify(batchMessages);
 }
 
+/**
+ * Send our response message to Facebook
+ * @param {object} params The params object that contains all user-related information
+ * @param {object} options Options if any
+ * @returns {array} Result of messages sent
+ */
 export async function sendFacebookMsg(params = {}, options = {}) {
   const receipient = `recipient=${encodeURIComponent(
     JSON.stringify({ id: params.receiver })
@@ -88,6 +100,11 @@ export async function sendFacebookMsg(params = {}, options = {}) {
   return results;
 }
 
+/**
+ * Get post content using Page Public Content Access
+ * @param {string} postId The id of the Facebook post we're interested in
+ * @returns {string} The parsed content of the Facebook post
+ */
 export async function pagePublicContentAccess(postId) {
   const fields = ['message', 'caption', 'link'];
   const resp = await fetch(
@@ -110,9 +127,15 @@ export async function pagePublicContentAccess(postId) {
   return msg;
 }
 
+/**
+ * Reply to a comment
+ * @param {string} commentId The id of the comment we're replying to
+ * @param {string} msg The message we're replying
+ * @returns {undefined}
+ */
 export async function replyToComment(commentId, msg) {
   if (msg === undefined) {
-    return '';
+    return;
   }
   const resp = await fetch(
     `${URL}/${graphApiVersion}/${commentId}/comments?access_token=${
@@ -127,14 +150,17 @@ export async function replyToComment(commentId, msg) {
         'Error when replying to a comment: ' +
           JSON.stringify(results, null, '  ')
       );
-      return '';
     }
   } catch (error) {
     console.error('Error when replying to a comment: ' + error.message);
-    return '';
   }
 }
 
+/**
+ * Get page access token using user access token in env variables
+ * @param {undefined}
+ * @returns {undefined}
+ */
 export function getPageAccessToken() {
   return new Promise((resolve, reject) => {
     if (process.env.PAGE_ID === undefined) {
@@ -160,6 +186,11 @@ export function getPageAccessToken() {
   });
 }
 
+/**
+ * Check if this comment is not yet replied by others
+ * @param {string} commentId The id of the comment we're replying to
+ * @returns {bool} if this comment doesn't have other replies yet
+ */
 export async function checkCommentCommentable(commentId) {
   if (commentId === '' || typeof commentId !== typeof '') {
     return false;

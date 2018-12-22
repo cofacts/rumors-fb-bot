@@ -11,6 +11,7 @@ const mentionEventHandler = async (context, instance) => {
   if (!canComment) {
     return;
   }
+
   // get post content
   const inputStr = await pagePublicContentAccess(instance.value.post_id);
   // get analysed content
@@ -21,7 +22,7 @@ const mentionEventHandler = async (context, instance) => {
     '0' // for comments
   );
 
-  // reply to her comment
+  // reply to comment
   await replyToComment(
     instance.value.comment_id,
     params.replies[0].content.text
