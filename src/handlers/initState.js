@@ -83,9 +83,11 @@ export default async function initState(params) {
 
     if (userId === '0') {
       // from facebook comment
+      /*
       const links = edgesSortedWithSimilarity.map(
         ({ node: { id } }) => `https://cofacts.g0v.tw/article/${id}`
       );
+      */
 
       // search the top article
       const {
@@ -146,8 +148,8 @@ export default async function initState(params) {
           content: {
             text: `#Cofacts 上有訊息跟這則有 ${Math.round(
               edgesSortedWithSimilarity[0].similarity * 100
-            )}% 像${summary}\n來看看相關訊息吧：${links.join('\n')}`,
-          },
+            )}% 像${summary}\n到 Cofacts 上面看看相關訊息吧！`, //`${links.join('\n')}`,
+          }, // temporarily disable links due to issue #2
         },
       ];
 
@@ -254,12 +256,14 @@ export default async function initState(params) {
 
       if (userId === '0') {
         // comment
+        // for issue #2, keep links in replies when nothing is found
+        // since it contains less information that should be broadcast
         replies = [
           {
             type: 'text',
             content: {
               text: `找不到關於「${articleSummary}」的訊息耶 QQ\n可以嘗試到這些地方找找相關訊息：\n
-              蘭姆酒吐司Rumor & Truth https://www.facebook.com/rumtoast/\n或者到 LINE 上面把謠言傳給我們~\n`,
+              蘭姆酒吐司Rumor & Truth https://www.facebook.com/rumtoast/\n或者到 LINE 上面把謠言傳給我們~\nhttp://bit.ly/cofacts-line-users`,
             },
           },
         ];
