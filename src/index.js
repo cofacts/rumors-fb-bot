@@ -1,7 +1,7 @@
 import Koa from 'koa';
 import Router from 'koa-router';
 import rollbar from './rollbar';
-import messageHandler from './messageHandler';
+//import messageHandler from './messageHandler';
 import mentionEventHandler from './mentionEventHandler';
 import { getPageAccessToken } from './fbClient';
 import { version } from '../package.json';
@@ -10,7 +10,7 @@ import checkSignatureAndParse from './checkSignatureAndParse';
 
 const app = new Koa();
 const router = Router();
-const userIdBlacklist = (process.env.USERID_BLACKLIST || '').split(',');
+//const userIdBlacklist = (process.env.USERID_BLACKLIST || '').split(',');
 
 app.use(async (ctx, next) => {
   try {
@@ -43,11 +43,14 @@ router.post('/callback', ctx => {
     });
     ctx.status = 200;
   } else if (ctx.request.body.entry[0].hasOwnProperty('messaging')) {
+    // uncomment this to enable chatbot
+    /*
     const messageInstances = ctx.request.body.entry[0].messaging;
     messageInstances.forEach(instance => {
       const sender = instance.sender.id;
       messageHandler(ctx.request, sender, instance, userIdBlacklist);
     });
+    */
     ctx.status = 200;
   }
 });
