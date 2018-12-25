@@ -3,7 +3,7 @@ import Router from 'koa-router';
 import rollbar from './rollbar';
 //import messageHandler from './messageHandler';
 import mentionEventHandler from './mentionEventHandler';
-import { getPageAccessToken } from './fbClient';
+import { getLongLivedPageAccessToken } from './fbClient';
 import { version } from '../package.json';
 
 import checkSignatureAndParse from './checkSignatureAndParse';
@@ -68,8 +68,12 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 // get page access token and then start listening
-getPageAccessToken()
+getLongLivedPageAccessToken()
   .then(() => {
+    console.log('Long-lived page access token fetched');
+    // Fetch a new page access token every 14 days
+    setInterval(() => getLongLivedPageAccessToken(), 14 * 86400 * 1000);
+
     app.listen(process.env.PORT, () => {
       // eslint-disable-next-line no-console
       console.log('Listening port', process.env.PORT);

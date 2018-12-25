@@ -161,21 +161,25 @@ export async function replyToComment(commentId, msg) {
  * @param {undefined}
  * @returns {undefined}
  */
-export function getPageAccessToken() {
+export function getLongLivedPageAccessToken() {
   return new Promise((resolve, reject) => {
-    if (process.env.PAGE_ID === undefined) {
-      reject(new Error(`Invalid page id: ${process.env.PAGE_ID}`));
+    if (process.env.APP_ID === undefined) {
+      reject(new Error(`Invalid page id: ${process.env.APP_ID}`));
       return;
     }
     fetch(
-      `${URL}/${graphApiVersion}/${process.env.PAGE_ID}?access_token=${
+      `${URL}/oauth/access_token?grant_type=fb_exchange_token&client_id=${
+        process.env.APP_ID
+      }&client_secret=${process.env.APP_SECRET}&fb_exchange_token=${
         process.env.PAGE_ACCESS_TOKEN
-      }&fields=access_token`
+      }`
     )
       .then(res => res.json())
       .then(res => {
         if (!res.hasOwnProperty('access_token')) {
-          throw new Error('Failed to get a page access token');
+          throw new Error(
+            'Failed to get a page access token: ' + JSON.stringify(res)
+          );
         }
         process.env.PAGE_ACCESS_TOKEN = res.access_token;
         resolve();
