@@ -5,7 +5,7 @@ A Facebook Messenger bot that checks if a message contains internet rumor.
 
 ## State diagram & Documents
 
-This is a one of the sub-project of [真的假的](http://beta.hackfoldr.org/rumors)。
+This is a one of the sub-project of [Cofacts 真的假的](http://beta.hackfoldr.org/rumors)。
 
 This state diagram describes how the FB bot talks to users:
 
@@ -13,6 +13,8 @@ This state diagram describes how the FB bot talks to users:
 
 
 ## Development
+
+All hard-coded reply texts in source code are in Chinese and have translation in comments.
 
 Developing rumors-fb-bot requires you to finish the following settings.
 
