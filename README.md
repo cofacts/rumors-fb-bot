@@ -1,7 +1,7 @@
 # rumors-fb-bot
 A Facebook Messenger bot that checks if a message contains internet rumor.
 
-[![Build Status](https://travis-ci.org/cofacts/rumors-fb-bot.svg?branch=master)](https://travis-ci.org/cofacts/rumors-fb-bot)
+[![Build Status](https://travis-ci.org/cofacts/rumors-fb-bot.svg?branch=dev)](https://travis-ci.org/cofacts/rumors-fb-bot) 
 
 ## State diagram & Documents
 
@@ -22,15 +22,19 @@ Developing rumors-fb-bot requires you to finish the following settings.
 
 Please follow all the steps in [Facebook Messenger Platform](https://developers.facebook.com/docs/messenger-platform/getting-started).
 
+Note that we need permission `manage_pages`, `publish_pages`, `Page Public Content Access`, and `pages_messaging` for your app.
+
+**Important**: Please refer to [this page](https://github.com/cofacts/rumors-fb-bot/blob/dev/FacebookToken.md) for Facebook access tokens.
+
 ### Environment variables
 
 First, install heroku toolbelt.
 
 Create .env file from .env.sample template, at least fill in:
 ```
-API_URL=https://cofacts-api.g0v.tw/graphql
-PAGE_ID=<your Facebook page ID>
-USER_ACCESS_TOKEN=<paste your Facebook user access token here>
+API_URL=https://cofacts-api.g0v.tw/graphql (or your api server)
+APP_ID=<your Facebook app ID>
+PAGE_ACCESS_TOKEN=<paste your Facebook page access token from Graph API Explorer here>
 VERIFY_TOKEN=<paste your token for webhook verification here>
 APP_SECRET=<paste your Facebook app secret here>
 ```
@@ -120,10 +124,10 @@ Despite the fact that we don't use `Procfile`, Heroku still does detection and i
 You will still have to set the following config vars manually:
 
 ```
-$ heroku config:set API_URL=https://cofacts-api.g0v.tw/graphql
+$ heroku config:set API_URL=https://cofacts-api.g0v.tw/graphql (or your api server)
 $ heroku config:set SITE_URL=https://cofacts.g0v.tw
-$ heroku config:set USER_ACCESS_TOKEN=<Your user access token>
-$ heroku config:set PAGE_ID=<Your Facebook page id>
+$ heroku config:set PAGE_ACCESS_TOKEN=<Your page access token from Graph API Explorer>
+$ heroku config:set APP_ID=<Your Facebook app id>
 $ heroku config:set VERIFY_TOKEN=<Your webhook verification token>
 $ heroku config:set APP_SECRET=<Your Facebook app secret>
 $ heroku config:set GOOGLE_CREDENTIALS=<Your google credential (optional)>
