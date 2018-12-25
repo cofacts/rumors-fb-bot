@@ -1,6 +1,10 @@
 import gql from '../gql';
 import { getArticleURL, createPostbackAction } from './utils';
 
+/**
+ * The state that a user is telling us why she thinks our replies are not useful.
+ * We also ask for confirmation.
+ */
 export default async function askingNotUsefulFeedback(params) {
   let { data, state, event, issuedAt, userId, replies, isSkipUser } = params;
 

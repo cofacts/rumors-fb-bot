@@ -1,6 +1,10 @@
 import ga from '../ga';
 import { createPostbackAction } from './utils';
 
+/**
+ * The state that a user is about to submit a new article. We ask for confirmation.
+ * The user can modify her submission if she wants.
+ */
 export default async function askingArticleSubmission(params) {
   let { data, state, event, issuedAt, userId, replies, isSkipUser } = params;
 

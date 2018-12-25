@@ -8,6 +8,11 @@ import {
 } from './utils';
 import ga from '../ga';
 
+/**
+ * The state that a user is choosing which reply to read
+ * if she hasn't chosen one, we ask her to select the number of desired reply
+ * if she has, we query the reply and render
+ */
 export default async function choosingReply(params) {
   let { data, state, event, issuedAt, userId, replies, isSkipUser } = params;
 
@@ -15,7 +20,7 @@ export default async function choosingReply(params) {
     throw new Error('foundReplyIds not set in data');
   }
 
-  const visitor = ga(userId, data.selectedArticleText);
+  const visitor = ga('FB-' + userId, data.selectedArticleText);
   visitor.screenview({ screenName: state });
 
   const selectedReplyId = data.foundReplyIds[event.input - 1];

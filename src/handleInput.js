@@ -57,7 +57,6 @@ export default async function handleInput(
   };
 
   // Sets state, data and replies
-  //
   do {
     params.isSkipUser = false;
     switch (params.state) {

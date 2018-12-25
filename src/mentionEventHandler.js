@@ -5,6 +5,11 @@ import {
 } from './fbClient';
 import handleInput from './handleInput';
 
+/**
+ * Handles the event that our pages is mentioned in a comment
+ * @param {object} context context
+ * @param {object} instance message instance
+ */
 const mentionEventHandler = async (context, instance) => {
   // check if this comment is already a child comment
   const canComment = await checkCommentCommentable(instance.value.comment_id);
@@ -19,7 +24,7 @@ const mentionEventHandler = async (context, instance) => {
     { state: '__INIT__' },
     { input: inputStr },
     instance.time,
-    '0' // for comments
+    '0' // special user id for comments
   );
 
   // reply to comment

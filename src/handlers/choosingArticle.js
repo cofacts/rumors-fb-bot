@@ -10,9 +10,11 @@ import {
 import ga from '../ga';
 
 /**
- * 第2句 (template message)：按照時間排序「不在查證範圍」之外的回應，每則回應第一行是
- * 「⭕ 含有真實訊息」或「❌ 含有不實訊息」之類的 (含 emoticon)，然後是回應文字。如果
- * 還有空間，才放「不在查證範圍」的回應。最後一句的最後一格顯示「看其他回應」，連到網站。
+ * We reorder the replies queried and put them into a reply list.
+ * Replies indicating truth or rumor are listed first.
+ * If the reply list is not yet full, we then add the 'NOT_ARTICLE' replies.
+ * If this article has more than 10 replies, we put a 'read more' block
+ * that links to our website at the end of the reply list.
  */
 function reorderArticleReplies(articleReplies) {
   const replies = [];
@@ -28,6 +30,13 @@ function reorderArticleReplies(articleReplies) {
   return replies.concat(notArticleReplies);
 }
 
+/**
+ * The state that we're processing user input,
+ * and the the user should choose which article matches what she's seeking.
+ * If she hasn't chosen one, we ask her to select the desired reply.
+ * If she has, we query replies of the article and ask her to choose those she wants to read.
+ * If we didn't find any reply, we ask the user to tell us why she thinks this should be replied sooner.
+ */
 export default async function choosingArticle(params) {
   let { data, state, event, issuedAt, userId, replies, isSkipUser } = params;
 
@@ -90,11 +99,11 @@ export default async function choosingArticle(params) {
     });
 
     data.selectedArticleText = GetArticle.text;
-    const visitor = ga(userId, data.selectedArticleText);
+    const visitor = ga('FB-' + userId, data.selectedArticleText);
     visitor.screenview({ screenName: state });
 
     // Track which Article is selected by user.
-    visitor.event(userId, {
+    visitor.event({
       ec: 'Article',
       ea: 'Selected',
       el: selectedArticleId,

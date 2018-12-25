@@ -2,6 +2,9 @@ import gql from '../gql';
 import ga from '../ga';
 import { getArticleURL } from './utils';
 
+/**
+ * The state that a user has decided whether to submit a new article.
+ */
 export default async function askingArticleSubmission(params) {
   let { data, state, event, issuedAt, userId, replies, isSkipUser } = params;
 

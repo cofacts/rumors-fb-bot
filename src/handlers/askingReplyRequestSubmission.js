@@ -1,6 +1,10 @@
 import gql from '../gql';
 import { getArticleURL } from './utils';
 
+/**
+ * The state that the user is going to submit a new article. We tell them if anyone
+ * else also submitted similar articles.
+ */
 export default async function askingArticleSubmission(params) {
   let { data, state, event, issuedAt, userId, replies, isSkipUser } = params;
   const { selectedArticleId } = data;

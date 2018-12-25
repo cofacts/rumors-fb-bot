@@ -1,3 +1,6 @@
+/**
+ * the state that indicates we don't understand user input and ask them to retry
+ */
 export default function defaultState(params) {
   let { data, state, event, issuedAt, userId, replies, isSkipUser } = params;
 

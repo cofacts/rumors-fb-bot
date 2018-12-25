@@ -9,10 +9,13 @@ import ga from '../ga';
 
 const SIMILARITY_THRESHOLD = 0.95;
 
+/**
+ * The entry state for both messages and comments
+ */
 export default async function initState(params) {
   let { data, state, event, issuedAt, userId, replies, isSkipUser } = params;
 
-  const visitor = ga(userId, event.input);
+  const visitor = ga('FB-' + userId, event.input);
   visitor.screenview({ screenName: state });
   visitor.event({ ec: 'UserInput', ea: 'MessageType', el: 'text' });
 
@@ -65,7 +68,6 @@ export default async function initState(params) {
       .map(edge => {
         edge.similarity = stringSimilarity.compareTwoStrings(
           // Remove spaces so that we count word's similarities only
-          //
           edge.node.text.replace(/\s/g, ''),
           event.input.replace(/\s/g, '')
         );

@@ -7,6 +7,11 @@ import {
   ellipsis,
 } from './utils';
 
+/**
+ * The state that user has given feedback about the article and replies we displayed.
+ * We ask them to send other people our replies if they're satisfied or tell us why
+ * they think the replies are not useful.
+ */
 export default async function askingReplyFeedback(params) {
   let { data, state, event, issuedAt, userId, replies, isSkipUser } = params;
 

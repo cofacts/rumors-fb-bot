@@ -12,6 +12,7 @@ export function createPostbackAction(label, input) {
 }
 
 /**
+ * Text template describing how many users consider this reply useful or not.
  * @param {number} positive - Count of positive feedbacks
  * @param {number} negative - Count of negative feedbacks
  * @return {string} Description of feedback counts
@@ -25,6 +26,7 @@ export function createFeedbackWords(positive, negative) {
 }
 
 /**
+ * Text template for different types of a reply.
  * @param {string} type the type of a reply
  * @return {string} Description of the type
  */
@@ -43,6 +45,8 @@ export function createTypeWords(type) {
 }
 
 /**
+ * Text template containing references for a reply.
+ * If there's no reply, a warning is returned.
  * @param {object} reply The reply object
  * @param {string} reply.reference
  * @param {string} reply.type
@@ -56,6 +60,7 @@ export function createReferenceWords({ reference, type }) {
 }
 
 /**
+ * Text template for article submission confirmation
  * @param {number} issuedAt The "issuedAt" to put in postback action
  * @returns {array} an array of reply message instances
  */
@@ -104,10 +109,11 @@ export function isNonsenseText(/*text*/) {
 const ELLIPSIS = '⋯⋯';
 
 /**
+ * If the text length is lower than limit, return text; else, return
+ * text with ellipsis.
  * @param {string} text
  * @param {number} limit
- * @return {string} if the text length is lower than limit, return text; else, return
- *                  text with ellipsis.
+ * @return {string}
  */
 export function ellipsis(text, limit) {
   if (text.length < limit) return text;

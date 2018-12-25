@@ -1,6 +1,9 @@
 import gql from '../gql';
 import { createPostbackAction, getArticleURL } from './utils';
 
+/**
+ * The state that a user is submitting a new article and we ask for confirmation.
+ */
 export default async function askingArticleSubmission(params) {
   let { data, state, event, issuedAt, userId, replies, isSkipUser } = params;
   const { selectedArticleId } = data;

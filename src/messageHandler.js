@@ -6,6 +6,13 @@ import handleInput from './handleInput';
 import { uploadImageFile } from './fileUpload';
 import ga from './ga';
 
+/**
+ * Handles the event that we receive a message from messenger
+ * @param {object} req request body
+ * @param {string} userId user id of the message
+ * @param {object} instance message instance
+ * @param {object} userIdBlacklist blacklist
+ */
 const messageHandler = async (req, userId, instance, userIdBlacklist) => {
   if (userIdBlacklist.indexOf(userId) !== -1) {
     // User blacklist
@@ -35,11 +42,12 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
   let input, type;
 
   // React to certain type of events
-  //
   if (instance.postback && instance.postback.payload) {
+    // a postback reply
     input = instance.postback.payload;
     type = 'postback';
   } else if (instance.message) {
+    // a normal message reply
     if (instance.message.text) {
       input = instance.message.text;
       type = 'text';
@@ -47,6 +55,7 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
       typeof instance.message.attachments === typeof [] &&
       instance.message.attachments.length > 0
     ) {
+      // this message has attachments
       if (instance.message.attachments[0].type === 'fallback') {
         // attachment is a link (should be only 1 link)
         // should handle 2 types:
@@ -55,6 +64,7 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
         type = 'text';
         let urlAttached = instance.message.attachments[0].url;
         let queryData = url.parse(urlAttached, true);
+
         if (
           urlAttached.indexOf('https://www.facebook.com/') !== -1 ||
           urlAttached.indexOf('http://www.facebook.com/') !== -1
@@ -85,7 +95,6 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
     const context = (await redis.get(userId)) || {};
 
     // Debugging: type 'RESET' to reset user's context and start all over.
-    //
     if (input === 'RESET') {
       redis.del(userId);
       return;
@@ -93,7 +102,6 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
 
     try {
       // When this message is received.
-      //
       const issuedAt = Date.now();
       result = await handleInput(context, { input, type }, issuedAt, userId);
 
@@ -104,7 +112,6 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
       }
 
       // Renew "issuedAt" of the resulting context if state changed
-      //
       if (context.state !== result.context.state) {
         result.context.issuedAt = issuedAt;
       } else {
@@ -129,7 +136,6 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
 
     // LOGGING:
     // 60 chars per line, each prepended with [[LOG]]
-    //
     console.log('\n||LOG||<----------');
     JSON.stringify({
       CONTEXT: context,
@@ -151,7 +157,7 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
         return;
       }
       // Track message attachment type sent by user
-      ga(userId)
+      ga('FB-' + userId)
         .event({
           ec: 'UserInput',
           ea: 'MessageType',
@@ -162,22 +168,18 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
         uploadImageFile(instance.mid, idx, element.payload.url);
       } else if (element.type === 'video') {
         //uploadVideoFile(instance.mid, idx, element.payload.url);
-      } else if (element.type === 'fallback') {
-        // for shared posts, already handled => do nothing
       }
     });
   }
 
-  // Send replies.
+  // Send replies
   // Error handler inside
-  //
   sendFacebookMsg({
     receiver: userId,
     replies: result.replies,
   });
 
   // Set context
-  //
   await redis.set(userId, result.context);
 };
 
