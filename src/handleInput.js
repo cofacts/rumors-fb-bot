@@ -14,7 +14,7 @@ import defaultState from './handlers/defaultState';
  * Given input event and context, outputs the new context and the reply to emit.
  * Invokes handlers with regard to the current state.
  *
- * State diagram: http://bit.ly/2hnnXjZ
+ * State diagram: https://bit.ly/2BFqjVa
  *
  * @param {Object<state, data>} context The current context of the bot
  * @param {*} event The input event

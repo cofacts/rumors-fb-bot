@@ -34,9 +34,11 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
+          // Your submission is now at {articleURL}.
           text: `您回報的訊息已經被收錄至：${getArticleURL(CreateArticle.id)}`,
         },
       },
+      // Thank you!
       { type: 'text', content: { text: '感謝您的回報！' } },
     ];
     state = '__INIT__';
@@ -45,10 +47,12 @@ export default async function askingArticleSubmission(params) {
     visitor.send({ ec: 'Article', ea: 'Create', el: 'No' });
 
     replies = [
+      // The message is discarded. Thank you.
       { type: 'text', content: { text: '訊息沒有送出，謝謝您的使用。' } },
     ];
     state = '__INIT__';
   } else if (event.input === 'r') {
+    // Sure. Please revise your reason.
     replies = [{ type: 'text', content: { text: '好的，請重新填寫理由。' } }];
     state = 'ASKING_ARTICLE_SUBMISSION_REASON';
   }

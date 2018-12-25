@@ -47,6 +47,8 @@ export default async function askingNotUsefulFeedbackSubmission(params) {
         type: 'text',
         content: {
           text:
+            // ? We've received feedback from you and other {count - 1} person(s)!
+            // : Thanks. You're the first one who gave feedback on this reply!
             feedbackCount > 1
               ? `感謝您與其他 ${feedbackCount - 1} 人的回饋。`
               : '感謝您的回饋，您是第一個評論這個回應的人 :)',
@@ -55,6 +57,8 @@ export default async function askingNotUsefulFeedbackSubmission(params) {
       {
         type: 'text',
         content: {
+          // If you have something to say about this article,
+          // feel free to submit us your own reply!
           text: `💁 若您認為自己能回應得更好，歡迎到 ${getArticleURL(
             data.selectedArticleId
           )} 提交新的回應唷！`,
@@ -72,7 +76,9 @@ export default async function askingNotUsefulFeedbackSubmission(params) {
             type: 'template',
             payload: {
               template_type: 'button',
+              // okay. You can revise your reason.
               text: '好的，請重新填寫理由',
+              // Skip
               buttons: [createPostbackAction('我不想填了', 'n')],
             },
           },

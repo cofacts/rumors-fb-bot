@@ -30,6 +30,8 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
+          // We've recorded your reason. {count} other person(s) is also waiting for
+          // replies. Please refer to this page for updates: {articleURL}
           text: `已經將您的需求以及理由記錄下來了，共有 ${
             CreateReplyRequest.replyRequestCount
           } 人跟您一樣渴望看到針對這篇訊息的回應。若有最新回應，會寫在這個地方：${getArticleURL(
@@ -54,6 +56,8 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
+          // We've recorded your reason. {count} other person(s) is also waiting for
+          // replies. Please refer to this page for updates: {articleURL}
           text: `已經將您的需求記錄下來了，共有 ${
             CreateReplyRequest.replyRequestCount
           } 人跟您一樣渴望看到針對這篇訊息的回應。若有最新回應，會寫在這個地方：${getArticleURL(
@@ -64,6 +68,7 @@ export default async function askingArticleSubmission(params) {
     ];
     state = '__INIT__';
   } else if (event.input === 'r') {
+    // Sure. You can revise your reason.
     replies = [{ type: 'text', content: { text: '好的，請重新填寫理由。' } }];
     state = 'ASKING_REPLY_REQUEST_REASON';
   }

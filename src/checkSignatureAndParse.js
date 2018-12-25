@@ -26,8 +26,8 @@ function validateSignature(raw, SECRET, signature) {
 
 /**
  * Check if the raw content is valid and parse request body.
- * @param {*} ctx 
- * @param {*} next 
+ * @param {*} ctx context
+ * @param {*} next next middleware
  */
 async function checkSignatureAndParse(ctx, next) {
   const raw = await getRawBody(ctx.req, {

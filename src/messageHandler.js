@@ -32,6 +32,7 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
       {
         type: 'text',
         content: {
+          // Currently we only support text messages!
           text: '我們還不支援文字以外的訊息唷！',
         },
       },
@@ -127,6 +128,7 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
           {
             type: 'text',
             content: {
+              // Oops, the bot has something wrong. Could you please resend your message?
               text: '糟糕，bot 故障了。可以再傳一次嗎？ QQ',
             },
           },

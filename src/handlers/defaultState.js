@@ -8,6 +8,8 @@ export default function defaultState(params) {
     {
       type: 'text',
       content: {
+        // Sorry I don't understand :(
+        // Please try again
         text: '我們看不懂 QQ\n大俠請重新來過。',
       },
     },
