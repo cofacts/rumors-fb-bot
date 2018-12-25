@@ -1,5 +1,5 @@
 # rumors-fb-bot
-Facebook Messenger bot that checks if a message contains internet rumor.
+A Facebook Messenger bot that checks if a message contains internet rumor.
 
 [![Build Status](https://travis-ci.org/cofacts/rumors-fb-bot.svg?branch=master)](https://travis-ci.org/cofacts/rumors-fb-bot)
 
@@ -9,7 +9,7 @@ This is a one of the sub-project of [真的假的](http://beta.hackfoldr.org/rum
 
 This state diagram describes how the FB bot talks to users:
 
-[![The state diagram](https://docs.google.com/drawings/d/1GIuprSEGpthMW6KuCgawMky5Nnxm7P7mlxeODPdA-lI/pub?w=1405&h=1116)](http://beta.hackfoldr.org/cofacts/https%253A%252F%252Fdocs.google.com%252Fdrawings%252Fd%252F1GIuprSEGpthMW6KuCgawMky5Nnxm7P7mlxeODPdA-lI%252Fedit)
+![The state diagram](https://docs.google.com/drawings/d/e/2PACX-1vTvAKt7dKGE7bUtEGmGre3gBJ3uXgv52g4e9GCWf4iDX79esNS6KeXg8Sglr-_SW_sd-T3tb5KWFSlf/pub?w=941&h=591)
 
 
 ## Development
@@ -86,7 +86,7 @@ $ node authGoogleDrive.js
 ```
 
 Visit the given url provided above. Get the auth code and paste it to console.
-Then the program will save your google drive access_token locally at `GOOGLE_CREDENTIALS` in `.env`.
+Then the program will save your google drive access token locally at `GOOGLE_CREDENTIALS` in `.env`.
 
 Make sure you've also set `GOOGLE_DRIVE_IMAGE_FOLDER` = [folderID](https://googleappsscriptdeveloper.wordpress.com/2017/03/04/how-to-find-your-google-drive-folder-id/) in .env file.
 
