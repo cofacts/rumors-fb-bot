@@ -169,3 +169,7 @@ Sent event format: `Event category` / `Event action` / `Event label`
 
 6. User does not want to submit an article
   - `Article` / `Create` / `No`
+
+## License
+
+The project is available as open source under the terms of the [MIT License](https://github.com/cofacts/rumors-fb-bot/blob/dev/LICENSE).
