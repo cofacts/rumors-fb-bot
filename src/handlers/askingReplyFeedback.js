@@ -55,7 +55,7 @@ export default async function askingReplyFeedback(params) {
     const {
       data: { GetReply },
     } = await gql`
-      query($replyId: String!, $articleId: String!) {
+      query($replyId: String!) {
         GetReply(id: $replyId) {
           type
           text
