@@ -85,11 +85,10 @@ export default async function initState(params) {
 
     if (userId === '0') {
       // from facebook comment
-      /*
+
       const links = edgesSortedWithSimilarity.map(
         ({ node: { id } }) => `https://cofacts.g0v.tw/article/${id}`
       );
-      */
 
       // search the top article
       const {
@@ -155,10 +154,13 @@ export default async function initState(params) {
           content: {
             // Hey #Cofacts has messages {}% similar to this one! {summary}
             // Go to Cofacts' website for more information!
+            // {Links}
             text: `#Cofacts 上有訊息跟這則有 ${Math.round(
               edgesSortedWithSimilarity[0].similarity * 100
-            )}% 像${summary}\n到 Cofacts 上面看看相關訊息吧！`, //`${links.join('\n')}`,
-          }, // temporarily disable links due to issue #2
+            )}% 像${summary}\n到 Cofacts 上面看看相關訊息吧！\n${links.join(
+              '\n'
+            )}`,
+          },
         },
       ];
 
