@@ -5,9 +5,9 @@ A Facebook Messenger bot that checks if a message contains internet rumor.
 
 ## State diagram & Documents
 
-This is a one of the sub-project of [Cofacts 真的假的](http://beta.hackfoldr.org/rumors)。
+This is a one of the sub-project of [Cofacts 真的假的](http://beta.hackfoldr.org/rumors).
 
-This state diagram describes how the FB bot talks to users:
+This state diagram describes how the FB bot interacts with users:
 
 ![The state diagram](https://docs.google.com/drawings/d/e/2PACX-1vTvAKt7dKGE7bUtEGmGre3gBJ3uXgv52g4e9GCWf4iDX79esNS6KeXg8Sglr-_SW_sd-T3tb5KWFSlf/pub?w=941&h=591)
 
@@ -16,13 +16,13 @@ This state diagram describes how the FB bot talks to users:
 
 All hard-coded reply texts in source code are in Chinese and have translation in comments.
 
-Developing rumors-fb-bot requires you to finish the following settings.
+Please finish the following settings before starting development.
 
 ### Facebook App and Facebook page
 
 Please follow all the steps in [Facebook Messenger Platform](https://developers.facebook.com/docs/messenger-platform/getting-started).
 
-Note that we need permission `manage_pages`, `publish_pages`, `Page Public Content Access`, and `pages_messaging` for your app.
+Note that we need permission `manage_pages`, `publish_pages`, `Page Public Content Access`, and `pages_messaging` for your app. Tests passed on 2019.1.1 using Graph API _v3.1_ and Send API _v2.6_.
 
 **Important**: Please refer to [this page](https://github.com/cofacts/rumors-fb-bot/blob/dev/FacebookToken.md) for Facebook access tokens.
 
@@ -71,7 +71,7 @@ and the server will be started on `localhost:5000`. (Or the `PORT` you specified
 
 ### Get Facebook webhook events from your local machine
 
-We recommend [using `ngrok`](https://medium.com/@Oskarr3/developing-messenger-bot-with-ngrok-5d23208ed7c8#.csc8rum8s) to create a public address that directs the traffic from Facebook server to your local machine. With `ngrok` in your path, just
+We recommend [using `ngrok`](https://medium.com/@Oskarr3/developing-messenger-bot-with-ngrok-5d23208ed7c8#.csc8rum8s) to create a public address that directs the traffic from Facebook server to your local machine. With `ngrok` in your path, just execute
 
 ```
 $ ngrok http 5000
@@ -121,7 +121,7 @@ Despite the fact that we don't use `Procfile`, Heroku still does detection and i
 
 ### Configurations
 
-You will still have to set the following config vars manually:
+You have to set the following config vars manually:
 
 ```
 $ heroku config:set API_URL=https://cofacts-api.g0v.tw/graphql (or your api server)
