@@ -56,7 +56,7 @@ export async function sendFacebookMsg(params = {}, options = {}) {
 
   const results = await resp.json();
   if (resp.status !== 200) {
-    console.error(JSON.stringify(results, null, '  '));
+    console.error('Error when sending message reply (status error): ' + JSON.stringify(results, null, '  '));
 
     rollbar.error(
       `[FB Client] ${resp.status}: ${results.message}.`,
@@ -76,7 +76,7 @@ export async function sendFacebookMsg(params = {}, options = {}) {
     results.forEach((result, idx) => {
       if (result !== null && result.code !== 200) {
         const resultBody = JSON.parse(result.body);
-        console.error(JSON.stringify(resultBody, null, '  '));
+        console.error('Error when sending message reply (API error): ' + JSON.stringify(resultBody, null, '  '));
         console.error(`Source: \n${JSON.stringify(params.replies[idx - 1])}`);
 
         rollbar.error(
@@ -114,7 +114,9 @@ export async function pagePublicContentAccess(postId) {
   );
   const results = await resp.json();
   if (resp.status !== 200) {
-    console.error(JSON.stringify(results, null, '  '));
+    console.error(
+      'Error when getting page public content: ' + JSON.stringify(results, null, '  ')
+    );
     return '';
   }
 
