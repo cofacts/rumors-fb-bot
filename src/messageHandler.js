@@ -91,7 +91,6 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
     // ignore other webhook events like message_delivery
     return;
   }
-
   if (input) {
     const context = (await redis.get(userId)) || {};
 

@@ -11,6 +11,12 @@ import handleInput from './handleInput';
  * @param {object} instance message instance
  */
 const mentionEventHandler = async (context, instance) => {
+  if (!instance.value || !instance.value.hasOwnProperty('post_id')) {
+    return;
+  }
+  // Track reported page whenever mentioned
+  // TODO
+
   // check if this comment is already a child comment
   const canComment = await checkCommentCommentable(instance.value.comment_id);
   if (!canComment) {
