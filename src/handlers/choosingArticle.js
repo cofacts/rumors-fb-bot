@@ -194,7 +194,12 @@ export default async function choosingArticle(params) {
             ),
         },
       };
-      replies.push({ type: 'carousel', content: templateMessage });
+      replies.push({
+        type: 'carousel',
+        content: {
+          attachment: templateMessage,
+        },
+      });
 
       if (articleReplies.length > 10) {
         replies.push({

@@ -139,61 +139,63 @@ Object {
     },
     Object {
       "content": Object {
-        "payload": Object {
-          "elements": Array [
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 1,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "❌ 含有不實訊息
+        "attachment": Object {
+          "payload": Object {
+            "elements": Array [
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 1,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "❌ 含有不實訊息
 [有 3 人覺得此回應有幫助]",
-              "title": "老榮民有住所，有月退俸，也不需要特別的醫療護理，因此較適合榮民之家養老，慈濟也一直關懷陪伴。護理之家有免費方案，入住資格和有無捐款沒有關係。
+                "title": "老榮民有住所，有月退俸，也不需要特別的醫療護理，因此較適合榮民之家養老，慈濟也一直關懷陪伴。護理之家有免費方案，入住資格和有無捐款沒有關係。
 慈善機構使用資源需",
-            },
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 2,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "💬 含有個人意見
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 2,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "💬 含有個人意見
 [還沒有人針對此回應評價]",
-              "title": "慈濟自來有褒有貶，每人有各自的看法。",
-            },
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 3,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "⚠️️ 不在查證範圍
+                "title": "慈濟自來有褒有貶，每人有各自的看法。",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 3,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "⚠️️ 不在查證範圍
 [還沒有人針對此回應評價]",
-              "title": "整個基督教徒的打手，自己不努力去牧人、募款，利用攻擊別人，三分真七分假，更利用多帳號來造勢及造風向，害我也差點相信了，各位有智慧的看官，看過之後，笑一笑即可，別",
-            },
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 4,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "⚠️️ 不在查證範圍
+                "title": "整個基督教徒的打手，自己不努力去牧人、募款，利用攻擊別人，三分真七分假，更利用多帳號來造勢及造風向，害我也差點相信了，各位有智慧的看官，看過之後，笑一笑即可，別",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 4,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "⚠️️ 不在查證範圍
 [還沒有人針對此回應評價]",
-              "title": "文章是假的 照片也是盜用我方家人的照片,嚴重影響我家人名譽,我方已對po文的人聯絡並打算提出告訴,請勿相信謠言.",
-            },
-          ],
-          "template_type": "generic",
+                "title": "文章是假的 照片也是盜用我方家人的照片,嚴重影響我家人名譽,我方已對po文的人聯絡並打算提出告訴,請勿相信謠言.",
+              },
+            ],
+            "template_type": "generic",
+          },
+          "type": "template",
         },
-        "type": "template",
       },
       "type": "carousel",
     },
@@ -252,133 +254,135 @@ Object {
     },
     Object {
       "content": Object {
-        "payload": Object {
-          "elements": Array [
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 1,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "❌ 含有不實訊息
+        "attachment": Object {
+          "payload": Object {
+            "elements": Array [
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 1,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "❌ 含有不實訊息
 [還沒有人針對此回應評價]",
-              "title": "回應1",
-            },
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 2,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "❌ 含有不實訊息
+                "title": "回應1",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 2,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "❌ 含有不實訊息
 [還沒有人針對此回應評價]",
-              "title": "回應2",
-            },
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 3,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "⭕ 含有真實訊息
+                "title": "回應2",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 3,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "⭕ 含有真實訊息
 [還沒有人針對此回應評價]",
-              "title": "回應3",
-            },
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 4,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "⭕ 含有真實訊息
+                "title": "回應3",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 4,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "⭕ 含有真實訊息
 [還沒有人針對此回應評價]",
-              "title": "回應4",
-            },
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 5,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "❌ 含有不實訊息
+                "title": "回應4",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 5,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "❌ 含有不實訊息
 [還沒有人針對此回應評價]",
-              "title": "回應5",
-            },
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 6,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "❌ 含有不實訊息
+                "title": "回應5",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 6,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "❌ 含有不實訊息
 [還沒有人針對此回應評價]",
-              "title": "回應6",
-            },
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 7,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "💬 含有個人意見
+                "title": "回應6",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 7,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "💬 含有個人意見
 [還沒有人針對此回應評價]",
-              "title": "回應9",
-            },
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 8,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "❌ 含有不實訊息
+                "title": "回應9",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 8,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "❌ 含有不實訊息
 [還沒有人針對此回應評價]",
-              "title": "回應10",
-            },
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 9,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "❌ 含有不實訊息
+                "title": "回應10",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 9,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "❌ 含有不實訊息
 [還沒有人針對此回應評價]",
-              "title": "回應11",
-            },
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 10,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "⚠️️ 不在查證範圍
+                "title": "回應11",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 10,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "⚠️️ 不在查證範圍
 [還沒有人針對此回應評價]",
-              "title": "回應7。
+                "title": "回應7。
 ",
-            },
-          ],
-          "template_type": "generic",
+              },
+            ],
+            "template_type": "generic",
+          },
+          "type": "template",
         },
-        "type": "template",
       },
       "type": "carousel",
     },
@@ -446,37 +450,39 @@ Object {
     },
     Object {
       "content": Object {
-        "payload": Object {
-          "elements": Array [
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 1,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "❌ 含有不實訊息
+        "attachment": Object {
+          "payload": Object {
+            "elements": Array [
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 1,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "❌ 含有不實訊息
 [有 14 人覺得此回應有幫助
 有 2 人覺得此回應沒幫助]",
-              "title": "查證這則謠言的過程中，約翰走鹿也發現其實網路早就有許多解答，就讓約翰走鹿來借花獻佛一下囉。多家媒體都有針對這則「吃生魚片會有海獸胃腺蟲附著胃壁」的謠言請教醫師，",
-            },
-            Object {
-              "buttons": Array [
-                Object {
-                  "payload": 2,
-                  "title": "閱讀此回應",
-                  "type": "postback",
-                },
-              ],
-              "subtitle": "❌ 含有不實訊息
+                "title": "查證這則謠言的過程中，約翰走鹿也發現其實網路早就有許多解答，就讓約翰走鹿來借花獻佛一下囉。多家媒體都有針對這則「吃生魚片會有海獸胃腺蟲附著胃壁」的謠言請教醫師，",
+              },
+              Object {
+                "buttons": Array [
+                  Object {
+                    "payload": 2,
+                    "title": "閱讀此回應",
+                    "type": "postback",
+                  },
+                ],
+                "subtitle": "❌ 含有不實訊息
 [有 24 人覺得此回應有幫助]",
-              "title": "過去台灣只有一個海獸胃腺蟲鑽入胃壁的病例，而且僅有一隻蟲。而經查詢，台北馬偕醫院也沒有名為林清風的醫師。",
-            },
-          ],
-          "template_type": "generic",
+                "title": "過去台灣只有一個海獸胃腺蟲鑽入胃壁的病例，而且僅有一隻蟲。而經查詢，台北馬偕醫院也沒有名為林清風的醫師。",
+              },
+            ],
+            "template_type": "generic",
+          },
+          "type": "template",
         },
-        "type": "template",
       },
       "type": "carousel",
     },
