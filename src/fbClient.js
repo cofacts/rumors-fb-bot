@@ -12,6 +12,9 @@ const graphApiVersion = 'v3.1';
  * @returns {string} The full response body string
  */
 function wrapUpMessages(receipient, replies) {
+  if (replies.length === 0) {
+    return '';
+  }
   const batchMessages = [
     //whole request need to be stringified to attach to form
     {
@@ -46,6 +49,9 @@ export async function sendFacebookMsg(params = {}, options = {}) {
     JSON.stringify({ id: params.receiver })
   )}`;
   const replies = wrapUpMessages(receipient, params.replies);
+  if (replies === '') {
+    return;
+  }
   const respBody = new FormData();
   respBody.append('access_token', process.env.PAGE_ACCESS_TOKEN);
   respBody.append('batch', replies);

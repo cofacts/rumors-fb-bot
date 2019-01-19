@@ -98,6 +98,8 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
     if (input === 'RESET') {
       redis.del(userId);
       return;
+    } else if (input.length === 1 && context.state === '__INIT__') {
+      return;
     }
 
     try {
@@ -107,7 +109,7 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
 
       if (!result.replies) {
         throw new Error(
-          'Returned replies is empty, please check processMessages() implementation.'
+          'Returned replies is empty, please check handleInput() implementation.'
         );
       }
 

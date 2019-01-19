@@ -138,28 +138,31 @@ export default async function askingReplyFeedback(params) {
     state = '__INIT__';
     visitor.send();
     return { data, state, event, issuedAt, userId, replies, isSkipUser };
-  }
-  replies = [
-    {
-      type: 'buttons',
-      content: {
-        attachment: {
-          type: 'template',
-          payload: {
-            template_type: 'button',
-            text:
-              // Why do you find this reply not helpful? Please tell us in messages.
-              // If you want to skip this, click the skip button below.
-              '請問您為什麼覺得好心人的回應沒有幫助？請把理由打字傳給我們，幫助闢謠編輯釐清問題所在；若不想填，請按「我不想填理由」按鈕。',
-            // Skip
-            buttons: [createPostbackAction('我不想填理由', 'n')],
+  } else if (event.input === 'n') {
+    replies = [
+      {
+        type: 'buttons',
+        content: {
+          attachment: {
+            type: 'template',
+            payload: {
+              template_type: 'button',
+              text:
+                // Why do you find this reply not helpful? Please tell us in messages.
+                // If you want to skip this, click the skip button below.
+                '請問您為什麼覺得好心人的回應沒有幫助？請把理由打字傳給我們，幫助闢謠編輯釐清問題所在；若不想填，請按「我不想填理由」按鈕。',
+              // Skip
+              buttons: [createPostbackAction('我不想填理由', 'n')],
+            },
           },
         },
       },
-    },
-  ];
+    ];
 
-  state = 'ASKING_NOT_USEFUL_FEEDBACK';
-  visitor.send();
+    state = 'ASKING_NOT_USEFUL_FEEDBACK';
+    visitor.send();
+  } else {
+    replies = [];
+  }
   return { data, state, event, issuedAt, userId, replies, isSkipUser };
 }
