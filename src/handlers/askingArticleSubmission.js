@@ -44,7 +44,7 @@ export default async function askingArticleSubmission(params) {
     state = '__INIT__';
   } else if (event.input === 'n') {
     // Track whether user create Article or not if the Article is not found in DB.
-    visitor.send({ ec: 'Article', ea: 'Create', el: 'No' });
+    visitor.event({ ec: 'Article', ea: 'Create', el: 'No' });
 
     replies = [
       // The message is discarded. Thank you.
