@@ -18,10 +18,16 @@ export function createPostbackAction(label, input) {
  * @return {string} Description of feedback counts
  */
 export function createFeedbackWords(positive, negative) {
-  if (positive + negative === 0) return '[還沒有人針對此回應評價]';
+  if (positive + negative === 0) return '[No rating for this reply]';
   let result = '';
-  if (positive) result += `有 ${positive} 人覺得此回應有幫助\n`;
-  if (negative) result += `有 ${negative} 人覺得此回應沒幫助\n`;
+  if (positive)
+    result += `${positive} user${positive > 1 ? 's' : ''} consider${
+      positive > 1 ? '' : 's'
+    } this reply to be useful.\n`;
+  if (negative)
+    result += `${negative} user${negative > 1 ? 's' : ''} consider${
+      negative > 1 ? '' : 's'
+    } this reply not helpful.\n`;
   return `[${result.trim()}]`;
 }
 
@@ -33,15 +39,15 @@ export function createFeedbackWords(positive, negative) {
 export function createTypeWords(type) {
   switch (type) {
     case 'RUMOR':
-      return '❌ 含有不實訊息';
+      return '❌ RUMOR';
     case 'NOT_RUMOR':
-      return '⭕ 含有真實訊息';
+      return '⭕ TRUTH';
     case 'OPINIONATED':
-      return '💬 含有個人意見';
+      return '💬 OPINIONATED';
     case 'NOT_ARTICLE':
-      return '⚠️️ 不在查證範圍';
+      return '⚠️️ OFF TOPIC';
   }
-  return '回應的狀態未定義！';
+  return 'Status undefined!';
 }
 
 /**
@@ -53,10 +59,13 @@ export function createTypeWords(type) {
  * @returns {string} The reference message to send
  */
 export function createReferenceWords({ reference, type }) {
-  const prompt = type === 'OPINIONATED' ? '不同觀點請見' : '出處';
+  const prompt = type === 'OPINIONATED' ? 'Other replies' : 'References';
 
   if (reference) return `${prompt}：${reference}`;
-  return `\uDBC0\uDC85 ⚠️️ 此回應沒有${prompt}，請自行斟酌回應之可信度。⚠️️  \uDBC0\uDC85`;
+  if (type === 'OPINIONATED') {
+    return `\uDBC0\uDC85 ⚠️️ This is the only reply to this issue and it may be biased. ⚠️️  \uDBC0\uDC85`;
+  }
+  return `\uDBC0\uDC85 ⚠️️ This reply doesn't have any reference so it may not be credible. ⚠️️  \uDBC0\uDC85`;
 }
 
 /**
@@ -66,12 +75,12 @@ export function createReferenceWords({ reference, type }) {
  */
 export function createAskArticleSubmissionReply() {
   const replyText =
-    '【送出訊息到公開資料庫？】\n' +
-    '若這是「轉傳訊息」，而且您覺得這很可能是一則「謠言」，請將這則訊息送進公開資料庫建檔，讓好心人查證與回覆。\n' +
+    '【Submit this message?】\n' +
+    'If you think this can be a rumor that is being spread, please submit it to us such that other people can help fact-check and clarify.\n' +
     '\n' +
-    '雖然您不會立刻收到查證結果，但可以幫助到未來同樣收到這份訊息的人。';
+    "Though you don't receive the result of fact-checking soon, this is a big help to those who receive the same messages in the future.";
   const promptText =
-    '請把「為何您會覺得這是一則謠言」的理由傳給我們，幫助闢謠編輯釐清您有疑惑之處。';
+    'Please tell us WHY YOU CONSIDER THIS A RUMOR so that we can understand the problem of this suspicious message.';
 
   return [
     {
@@ -93,8 +102,8 @@ export function createAskArticleSubmissionReply() {
           type: 'template',
           payload: {
             template_type: 'button',
-            text: '若要放棄，請按「放棄送出」。',
-            buttons: [createPostbackAction('放棄送出', 'n')],
+            text: 'Discard',
+            buttons: [createPostbackAction('Discard', 'n')],
           },
         },
       },

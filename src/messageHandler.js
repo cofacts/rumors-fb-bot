@@ -32,8 +32,7 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
       {
         type: 'text',
         content: {
-          // Currently we only support text messages!
-          text: '我們還不支援文字以外的訊息唷！',
+          text: 'Currently we only support text messages!',
         },
       },
     ],
@@ -98,8 +97,7 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
     if (input === 'RESET') {
       redis.del(userId);
       return;
-    } else if (input === '我是要找 Cofacts 的人啦') {
-      // Input === 'I want to contact Cofacts team'
+    } else if (input === 'I want to contact Cofacts team') {
       // return the email address of cofacts team
       sendFacebookMsg({
         receiver: userId,
@@ -107,8 +105,7 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
           {
             type: 'text',
             content: {
-              // We can be reached at cofacts@googlegroups.com :)
-              text: '請寫信到\ncofacts@googlegroups.com\n我們都會收信喔~',
+              text: 'We can be reached at cofacts@googlegroups.com :)',
             },
           },
         ],
@@ -146,8 +143,8 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
           {
             type: 'text',
             content: {
-              // Oops, the bot has something wrong. Could you please resend your message?
-              text: '糟糕，bot 故障了。可以再傳一次嗎？ QQ',
+              text:
+                'Oops, the bot has something wrong. Could you please resend your message?',
             },
           },
         ],
