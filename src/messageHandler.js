@@ -98,6 +98,23 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
     if (input === 'RESET') {
       redis.del(userId);
       return;
+    } else if (input === '我是要找 Cofacts 的人啦') {
+      // Input === 'I want to contact Cofacts team'
+      // return the email address of cofacts team
+      sendFacebookMsg({
+        receiver: userId,
+        replies: [
+          {
+            type: 'text',
+            content: {
+              // We can be reached at cofacts@googlegroups.com :)
+              text: '請寫信到\ncofacts@googlegroups.com\n我們都會收信喔~',
+            },
+          },
+        ],
+      });
+
+      return;
     } else if (input.length === 1 && context.state === '__INIT__') {
       return;
     }

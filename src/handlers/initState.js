@@ -239,6 +239,15 @@ export default async function initState(params) {
         type: 'carousel',
         content: {
           attachment: templateMessage,
+          quick_replies: [
+            {
+              content_type: 'text',
+              // I want to contact Cofacts team
+              title: '我是要找 Cofacts 的人啦',
+              // I want to contact Cofacts team
+              payload: '我是要找 Cofacts 的人啦',
+            },
+          ],
         },
       },
     ];

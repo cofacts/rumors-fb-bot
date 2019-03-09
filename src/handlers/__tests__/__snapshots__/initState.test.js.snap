@@ -64,6 +64,13 @@ Object {
           },
           "type": "template",
         },
+        "quick_replies": Array [
+          Object {
+            "content_type": "text",
+            "payload": "我是要找 Cofacts 的人啦",
+            "title": "我是要找 Cofacts 的人啦",
+          },
+        ],
       },
       "type": "carousel",
     },
@@ -181,6 +188,13 @@ Object {
           },
           "type": "template",
         },
+        "quick_replies": Array [
+          Object {
+            "content_type": "text",
+            "payload": "我是要找 Cofacts 的人啦",
+            "title": "我是要找 Cofacts 的人啦",
+          },
+        ],
       },
       "type": "carousel",
     },
