@@ -76,7 +76,7 @@ export function createReferenceWords({ reference, type }) {
 export function createAskArticleSubmissionReply() {
   const replyText =
     '【Submit this message?】\n' +
-    'If you think this can be a rumor that is being spread, please submit it to us such that other people can help fact-check and clarify.\n' +
+    'If you think this can be a rumor, please submit it such that other people can help fact-check and clarify.\n' +
     '\n' +
     "Though you don't receive the result of fact-checking soon, this is a big help to those who receive the same messages in the future.";
   const promptText =
