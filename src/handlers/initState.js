@@ -135,14 +135,15 @@ export default async function initState(params) {
         `${
           count.NOT_RUMOR ? `${count.NOT_RUMOR} 個人覺得 ⭕ 含有真實訊息\n` : ''
         }` +
-        // {} person(s) think this is simply personal opinion
+        // {} person(s) think this is simply a personal opinion
         `${
           count.OPINIONATED
             ? `${count.OPINIONATED} 個人覺得 💬 含有個人意見\n`
             : ''
         }`;
       if (count.NOT_ARTICLE) {
-        // but also {} person(s) thinks Cofacts need not to handle this message
+        // but also {} person(s) thinks this is off-topic and
+        // Cofacts need not to handle it
         summary += `，不過有 ${
           count.NOT_ARTICLE
         } 個人覺得 ⚠️️ 不在 Cofacts查證範圍\n`;

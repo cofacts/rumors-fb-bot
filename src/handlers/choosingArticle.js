@@ -136,7 +136,8 @@ export default async function choosingArticle(params) {
       `${count.NOT_RUMOR || 0} 則回應標成 ⭕ 含有真實訊息\n` +
       // {} person(s) think this is simply personal opinion
       `${count.OPINIONATED || 0} 則回應標成 💬 含有個人意見\n` +
-      // {} person(s) thinks Cofacts need not to handle this message
+      // {} person(s) thinks this message is off-topic and
+      // Cofacts need not to handle it
       `${count.NOT_ARTICLE || 0} 則回應標成 ⚠️️ 不在查證範圍\n`;
 
     replies = [
@@ -223,7 +224,7 @@ export default async function choosingArticle(params) {
       const replyText =
         // Tell us about your concern
         '【跟編輯說您的疑惑】\n' +
-        // Sorry no one has replied to this article yet
+        // Sorry, no one has replied to this article yet
         '抱歉這篇訊息還沒有人回應過唷！\n' +
         '\n' +
         // If you consider this a rumor, please tell us your concern and why

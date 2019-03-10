@@ -15,7 +15,7 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
-          // The following is the reason you just input: {reason}
+          // Your reason: {reason}
           text: `以下是您所填寫的理由：\n「\n${reason}\n」`,
         },
       },

@@ -148,7 +148,8 @@ export default async function askingReplyFeedback(params) {
             payload: {
               template_type: 'button',
               text:
-                // Why do you find this reply not helpful? Please tell us in messages.
+                // Why do you find this reply not helpful? Please tell us in messages
+                // such that we can further improve it.
                 // If you want to skip this, click the skip button below.
                 '請問您為什麼覺得好心人的回應沒有幫助？請把理由打字傳給我們，幫助闢謠編輯釐清問題所在；若不想填，請按「我不想填理由」按鈕。',
               // Skip

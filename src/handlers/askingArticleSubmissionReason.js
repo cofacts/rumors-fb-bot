@@ -27,7 +27,7 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
-          // The following is the reason you just input: {reason}
+          // Your reason: {reason}
           text: `以下是您所填寫的理由：\n「\n${reason}\n」`,
         },
       },
@@ -55,7 +55,7 @@ export default async function askingArticleSubmission(params) {
                 createPostbackAction('明白，我要送出', 'y'),
                 // Revise my reason
                 createPostbackAction('重寫送出的理由', 'r'),
-                // Skip
+                // Discard
                 createPostbackAction('放棄送出', 'n'),
               ],
             },

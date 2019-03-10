@@ -74,7 +74,7 @@ export default async function askingNotUsefulFeedback(params) {
       {
         type: 'text',
         content: {
-          // The following is your reason: {reason}
+          // Your reason: {reason}
           text: `以下是您所填寫的理由：「${event.input}」`,
         },
       },
