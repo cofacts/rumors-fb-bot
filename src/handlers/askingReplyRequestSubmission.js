@@ -30,11 +30,11 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
-          // We've recorded your reason. {count} other person(s) is also waiting for
-          // replies. Please refer to this page for updates: {articleURL}
-          text: `已經將您的需求以及理由記錄下來了，共有 ${
+          text: `We've recorded your reason. ${
             CreateReplyRequest.replyRequestCount
-          } 人跟您一樣渴望看到針對這篇訊息的回應。若有最新回應，會寫在這個地方：${getArticleURL(
+          } other ${
+            CreateReplyRequest.replyRequestCount > 1 ? 's are' : ' is'
+          } waiting for clarification. Please refer to this page for updates: ${getArticleURL(
             selectedArticleId
           )}`,
         },
@@ -56,11 +56,11 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
-          // We've recorded your reason. {count} other person(s) is also waiting for
-          // replies. Please refer to this page for updates: {articleURL}
-          text: `已經將您的需求記錄下來了，共有 ${
+          text: `We've recorded your reason. ${
             CreateReplyRequest.replyRequestCount
-          } 人跟您一樣渴望看到針對這篇訊息的回應。若有最新回應，會寫在這個地方：${getArticleURL(
+          } other user${
+            CreateReplyRequest.replyRequestCount > 1 ? 's are' : ' is'
+          } also waiting for clarification. Please refer to this page for updates: ${getArticleURL(
             selectedArticleId
           )}`,
         },

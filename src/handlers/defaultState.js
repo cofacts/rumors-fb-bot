@@ -10,7 +10,7 @@ export default function defaultState(params) {
       content: {
         // Sorry I don't understand :(
         // Please try again
-        text: '我們看不懂 QQ\n大俠請重新來過。',
+        text: "Sorry I don't understand :(\nPlease try again.",
       },
     },
   ];

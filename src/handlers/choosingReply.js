@@ -30,8 +30,9 @@ export default async function choosingReply(params) {
       {
         type: 'text',
         content: {
-          // Please enter 1 - {length} to choose a reply
-          text: `請輸入 1～${data.foundReplyIds.length} 的數字，來選擇回應。`,
+          text: `Please enter 1～${
+            data.foundReplyIds.length
+          } to choose a reply.`,
         },
       },
     ];
@@ -55,8 +56,9 @@ export default async function choosingReply(params) {
       {
         type: 'text',
         content: {
-          // Someone marked this message as "{type}" because
-          text: `有人標記這個訊息 ${createTypeWords(GetReply.type)}，理由是：`,
+          text: `Someone marked this message as "${createTypeWords(
+            GetReply.type
+          )}" because:`,
         },
       },
       {
@@ -74,11 +76,9 @@ export default async function choosingReply(params) {
       {
         type: 'text',
         content: {
-          // These messages are provided by some nice volunteers. Please refer to
-          // {articleURL} for more information, replies and references.
-          text: `💁 以上訊息由好心人提供。建議至 ${getArticleURL(
+          text: `💁 These messages are provided by some nice volunteers. Please refer to ${getArticleURL(
             data.selectedArticleId
-          )} 觀看完整的訊息內容、其他鄉親的回應，以及他們各自所提出的理由與出處。`,
+          )} for more information, replies and references.`,
         },
       },
       {
@@ -88,13 +88,10 @@ export default async function choosingReply(params) {
             type: 'template',
             payload: {
               template_type: 'button',
-              // Is this reply helpful?
-              text: '請問上面回應是否有幫助？',
+              text: 'Is this reply helpful?',
               buttons: [
-                // Yes
-                createPostbackAction('是', 'y'),
-                // No
-                createPostbackAction('否', 'n'),
+                createPostbackAction('Yes', 'y'),
+                createPostbackAction('No', 'n'),
               ],
             },
           },

@@ -127,37 +127,46 @@ export default async function initState(params) {
       });
 
       let summary =
-        // and
-        '，而且有：\n' +
-        // {} person(s) consider this to be a rumor
-        `${count.RUMOR ? `${count.RUMOR} 個人覺得 ❌ 含有不實訊息\n` : ''}` +
-        // {} person(s) think this can be a truth
+        ', and\n' +
         `${
-          count.NOT_RUMOR ? `${count.NOT_RUMOR} 個人覺得 ⭕ 含有真實訊息\n` : ''
+          count.RUMOR
+            ? `${count.RUMOR} user${count.RUMOR > 1 ? 's' : ''} consider${
+                count.RUMOR > 1 ? '' : 's'
+              } this to be a rumor ❌\n`
+            : ''
+        }` +
+        `${
+          count.NOT_RUMOR
+            ? `${count.NOT_RUMOR} user${count.NOT_RUMOR > 1 ? 's' : ''} think${
+                count.NOT_RUMOR > 1 ? '' : 's'
+              } this can be a truth ⭕\n`
+            : ''
         }` +
         // {} person(s) think this is simply personal opinion
         `${
           count.OPINIONATED
-            ? `${count.OPINIONATED} 個人覺得 💬 含有個人意見\n`
+            ? `${count.OPINIONATED} user${
+                count.OPINIONATED > 1 ? 's' : ''
+              } think${
+                count.OPINIONATED > 1 ? '' : 's'
+              } this is simply a personal opinion 💬\n`
             : ''
         }`;
       if (count.NOT_ARTICLE) {
-        // but also {} person(s) thinks Cofacts need not to handle this message
-        summary += `，不過有 ${
-          count.NOT_ARTICLE
-        } 個人覺得 ⚠️️ 不在 Cofacts查證範圍\n`;
+        summary += `, but ${count.NOT_ARTICLE}  user${
+          count.NOT_ARTICLE > 1 ? 's' : ''
+        } think${
+          count.NOT_ARTICLE > 1 ? '' : 's'
+        } this is off-topic and Cofacts need not to handle it ⚠️️\n`;
       }
 
       const replies = [
         {
           type: 'text',
           content: {
-            // Hey #Cofacts has messages {}% similar to this one! {summary}
-            // Go to Cofacts' website for more information!
-            // {Links}
-            text: `#Cofacts 上有訊息跟這則有 ${Math.round(
+            text: `Hey #Cofacts has messages ${Math.round(
               edgesSortedWithSimilarity[0].similarity * 100
-            )}% 像${summary}\n到 Cofacts 上面看看相關訊息吧！\n${links.join(
+            )}similar to this one: ${summary}\nGo to Cofacts' website for more information!\n${links.join(
               '\n'
             )}`,
           },
@@ -200,20 +209,16 @@ export default async function initState(params) {
         elements: edgesSortedWithSimilarity
           .map(({ node: { text }, similarity }, idx) => ({
             title: text.slice(0, 80),
-            // [Similarity: {}%]
-            subtitle: `[相似度:${(similarity * 100).toFixed(2) + '%'}]`,
-            // Choose this one
-            buttons: [createPostbackAction('選擇此則', idx + 1)],
+            subtitle: `[Similarity: ${(similarity * 100).toFixed(2) + '%'}]`,
+            buttons: [createPostbackAction('Choose this one', idx + 1)],
           }))
           .concat(
             hasIdenticalDocs
               ? []
               : [
                   {
-                    // These messages don't match mine :(
-                    title: '這裡沒有一篇是我傳的訊息。',
-                    // Choose this one
-                    buttons: [createPostbackAction('選擇', 0)],
+                    title: 'None of these messages match mine :(',
+                    buttons: [createPostbackAction('Choose this one', 0)],
                   },
                 ]
           ),
@@ -224,15 +229,13 @@ export default async function initState(params) {
       {
         type: 'text',
         content: {
-          // We're checking "{articleSummary}" for you...
-          text: `幫您查詢「${articleSummary}」的相關回應。`,
+          text: `We're checking "${articleSummary} for you...`,
         },
       },
       {
         type: 'text',
         content: {
-          // Which message below matches what you just sent to us?
-          text: '請問下列文章中，哪一篇是您剛才傳送的訊息呢？',
+          text: 'Which message below matches what you just sent to us?',
         },
       },
       {
@@ -242,10 +245,8 @@ export default async function initState(params) {
           quick_replies: [
             {
               content_type: 'text',
-              // I want to contact Cofacts team
-              title: '我是要找 Cofacts 的人啦',
-              // I want to contact Cofacts team
-              payload: '我是要找 Cofacts 的人啦',
+              title: 'I want to contact Cofacts team',
+              payload: 'I want to contact Cofacts team',
             },
           ],
         },
@@ -268,8 +269,8 @@ export default async function initState(params) {
             text:
               // Sorry, please provide more information.
               // Please refer to our user's manual http://bit.ly/cofacts-fb-users
-              '你傳的資訊資訊太少，無法為你搜尋資料庫噢！\n' +
-              '正確使用方式，請參考📖使用手冊 http://bit.ly/cofacts-fb-users',
+              'Sorry, please provide more information.\n' +
+              "Please refer to our user's manual 📖 http://bit.ly/cofacts-fb-users",
           },
         },
       ];
@@ -290,11 +291,8 @@ export default async function initState(params) {
           {
             type: 'text',
             content: {
-              // We didn't find anything about {articleSummary} :(
-              // You can try these websites again: ...
-              // Or report this article to us!
-              text: `找不到關於「${articleSummary}」的訊息耶 QQ\n可以嘗試到這些地方找找相關訊息：\n
-              蘭姆酒吐司Rumor & Truth https://www.facebook.com/rumtoast/\n或者到 LINE 上面把謠言傳給我們~\nhttp://bit.ly/cofacts-line-users`,
+              text: `We didn't find anything about "${articleSummary}" :("\nYou can try these websites again:\n
+              蘭姆酒吐司Rumor & Truth https://www.facebook.com/rumtoast/\nOr report this article to us via Line! \nhttp://bit.ly/cofacts-line-users`,
             },
           },
         ];
@@ -303,8 +301,7 @@ export default async function initState(params) {
           {
             type: 'text',
             content: {
-              // We didn't find anything about {articleSummary} :(
-              text: `找不到關於「${articleSummary}」訊息耶 QQ`,
+              text: `We didn't find anything about "${articleSummary}" :(`,
             },
           },
         ].concat(createAskArticleSubmissionReply());
