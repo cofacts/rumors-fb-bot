@@ -83,7 +83,7 @@ export function createAskArticleSubmissionReply() {
     // receive the same suspicious message in the future.
     '雖然您不會立刻收到查證結果，但可以幫助到未來同樣收到這份訊息的人。';
   const promptText =
-    // Please tell us why you consider this to be a rumor
+    // Please tell us WHY YOU CONSIDER THIS A RUMOR so that we can understand the problem of this suspicious message.
     '請把「為何您會覺得這是一則謠言」的理由傳給我們，幫助闢謠編輯釐清您有疑惑之處。';
 
   return [
