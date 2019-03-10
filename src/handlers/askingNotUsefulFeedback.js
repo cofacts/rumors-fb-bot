@@ -48,21 +48,18 @@ export default async function askingNotUsefulFeedback(params) {
         type: 'text',
         content: {
           text:
-            // ? We've received feedback from you and other {count - 1} person(s)!
-            // : Thanks. You're the first one who gave feedback on this reply!
             feedbackCount > 1
-              ? `感謝您與其他 ${feedbackCount - 1} 人的回饋。`
-              : '感謝您的回饋，您是第一個評論這個回應的人 :)',
+              ? `We've received feedback from you and ${feedbackCount -
+                  1} other user${feedbackCount > 2 ? 's' : ''}!`
+              : 'Thanks. You are the first one who gave feedback on this reply :)',
         },
       },
       {
         type: 'text',
         content: {
-          // If you have something to say about this article,
-          // feel free to submit us your own reply!
-          text: `💁 若您認為自己能回應得更好，歡迎到 ${getArticleURL(
+          text: `💁 If you have something to say about this article, feel free to submit us your own reply at ${getArticleURL(
             data.selectedArticleId
-          )} 提交新的回應唷！`,
+          )} :)`,
         },
       },
     ];
@@ -74,8 +71,7 @@ export default async function askingNotUsefulFeedback(params) {
       {
         type: 'text',
         content: {
-          // The following is your reason: {reason}
-          text: `以下是您所填寫的理由：「${event.input}」`,
+          text: `The following is your reason:\n"${event.input}"`,
         },
       },
       {
@@ -85,16 +81,12 @@ export default async function askingNotUsefulFeedback(params) {
             type: 'template',
             payload: {
               template_type: 'button',
-              // Fact checkers will see why you find this reply not helpful.
-              // Please confirm.
-              text: '我們會把您覺得回應沒幫助的原因呈現給編輯們看。請確認：',
+              text:
+                'Fact checkers will see why you find this reply not helpful. Please confirm.',
               buttons: [
-                // OK. Submit now!
-                createPostbackAction('明白，我要送出', 'y'),
-                // Revise my reason
-                createPostbackAction('重寫送出的理由', 'r'),
-                // Skip
-                createPostbackAction('算了，我不想填', 'n'),
+                createPostbackAction('Submit', 'y'),
+                createPostbackAction('Revise', 'r'),
+                createPostbackAction('Skip', 'n'),
               ],
             },
           },

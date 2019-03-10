@@ -16,8 +16,10 @@ export default async function askingArticleSubmission(params) {
     visitor.event({ ec: 'Article', ea: 'Create', el: 'No' });
 
     replies = [
-      // The message is discarded. Thank you.
-      { type: 'text', content: { text: '訊息沒有送出，謝謝您的使用。' } },
+      {
+        type: 'text',
+        content: { text: 'The message is discarded. Thank you.' },
+      },
     ];
     state = '__INIT__';
   } else {
@@ -27,18 +29,15 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
-          // The following is the reason you just input: {reason}
-          text: `以下是您所填寫的理由：\n「\n${reason}\n」`,
+          text: `Reason you just input:\n"${reason}"`,
         },
       },
       {
         type: 'text',
         content: {
           text:
-            // You're about to submit this article and your reason. If they are
-            // vague or improper, you may not be able to submit articles in the future.
-            '我們即將把此訊息與您填寫的理由送至資料庫。若您送出的訊息或理由意味不明、' +
-            '造成闢謠編輯的困擾，可能會影響到您未來送出文章的權利。',
+            'You are about to submit this article and your reason. If they are ' +
+            'vague or improper, you may not be able to submit articles in the future.',
         },
       },
       {
@@ -48,15 +47,11 @@ export default async function askingArticleSubmission(params) {
             type: 'template',
             payload: {
               template_type: 'button',
-              // Please confirm:
-              text: '請確認：',
+              text: 'Please confirm:',
               buttons: [
-                // OK. Submit now!
-                createPostbackAction('明白，我要送出', 'y'),
-                // Revise my reason
-                createPostbackAction('重寫送出的理由', 'r'),
-                // Skip
-                createPostbackAction('放棄送出', 'n'),
+                createPostbackAction('Submit', 'y'),
+                createPostbackAction('Revise', 'r'),
+                createPostbackAction('Discard', 'n'),
               ],
             },
           },

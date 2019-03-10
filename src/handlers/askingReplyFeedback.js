@@ -94,8 +94,9 @@ export default async function askingReplyFeedback(params) {
             // ? We've received feedback from you and other {count - 1} person(s)!
             // : Thanks. You're the first one who gave feedback on this reply!
             feedbackCount > 1
-              ? `感謝您與其他 ${feedbackCount - 1} 人的回饋。`
-              : '感謝您的回饋，您是第一個評論這個回應的人 :)',
+              ? `We've received feedback from you and ${feedbackCount -
+                  1} other user${feedbackCount > 2 ? 's' : ''}!`
+              : 'Thanks. You are the first one who gave feedback on this reply :)',
         },
       },
       {
@@ -106,9 +107,7 @@ export default async function askingReplyFeedback(params) {
             payload: {
               template_type: 'button',
               text:
-                // Don't forget to forward the messages above to others and share with them!
-                // And feel free to submit your own reply if you have anything to say about this!
-                '📲 別忘了把上面的回應轉傳回您的聊天室，給其他人也看看！\n💁 若您認為自己能回應得更好，歡迎提交新的回應唷！',
+                "📲 Don't forget to forward the messages above to others and share with them!\n💁 And feel free to submit your own reply if you have anything to say about this!",
               buttons: [
                 {
                   type: 'element_share',
@@ -125,8 +124,7 @@ export default async function askingReplyFeedback(params) {
                 {
                   type: 'web_url',
                   url: articleUrl,
-                  // Submit a new reply
-                  title: '提出新回應',
+                  title: 'Submit a new reply',
                 },
               ],
             },
@@ -148,11 +146,8 @@ export default async function askingReplyFeedback(params) {
             payload: {
               template_type: 'button',
               text:
-                // Why do you find this reply not helpful? Please tell us in messages.
-                // If you want to skip this, click the skip button below.
-                '請問您為什麼覺得好心人的回應沒有幫助？請把理由打字傳給我們，幫助闢謠編輯釐清問題所在；若不想填，請按「我不想填理由」按鈕。',
-              // Skip
-              buttons: [createPostbackAction('我不想填理由', 'n')],
+                'Why do you find this reply not helpful? Please tell us in messages. If you want to skip this, click the skip button below.',
+              buttons: [createPostbackAction('Skip', 'n')],
             },
           },
         },
