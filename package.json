@@ -6,7 +6,8 @@
   "scripts": {
     "test": "jest",
     "start": "node main.js",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build": "babel src -d build"
   },
   "author": "changhc",
   "license": "MIT",
