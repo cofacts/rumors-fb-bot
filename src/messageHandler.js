@@ -97,7 +97,7 @@ const messageHandler = async (req, userId, instance, userIdBlacklist) => {
     if (input === 'RESET') {
       redis.del(userId);
       return;
-    } else if (input === 'I want to contact Cofacts team') {
+    } else if (input === 'Contact Cofacts') {
       // return the email address of cofacts team
       sendFacebookMsg({
         receiver: userId,

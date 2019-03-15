@@ -217,7 +217,7 @@ export default async function initState(params) {
               ? []
               : [
                   {
-                    title: 'None of these messages match mine :(',
+                    title: 'None of these messages matches mine :(',
                     buttons: [createPostbackAction('Choose this one', 0)],
                   },
                 ]
@@ -245,8 +245,8 @@ export default async function initState(params) {
           quick_replies: [
             {
               content_type: 'text',
-              title: 'I want to contact Cofacts team',
-              payload: 'I want to contact Cofacts team',
+              title: 'Contact Cofacts',
+              payload: 'Contact Cofacts',
             },
           ],
         },
