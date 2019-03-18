@@ -24,7 +24,7 @@ export default async function askingArticleSubmission(params) {
       data: { CreateArticle },
     } = await gql`
       mutation($text: String!, $reason: String!) {
-        CreateArticle(text: $text, reason: $reason, reference: { type: FB }) {
+        CreateArticle(text: $text, reason: $reason, reference: { type: URL }) {
           id
         }
       }
