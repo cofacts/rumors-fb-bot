@@ -71,7 +71,7 @@ export default async function askingReplyFeedback(params) {
     const sharedContent = {
       title: `Hey someone else says "${ellipsis(
         data.selectedArticleText,
-        15
+        30
       )} is ${createTypeWords(GetReply.type)}!`,
       subtitle: `Please refer to ${articleUrl} for other replies to this message and references!`,
       buttons: [

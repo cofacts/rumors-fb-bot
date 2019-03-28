@@ -64,13 +64,13 @@ export default async function choosingReply(params) {
       {
         type: 'text',
         content: {
-          text: ellipsis(GetReply.text, 2000),
+          text: ellipsis(GetReply.text, 3000),
         },
       },
       {
         type: 'text',
         content: {
-          text: ellipsis(createReferenceWords(GetReply), 2000),
+          text: ellipsis(createReferenceWords(GetReply), 3000),
         },
       },
       {
