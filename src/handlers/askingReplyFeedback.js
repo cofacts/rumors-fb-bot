@@ -69,19 +69,16 @@ export default async function askingReplyFeedback(params) {
     const articleUrl = getArticleURL(data.selectedArticleId);
 
     const sharedContent = {
-      // Hey someone else says {ellipsis} is {type}!
-      title: `網路上有人說「${ellipsis(
+      title: `Hey someone else says "${ellipsis(
         data.selectedArticleText,
         15
-      )}」${createTypeWords(GetReply.type)}喔！`,
-      // Please refer to {articleURL} to see their replies to this message and references!
-      subtitle: `請至 ${articleUrl} 看看鄉親們針對這則訊息的回應、理由，與所找的出處唷！`,
+      )} is ${createTypeWords(GetReply.type)}!`,
+      subtitle: `Please refer to ${articleUrl} for other replies to this message and references!`,
       buttons: [
         {
           type: 'web_url',
           url: articleUrl,
-          // See other replies
-          title: '看看別人的回應',
+          title: 'See other replies',
         },
       ],
     };
@@ -91,8 +88,6 @@ export default async function askingReplyFeedback(params) {
         type: 'text',
         content: {
           text:
-            // ? We've received feedback from you and other {count - 1} person(s)!
-            // : Thanks. You're the first one who gave feedback on this reply!
             feedbackCount > 1
               ? `We've received feedback from you and ${feedbackCount -
                   1} other user${feedbackCount > 2 ? 's' : ''}!`

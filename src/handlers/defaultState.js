@@ -8,8 +8,6 @@ export default function defaultState(params) {
     {
       type: 'text',
       content: {
-        // Sorry I don't understand :(
-        // Please try again
         text: "Sorry I don't understand :(\nPlease try again.",
       },
     },

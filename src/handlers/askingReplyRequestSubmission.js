@@ -68,8 +68,12 @@ export default async function askingArticleSubmission(params) {
     ];
     state = '__INIT__';
   } else if (event.input === 'r') {
-    // Sure. You can revise your reason.
-    replies = [{ type: 'text', content: { text: '好的，請重新填寫理由。' } }];
+    replies = [
+      {
+        type: 'text',
+        content: { text: 'Sure. Please revise your reason.' },
+      },
+    ];
     state = 'ASKING_REPLY_REQUEST_REASON';
   }
 

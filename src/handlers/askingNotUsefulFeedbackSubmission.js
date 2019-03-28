@@ -47,8 +47,6 @@ export default async function askingNotUsefulFeedbackSubmission(params) {
         type: 'text',
         content: {
           text:
-            // ? We've received feedback from you and other {count - 1} person(s)!
-            // : Thanks. You're the first one who gave feedback on this reply!
             feedbackCount > 1
               ? `We've received feedback from you and ${feedbackCount -
                   1} other user${feedbackCount > 2 ? 's' : ''}!`

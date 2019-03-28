@@ -142,7 +142,6 @@ export default async function initState(params) {
               } this can be a truth ⭕\n`
             : ''
         }` +
-        // {} person(s) think this is simply personal opinion
         `${
           count.OPINIONATED
             ? `${count.OPINIONATED} user${
