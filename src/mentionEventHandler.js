@@ -33,6 +33,23 @@ const mentionEventHandler = async (context, instance) => {
     '0' // special user id for comments
   );
 
+  // LOGGING:
+  // 60 chars per line, each prepended with [[LOG]]
+  console.log('\n||LOG||<----------');
+  JSON.stringify({
+    CONTEXT: context,
+    INPUT: { type: 'comment', postId: instance.value.post_id, input: inputStr },
+    OUTPUT: params.replies[0].content.text,
+  })
+    .split(/(.{60})/)
+    .forEach(line => {
+      if (line) {
+        // Leading \n makes sure ||LOG|| is in the first line
+        console.log(`\n||LOG||${line}`);
+      }
+    });
+  console.log('\n||LOG||---------->');
+
   // reply to comment
   await replyToComment(
     instance.value.comment_id,
