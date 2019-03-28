@@ -29,13 +29,13 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "感謝您的回饋，您是第一個評論這個回應的人 :)",
+        "text": "Thanks. You are the first one who gave feedback on this reply :)",
       },
       "type": "text",
     },
     Object {
       "content": Object {
-        "text": "💁 若您認為自己能回應得更好，歡迎到 https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz 提交新的回應唷！",
+        "text": "💁 If you have something to say about this article, feel free to submit us your own reply at https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz :)",
       },
       "type": "text",
     },
@@ -74,13 +74,13 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "感謝您與其他 1 人的回饋。",
+        "text": "We've received feedback from you and 1 other user!",
       },
       "type": "text",
     },
     Object {
       "content": Object {
-        "text": "💁 若您認為自己能回應得更好，歡迎到 https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz 提交新的回應唷！",
+        "text": "💁 If you have something to say about this article, feel free to submit us your own reply at https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz :)",
       },
       "type": "text",
     },
@@ -120,7 +120,8 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "以下是您所填寫的理由：「comment」",
+        "text": "The following is your reason:
+\\"comment\\"",
       },
       "type": "text",
     },
@@ -131,22 +132,22 @@ Object {
             "buttons": Array [
               Object {
                 "payload": "y",
-                "title": "明白，我要送出",
+                "title": "Submit",
                 "type": "postback",
               },
               Object {
                 "payload": "r",
-                "title": "重寫送出的理由",
+                "title": "Revise",
                 "type": "postback",
               },
               Object {
                 "payload": "n",
-                "title": "算了，我不想填",
+                "title": "Skip",
                 "type": "postback",
               },
             ],
             "template_type": "button",
-            "text": "我們會把您覺得回應沒幫助的原因呈現給編輯們看。請確認：",
+            "text": "Fact checkers will see why you find this reply not helpful. Please confirm.",
           },
           "type": "template",
         },

@@ -29,13 +29,13 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "感謝您的回饋，您是第一個評論這個回應的人 :)",
+        "text": "Thanks. You are the first one who gave feedback on this reply :)",
       },
       "type": "text",
     },
     Object {
       "content": Object {
-        "text": "💁 若您認為自己能回應得更好，歡迎到 https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz 提交新的回應唷！",
+        "text": "💁 If you have something to say about this article, feel free to submit your own reply at https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz :)",
       },
       "type": "text",
     },
@@ -74,13 +74,13 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "感謝您與其他 1 人的回饋。",
+        "text": "We've received feedback from you and 1 other user!",
       },
       "type": "text",
     },
     Object {
       "content": Object {
-        "text": "💁 若您認為自己能回應得更好，歡迎到 https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz 提交新的回應唷！",
+        "text": "💁 If you have something to say about this article, feel free to submit your own reply at https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz :)",
       },
       "type": "text",
     },
@@ -119,13 +119,13 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "感謝您的回饋，您是第一個評論這個回應的人 :)",
+        "text": "Thanks. You are the first one who gave feedback on this reply :)",
       },
       "type": "text",
     },
     Object {
       "content": Object {
-        "text": "💁 若您認為自己能回應得更好，歡迎到 https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz 提交新的回應唷！",
+        "text": "💁 If you have something to say about this article, feel free to submit your own reply at https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz :)",
       },
       "type": "text",
     },
@@ -164,13 +164,13 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "感謝您與其他 1 人的回饋。",
+        "text": "We've received feedback from you and 1 other user!",
       },
       "type": "text",
     },
     Object {
       "content": Object {
-        "text": "💁 若您認為自己能回應得更好，歡迎到 https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz 提交新的回應唷！",
+        "text": "💁 If you have something to say about this article, feel free to submit your own reply at https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz :)",
       },
       "type": "text",
     },
@@ -214,12 +214,12 @@ Object {
             "buttons": Array [
               Object {
                 "payload": "n",
-                "title": "我不想填了",
+                "title": "Skip",
                 "type": "postback",
               },
             ],
             "template_type": "button",
-            "text": "好的，請重新填寫理由",
+            "text": "Okay. Please revise your reason.",
           },
           "type": "template",
         },
