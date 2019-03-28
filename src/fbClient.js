@@ -1,6 +1,7 @@
 import fetch from 'node-fetch';
 import FormData from 'form-data';
 import rollbar from './rollbar';
+import redis from './redisClient';
 
 const URL = 'https://graph.facebook.com';
 const graphApiVersion = 'v3.1';
@@ -177,17 +178,22 @@ export async function replyToComment(commentId, msg) {
  * @returns {undefined}
  */
 export function getLongLivedPageAccessToken() {
-  return new Promise((resolve, reject) => {
+  return new Promise(async (resolve, reject) => {
     if (process.env.APP_ID === undefined) {
       reject(new Error(`Invalid page id: ${process.env.APP_ID}`));
       return;
     }
+
+    let token = process.env.PAGE_ACCESS_TOKEN;
+    const redisToken = await redis.get('pageAccessToken');
+    if (redisToken) {
+      token = redisToken;
+    }
+
     fetch(
       `${URL}/oauth/access_token?grant_type=fb_exchange_token&client_id=${
         process.env.APP_ID
-      }&client_secret=${process.env.APP_SECRET}&fb_exchange_token=${
-        process.env.PAGE_ACCESS_TOKEN
-      }`
+      }&client_secret=${process.env.APP_SECRET}&fb_exchange_token=${token}`
     )
       .then(res => res.json())
       .then(res => {
@@ -197,6 +203,7 @@ export function getLongLivedPageAccessToken() {
           );
         }
         process.env.PAGE_ACCESS_TOKEN = res.access_token;
+        redis.set('pageAccessToken', res.access_token);
         resolve();
       })
       .catch(e => {
