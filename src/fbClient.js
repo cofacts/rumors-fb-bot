@@ -4,15 +4,15 @@ import rollbar from './rollbar';
 import redis from './redisClient';
 
 const URL = 'https://graph.facebook.com';
-const graphApiVersion = 'v3.1';
+const graphApiVersion = 'v3.2';
 
 /**
  * Wrap reply objects into a response body.
- * @param {string} receipient The receipient of our reply
+ * @param {string} recipient The recipient of our reply
  * @param {array} replies An array of reply objects
  * @returns {string} The full response body string
  */
-function wrapUpMessages(receipient, replies) {
+function wrapUpMessages(recipient, replies) {
   if (replies.length === 0) {
     return '';
   }
@@ -22,7 +22,7 @@ function wrapUpMessages(receipient, replies) {
       method: 'POST',
       name: 'msg0',
       relative_url: 'v2.6/me/messages',
-      body: `${receipient}&sender_action=typing_on`,
+      body: `${recipient}&sender_action=typing_on`,
     }, //to display typing on bubble :)
   ];
   replies.forEach((reply, idx) => {
@@ -31,7 +31,7 @@ function wrapUpMessages(receipient, replies) {
       name: `msg${idx + 1}`,
       depends_on: `msg${idx}`,
       relative_url: 'v2.6/me/messages',
-      body: `${receipient}&message=${encodeURIComponent(
+      body: `${recipient}&message=${encodeURIComponent(
         JSON.stringify(reply.content)
       )}`,
     });
@@ -46,10 +46,11 @@ function wrapUpMessages(receipient, replies) {
  * @returns {array} Result of messages sent
  */
 export async function sendFacebookMsg(params = {}, options = {}) {
-  const receipient = `recipient=${encodeURIComponent(
+  console.log(params.receiver);
+  const recipient = `recipient=${encodeURIComponent(
     JSON.stringify({ id: params.receiver })
   )}`;
-  const replies = wrapUpMessages(receipient, params.replies);
+  const replies = wrapUpMessages(recipient, params.replies);
   if (replies === '') {
     return;
   }
@@ -175,7 +176,7 @@ export async function replyToComment(commentId, msg) {
 /**
  * Get page access token using user access token in env variables
  * @param {undefined}
- * @returns {undefined}
+ * @returns {Promise} Promise wrapping a request for long-lived tokens
  */
 export function getLongLivedPageAccessToken() {
   return new Promise(async (resolve, reject) => {
