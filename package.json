@@ -8,7 +8,8 @@
     "start": "node main.js",
     "lint": "eslint .",
     "build": "babel src -d build",
-    "renew": "node build/renew.js"
+    "renew": "node build/renew.js",
+    "i18n:extract": "ttag update i18n/zh_TW.po src/"
   },
   "author": "changhc",
   "license": "MIT",
@@ -26,6 +27,7 @@
     "redis": "^2.6.5",
     "rollbar": "^2.2.9",
     "string-similarity": "^1.1.0",
+    "ttag": "^1.7.20",
     "universal-analytics": "^0.4.18",
     "url-regex": "^4.1.1"
   },
@@ -45,7 +47,8 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-prettier": "^2.0.1",
     "jest-cli": "^24.9.0",
-    "prettier": "=1.12.1"
+    "prettier": "=1.12.1",
+    "ttag-cli": "^1.7.25"
   },
   "jest": {
     "testEnvironment": "node",

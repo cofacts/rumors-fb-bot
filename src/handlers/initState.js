@@ -1,4 +1,5 @@
 import stringSimilarity from 'string-similarity';
+import { t } from 'ttag';
 import gql from '../gql';
 import {
   createPostbackAction,
@@ -225,8 +226,7 @@ export default async function initState(params) {
       {
         type: 'text',
         content: {
-          // We're checking "{articleSummary}" for you...
-          text: `幫您查詢「${articleSummary}」的相關回應。`,
+          text: t`We're checking "${articleSummary}" for you...`,
         },
       },
       {
