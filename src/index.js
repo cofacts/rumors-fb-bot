@@ -75,7 +75,7 @@ getLongLivedPageAccessToken()
   .then(() => {
     console.log('Long-lived page access token fetched');
     // Fetch a new page access token every 14 days
-    setInterval(() => getLongLivedPageAccessToken(), 14 * 86400 * 1000);
+    // setInterval(() => getLongLivedPageAccessToken(), 14 * 86400 * 1000);
 
     app.listen(process.env.PORT, () => {
       // eslint-disable-next-line no-console
