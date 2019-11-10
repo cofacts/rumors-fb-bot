@@ -6,5 +6,5 @@ getLongLivedPageAccessToken()
   })
   .catch(e => {
     console.error(e);
-    process.exit();
-  });
+  })
+  .finally(() => process.exit());
