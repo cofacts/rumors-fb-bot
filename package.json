@@ -7,7 +7,8 @@
     "test": "jest",
     "start": "node main.js",
     "lint": "eslint .",
-    "build": "babel src -d build"
+    "build": "babel src -d build",
+    "renew": "babel-node src/renew.js"
   },
   "author": "changhc",
   "license": "MIT",
