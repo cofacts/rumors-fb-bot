@@ -8,13 +8,16 @@
     "start": "node main.js",
     "lint": "eslint .",
     "build": "babel src -d build",
-    "renew": "node build/renew.js"
+    "renew": "node build/renew.js",
+    "i18n:init": "ttag init $LANG i18n/$LANG.po",
+    "i18n:update": "ttag update i18n/$LANG.po src/handlers/askingArticleSubmission.js"
   },
   "author": "changhc",
   "license": "MIT",
   "dependencies": {
     "babel-polyfill": "^6.23.0",
     "babel-runtime": "^6.22.0",
+    "dotenv": "^8.0.0",
     "googleapis": "^32.0.0",
     "koa": "^2.5.0",
     "koa-router": "^7.4.0",
@@ -25,6 +28,7 @@
     "redis": "^2.6.5",
     "rollbar": "^2.2.9",
     "string-similarity": "^1.1.0",
+    "ttag": "^1.7.20",
     "universal-analytics": "^0.4.18",
     "url-regex": "^4.1.1"
   },
@@ -32,6 +36,7 @@
     "babel-cli": "^6.23.0",
     "babel-eslint": "^8.0.0",
     "babel-jest": "^23.0.0",
+    "babel-plugin-ttag": "^1.7.24",
     "babel-preset-env": "^1.1.8",
     "babel-preset-stage-3": "^6.22.0",
     "coveralls": "^3.0.0",
@@ -40,7 +45,8 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-prettier": "^2.0.1",
     "jest-cli": "^23.6.0",
-    "prettier": "=1.12.1"
+    "prettier": "=1.12.1",
+    "ttag-cli": "^1.7.25"
   },
   "jest": {
     "testEnvironment": "node",
