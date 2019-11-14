@@ -1,0 +1,12 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=utf-8\n"
+"Plural-Forms: nplurals = 1; plural = 0;\n"
+"Language: zh_TW\n"
+"mime-version: 1.0\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/handlers/initState.js:229
+#, javascript-format
+msgid "We're checking \"${ articleSummary }\" for you..."
+msgstr "幫您查詢「${articleSummary}」的相關回應。"
