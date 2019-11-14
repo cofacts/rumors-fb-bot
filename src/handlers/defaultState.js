@@ -1,3 +1,4 @@
+import { t } from 'ttag';
 /**
  * the state that indicates we don't understand user input and ask them to retry
  */
@@ -10,7 +11,7 @@ export default function defaultState(params) {
       content: {
         // Sorry I don't understand :(
         // Please try again
-        text: '我們看不懂 QQ\n大俠請重新來過。',
+        text: t`Sorry I don't understand :(\nPlease try again.`,
       },
     },
   ];

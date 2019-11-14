@@ -1,3 +1,4 @@
+import { t, ngettext, msgid } from 'ttag';
 import gql from '../gql';
 import { getArticleURL, createPostbackAction } from './utils';
 
@@ -42,26 +43,27 @@ export default async function askingNotUsefulFeedbackSubmission(params) {
       { userId }
     );
 
+    const otherFeedbackCount = feedbackCount - 1;
     replies = [
       {
         type: 'text',
         content: {
           text:
-            // ? We've received feedback from you and {count - 1} other person(s)!
-            // : Thanks. You're the first one who gave feedback on this reply!
-            feedbackCount > 1
-              ? `感謝您與其他 ${feedbackCount - 1} 人的回饋。`
-              : '感謝您的回饋，您是第一個評論這個回應的人 :)',
+            otherFeedbackCount > 0
+              ? ngettext(
+                  msgid`We've received feedback from you and {otherFeedbackCount} other user!`,
+                  `We've received feedback from you and {otherFeedbackCount} other users!`,
+                  otherFeedbackCount
+                )
+              : t`Thanks. You're the first one who gave feedback on this reply!`,
         },
       },
       {
         type: 'text',
         content: {
-          // If you have something to say about this article,
-          // feel free to submit your own reply!
-          text: `💁 若您認為自己能回應得更好，歡迎到 ${getArticleURL(
+          text: t`💁 If you have something to say about this article, feel free to submit your own reply at ${getArticleURL(
             data.selectedArticleId
-          )} 提交新的回應唷！`,
+          )} :)`,
         },
       },
     ];
@@ -76,10 +78,8 @@ export default async function askingNotUsefulFeedbackSubmission(params) {
             type: 'template',
             payload: {
               template_type: 'button',
-              // okay. Please revise your reason.
-              text: '好的，請重新填寫理由',
-              // Skip
-              buttons: [createPostbackAction('我不想填了', 'n')],
+              text: t`Okay. Please revise your reason.`,
+              buttons: [createPostbackAction(t`Skip`, 'n')],
             },
           },
         },

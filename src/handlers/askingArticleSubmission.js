@@ -1,3 +1,4 @@
+import { t } from 'ttag';
 import gql from '../gql';
 import ga from '../ga';
 import { getArticleURL } from './utils';
@@ -34,12 +35,12 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
-          // Your submission is now at {articleURL}.
-          text: `您回報的訊息已經被收錄至：${getArticleURL(CreateArticle.id)}`,
+          text: t`Your submission is now recorded at ${getArticleURL(
+            CreateArticle.id
+          )}`,
         },
       },
-      // Thank you!
-      { type: 'text', content: { text: '感謝您的回報！' } },
+      { type: 'text', content: { text: t`Thank you` } },
     ];
     state = '__INIT__';
   } else if (event.input === 'n') {
@@ -47,13 +48,19 @@ export default async function askingArticleSubmission(params) {
     visitor.event({ ec: 'Article', ea: 'Create', el: 'No' });
 
     replies = [
-      // The message is discarded. Thank you.
-      { type: 'text', content: { text: '訊息沒有送出，謝謝您的使用。' } },
+      {
+        type: 'text',
+        content: { text: t`The message is discarded. Thank you.` },
+      },
     ];
     state = '__INIT__';
   } else if (event.input === 'r') {
-    // Sure. Please revise your reason.
-    replies = [{ type: 'text', content: { text: '好的，請重新填寫理由。' } }];
+    replies = [
+      {
+        type: 'text',
+        content: { text: t`Sure. Please revise your reason.` },
+      },
+    ];
     state = 'ASKING_ARTICLE_SUBMISSION_REASON';
   }
 

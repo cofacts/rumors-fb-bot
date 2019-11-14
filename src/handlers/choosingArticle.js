@@ -1,3 +1,4 @@
+import { t } from 'ttag';
 import gql from '../gql';
 import {
   createPostbackAction,
@@ -53,11 +54,7 @@ export default async function choosingArticle(params) {
       {
         type: 'text',
         content: {
-          text:
-            // Sorry, please provide more information.
-            // Please refer to our user's manual http://bit.ly/cofacts-fb-users
-            '剛才您傳的訊息資訊量太少，編輯無從查證。\n' +
-            '查證範圍請參考📖使用手冊 http://bit.ly/cofacts-fb-users',
+          text: t`Sorry, please provide more information.\nPlease refer to our user's manual 📖 http://bit.ly/cofacts-fb-users`,
         },
       },
     ];
@@ -71,8 +68,9 @@ export default async function choosingArticle(params) {
       {
         type: 'text',
         content: {
-          // Please enter 1 - {length} to choose a reply
-          text: `請輸入 1～${data.foundArticleIds.length} 的數字，來選擇訊息。`,
+          text: t`Please enter 1～${
+            data.foundArticleIds.length
+          } to choose a reply.`,
         },
       },
     ];
@@ -128,17 +126,11 @@ export default async function choosingArticle(params) {
     });
 
     const articleReplies = reorderArticleReplies(GetArticle.articleReplies);
-    const summary =
-      '這個訊息有：\n' +
-      // {} person(s) consider this to be a rumor
-      `${count.RUMOR || 0} 則回應標成 ❌ 含有不實訊息\n` +
-      // {} person(s) think this can be a truth
-      `${count.NOT_RUMOR || 0} 則回應標成 ⭕ 含有真實訊息\n` +
-      // {} person(s) think this is simply personal opinion
-      `${count.OPINIONATED || 0} 則回應標成 💬 含有個人意見\n` +
-      // {} person(s) thinks this message is off-topic and
-      // Cofacts need not to handle it
-      `${count.NOT_ARTICLE || 0} 則回應標成 ⚠️️ 不在查證範圍\n`;
+    const summary = t`${count.RUMOR ||
+      0} person(s) consider this to be a rumor ❌\n${count.NOT_RUMOR ||
+      0} person(s) think this can be a truth ⭕\n${count.OPINIONATED ||
+      0} person(s) think this is simply personal opinion 💬\n${count.NOT_ARTICLE ||
+      0} person(s) thinks it's off-topic and Cofacts need not to handle this message ⚠️️\n`;
 
     replies = [
       {
@@ -189,8 +181,7 @@ export default async function choosingArticle(params) {
                     negativeFeedbackCount
                   ),
                 title: reply.text.slice(0, 80),
-                // Read this reply
-                buttons: [createPostbackAction('閱讀此回應', idx + 1)],
+                buttons: [createPostbackAction(t`Read this reply`, idx + 1)],
               })
             ),
         },
@@ -206,8 +197,9 @@ export default async function choosingArticle(params) {
         replies.push({
           type: 'text',
           content: {
-            // Please refer to {articleURL} for more replies
-            text: `更多回應請到：${getArticleURL(selectedArticleId)}`,
+            text: t`Please refer to ${getArticleURL(
+              selectedArticleId
+            )} for more replies.`,
           },
         });
       }
@@ -221,19 +213,8 @@ export default async function choosingArticle(params) {
         el: selectedArticleId,
       });
 
-      const replyText =
-        // Tell us about your concern
-        '【跟編輯說您的疑惑】\n' +
-        // Sorry, no one has replied to this article yet
-        '抱歉這篇訊息還沒有人回應過唷！\n' +
-        '\n' +
-        // If you consider this a rumor, please tell us your concern and why
-        // we should figure this out as soon as possible
-        '若您覺得這是一則謠言，請指出您有疑惑之處，說服編輯這是一份應該被闢謠的訊息。\n' +
-        '\n';
-      const promptText =
-        // Please send us in messages the reason why you consider this a rumor
-        '請把「為何您會覺得這是一則謠言」的理由打字傳給我們，幫助闢謠編輯釐清您有疑惑之處；\n';
+      const replyText = t`【Tell us about your concern】\nSorry, no one has replied to this article yet!\n\nIf you consider this a rumor, please tell us your concern and why we should figure this out as soon as possible\n\n`;
+      const promptText = t`Please send us in messages the reason why you consider this a rumor.\n`;
 
       replies = [
         {
@@ -255,10 +236,8 @@ export default async function choosingArticle(params) {
               type: 'template',
               payload: {
                 template_type: 'button',
-                // To skip this, click "Skip"
-                text: '若想跳過，請按「我不想填理由」。',
-                // Skip
-                buttons: [createPostbackAction('我不想填理由', 'n')],
+                text: t`To skip this, click "Skip"`,
+                buttons: [createPostbackAction(t`Skip`, 'n')],
               },
             },
           },

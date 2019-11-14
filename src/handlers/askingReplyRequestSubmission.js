@@ -1,3 +1,4 @@
+import { t, ngettext, msgid } from 'ttag';
 import gql from '../gql';
 import { getArticleURL } from './utils';
 
@@ -30,13 +31,19 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
-          // We've recorded your reason. {count} other person(s) is also waiting for
-          // replies. Please refer to this page for updates: {articleURL}
-          text: `已經將您的需求以及理由記錄下來了，共有 ${
+          text: ngettext(
+            msgid`We've recorded your reason. ${
+              CreateReplyRequest.replyRequestCount
+            } other user is also waiting for clarification. Please refer to this page for updates: ${getArticleURL(
+              selectedArticleId
+            )}`,
+            `We've recorded your reason. ${
+              CreateReplyRequest.replyRequestCount
+            } other users are also waiting for clarification. Please refer to this page for updates: ${getArticleURL(
+              selectedArticleId
+            )}`,
             CreateReplyRequest.replyRequestCount
-          } 人跟您一樣渴望看到針對這篇訊息的回應。若有最新回應，會寫在這個地方：${getArticleURL(
-            selectedArticleId
-          )}`,
+          ),
         },
       },
     ];
@@ -56,20 +63,30 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
-          // We've recorded your reason. {count} other person(s) is also waiting for
-          // replies. Please refer to this page for updates: {articleURL}
-          text: `已經將您的需求記錄下來了，共有 ${
+          text: ngettext(
+            msgid`We've recorded your reason. ${
+              CreateReplyRequest.replyRequestCount
+            } other user is also waiting for clarification. Please refer to this page for updates: ${getArticleURL(
+              selectedArticleId
+            )}`,
+            `We've recorded your reason. ${
+              CreateReplyRequest.replyRequestCount
+            } other users are also waiting for clarification. Please refer to this page for updates: ${getArticleURL(
+              selectedArticleId
+            )}`,
             CreateReplyRequest.replyRequestCount
-          } 人跟您一樣渴望看到針對這篇訊息的回應。若有最新回應，會寫在這個地方：${getArticleURL(
-            selectedArticleId
-          )}`,
+          ),
         },
       },
     ];
     state = '__INIT__';
   } else if (event.input === 'r') {
-    // Sure. Please revise your reason.
-    replies = [{ type: 'text', content: { text: '好的，請重新填寫理由。' } }];
+    replies = [
+      {
+        type: 'text',
+        content: { text: t`Sure. Please revise your reason.` },
+      },
+    ];
     state = 'ASKING_REPLY_REQUEST_REASON';
   }
 

@@ -1,3 +1,4 @@
+import { t, ngettext, msgid } from 'ttag';
 import gql from '../gql';
 import ga from '../ga';
 import {
@@ -68,34 +69,38 @@ export default async function askingReplyFeedback(params) {
 
     const articleUrl = getArticleURL(data.selectedArticleId);
 
+    // A string is used for length here because of the need of i18n.
+    // The ideal length of ellipsis displayed may differ depending on the language.
+    // For example, chinese characters are wider so we need a shorter length.
+    const ellipsisLength = t`30`;
     const sharedContent = {
-      // Hey someone else says {ellipsis} is {type}!
-      title: `網路上有人說「${ellipsis(
+      title: t`Hey someone else says "${ellipsis(
         data.selectedArticleText,
-        15
-      )}」${createTypeWords(GetReply.type)}喔！`,
-      // Please refer to {articleURL} to see their replies to this message and references!
-      subtitle: `請至 ${articleUrl} 看看鄉親們針對這則訊息的回應、理由，與所找的出處唷！`,
+        parseInt(ellipsisLength, 10)
+      )} is ${createTypeWords(GetReply.type)}!`,
+      subtitle: `Please refer to ${articleUrl} for other replies to this message and references!`,
       buttons: [
         {
           type: 'web_url',
           url: articleUrl,
-          // See other replies
-          title: '看看別人的回應',
+          title: t`See other replies`,
         },
       ],
     };
 
+    const otherFeedbackCount = feedbackCount - 1;
     replies = [
       {
         type: 'text',
         content: {
           text:
-            // ? We've received feedback from you and other {count - 1} person(s)!
-            // : Thanks. You're the first one who gave feedback on this reply!
-            feedbackCount > 1
-              ? `感謝您與其他 ${feedbackCount - 1} 人的回饋。`
-              : '感謝您的回饋，您是第一個評論這個回應的人 :)',
+            otherFeedbackCount > 0
+              ? ngettext(
+                  msgid`We've received feedback from you and {otherFeedbackCount} other user!`,
+                  `We've received feedback from you and {otherFeedbackCount} other users!`,
+                  otherFeedbackCount
+                )
+              : t`Thanks. You're the first one who gave feedback on this reply!`,
         },
       },
       {
@@ -105,10 +110,7 @@ export default async function askingReplyFeedback(params) {
             type: 'template',
             payload: {
               template_type: 'button',
-              text:
-                // Don't forget to forward the messages above to others and share with them!
-                // And feel free to submit your own reply if you have anything to say about this!
-                '📲 別忘了把上面的回應轉傳回您的聊天室，給其他人也看看！\n💁 若您認為自己能回應得更好，歡迎提交新的回應唷！',
+              text: t`📲 Don't forget to forward the messages above to others and share with them!\n💁 And feel free to submit your own reply if you have anything to say about this!`,
               buttons: [
                 {
                   type: 'element_share',
@@ -125,8 +127,7 @@ export default async function askingReplyFeedback(params) {
                 {
                   type: 'web_url',
                   url: articleUrl,
-                  // Submit a new reply
-                  title: '提出新回應',
+                  title: t`Submit a new reply`,
                 },
               ],
             },
@@ -147,13 +148,8 @@ export default async function askingReplyFeedback(params) {
             type: 'template',
             payload: {
               template_type: 'button',
-              text:
-                // Why do you find this reply not helpful? Please tell us in messages
-                // such that we can further improve it.
-                // If you want to skip this, click the skip button below.
-                '請問您為什麼覺得好心人的回應沒有幫助？請把理由打字傳給我們，幫助闢謠編輯釐清問題所在；若不想填，請按「我不想填理由」按鈕。',
-              // Skip
-              buttons: [createPostbackAction('我不想填理由', 'n')],
+              text: t`Why do you find this reply not helpful? Please tell us in messages. If you want to skip this, click the skip button below.`,
+              buttons: [createPostbackAction(t`Skip`, 'n')],
             },
           },
         },

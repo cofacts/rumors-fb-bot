@@ -1,3 +1,4 @@
+import { t, ngettext, msgid } from 'ttag';
 /**
  * @param {string} label The label of a postback action
  * @param {string} input The value returned of a postback action
@@ -18,13 +19,22 @@ export function createPostbackAction(label, input) {
  * @return {string} Description of feedback counts
  */
 export function createFeedbackWords(positive, negative) {
-  // No one has rated this reply yet
-  if (positive + negative === 0) return '[還沒有人針對此回應評價]';
+  if (positive + negative === 0) return '[' + t`No rating for this reply` + ']';
   let result = '';
-  // {positive count} user(s) consider this helpful
-  if (positive) result += `有 ${positive} 人覺得此回應有幫助\n`;
-  // {negative count} user(s) consider this not useful
-  if (negative) result += `有 ${negative} 人覺得此回應沒幫助\n`;
+  if (positive)
+    result +=
+      ngettext(
+        msgid`${positive} user considers this helpful`,
+        `${positive} users consider this helpful`,
+        positive
+      ) + '\n';
+  if (negative)
+    result +=
+      ngettext(
+        msgid`${negative} user considers this not useful`,
+        `${negative} users consider this not useful`,
+        negative
+      ) + '\n';
   return `[${result.trim()}]`;
 }
 
@@ -36,19 +46,15 @@ export function createFeedbackWords(positive, negative) {
 export function createTypeWords(type) {
   switch (type) {
     case 'RUMOR':
-      // it looks like a rumor
-      return '❌ 含有不實訊息';
+      return '❌ ' + t`CONTAINS MISINFO`;
     case 'NOT_RUMOR':
-      // it may be credible
-      return '⭕ 含有真實訊息';
+      return '⭕ ' + t`CONTAINS TRUE INFO`;
     case 'OPINIONATED':
-      // it is simply a personal opinion
-      return '💬 含有個人意見';
+      return '💬 ' + t`OPINIONATED`;
     case 'NOT_ARTICLE':
-      // it is off-topic and Cofacts doesn't handle it
-      return '⚠️️ 不在查證範圍';
+      return '⚠️️ ' + t`OFF TOPIC`;
   }
-  return '回應的狀態未定義！';
+  return 'Undefined!';
 }
 
 /**
@@ -60,11 +66,14 @@ export function createTypeWords(type) {
  * @returns {string} The reference message to send
  */
 export function createReferenceWords({ reference, type }) {
-  const prompt = type === 'OPINIONATED' ? '不同觀點請見' : '出處';
+  const prompt = type === 'OPINIONATED' ? t`Other replies` : t`References`;
 
   if (reference) return `${prompt}：${reference}`;
-  // This reply has no other opinions or references and it may be biased
-  return `\uDBC0\uDC85 ⚠️️ 此回應沒有${prompt}，請自行斟酌回應之可信度。⚠️️  \uDBC0\uDC85`;
+  let warning = t`This reply doesn't have any reference so it may not be credible.`;
+  if (type === 'OPINIONATED') {
+    warning = t`This is the only reply to this issue and it may be biased.`;
+  }
+  return `\uDBC0\uDC85 ⚠️️ ${warning} ⚠️️  \uDBC0\uDC85`;
 }
 
 /**
@@ -74,17 +83,13 @@ export function createReferenceWords({ reference, type }) {
  */
 export function createAskArticleSubmissionReply() {
   const replyText =
-    // Submit this message?
-    '【送出訊息到公開資料庫？】\n' +
-    // If you think this can be a rumor, please submit it for fact-checking.
-    '若這是「轉傳訊息」，而且您覺得這很可能是一則「謠言」，請將這則訊息送進公開資料庫建檔，讓好心人查證與回覆。\n' +
-    '\n' +
-    // Although you don't receive the result immediately, it can be a big help to those who
-    // receive the same suspicious message in the future.
-    '雖然您不會立刻收到查證結果，但可以幫助到未來同樣收到這份訊息的人。';
-  const promptText =
-    // Please tell us WHY YOU CONSIDER THIS A RUMOR so that we can understand the problem of this suspicious message.
-    '請把「為何您會覺得這是一則謠言」的理由傳給我們，幫助闢謠編輯釐清您有疑惑之處。';
+    '【' +
+    t`送出訊息到公開資料庫？` +
+    '】\n' +
+    t`If you think this can be a rumor, please submit it such that other people can help fact-check and clarify.` +
+    '\n\n' +
+    t`Though you don't receive the result of fact-checking soon, this is a big help to those who receive similar messages in the future.`;
+  const promptText = t`Please tell us WHY YOU CONSIDER THIS A RUMOR so that we can understand the problem of this suspicious message.`;
 
   return [
     {
@@ -106,10 +111,8 @@ export function createAskArticleSubmissionReply() {
           type: 'template',
           payload: {
             template_type: 'button',
-            // Discard
-            text: '若要放棄，請按「放棄送出」。',
-            // Discard
-            buttons: [createPostbackAction('放棄送出', 'n')],
+            text: t`Discard`,
+            buttons: [createPostbackAction(t`Discard`, 'n')],
           },
         },
       },
