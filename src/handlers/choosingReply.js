@@ -53,13 +53,13 @@ export default async function choosingReply(params) {
       }
     `({ id: selectedReplyId });
 
+    const articleUrl = getArticleURL(data.selectedArticleId);
+    const articleType = createTypeWords(GetReply.type);
     replies = [
       {
         type: 'text',
         content: {
-          text: t`Someone marked this message as "${createTypeWords(
-            GetReply.type
-          )}" because:`,
+          text: t`Someone marked this message as "${articleType}" because:`,
         },
       },
       {
@@ -77,9 +77,9 @@ export default async function choosingReply(params) {
       {
         type: 'text',
         content: {
-          text: t`💁 These replies are provided by some nice volunteers. Please refer to ${getArticleURL(
-            data.selectedArticleId
-          )} for more information, replies and references.`,
+          text:
+            '💁 ' +
+            t`These replies are provided by some nice volunteers. Please refer to ${articleUrl} for more information, replies and references.`,
         },
       },
       {

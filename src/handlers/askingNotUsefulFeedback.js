@@ -45,6 +45,7 @@ export default async function askingNotUsefulFeedback(params) {
     );
 
     const otherFeedbackCount = feedbackCount - 1;
+    const articleUrl = getArticleURL(data.selectedArticleId);
     replies = [
       {
         type: 'text',
@@ -62,9 +63,9 @@ export default async function askingNotUsefulFeedback(params) {
       {
         type: 'text',
         content: {
-          text: t`💁 If you have something to say about this article, feel free to submit us your own reply at ${getArticleURL(
-            data.selectedArticleId
-          )} :)`,
+          text:
+            '💁 ' +
+            `If you have something to say about this article, feel free to submit us your own reply at ${articleUrl} :)`,
         },
       },
     ];
@@ -76,7 +77,7 @@ export default async function askingNotUsefulFeedback(params) {
       {
         type: 'text',
         content: {
-          text: t`The following is your reason:\n"${event.input}"`,
+          text: t`The following is your reason:` + `\n"${event.input}"`,
         },
       },
       {

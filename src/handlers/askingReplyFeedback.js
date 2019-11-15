@@ -69,15 +69,14 @@ export default async function askingReplyFeedback(params) {
 
     const articleUrl = getArticleURL(data.selectedArticleId);
 
-    // A string is used for length here because of the need of i18n.
+    // FIXME: A string is used for length here because of the need of i18n.
     // The ideal length of ellipsis displayed may differ depending on the language.
     // For example, chinese characters are wider so we need a shorter length.
-    const ellipsisLength = t`30`;
+    const ellipsisLength = 30;
+    const content = ellipsis(data.selectedArticleText, ellipsisLength);
+    const contentType = createTypeWords(GetReply.type);
     const sharedContent = {
-      title: t`Hey someone else says "${ellipsis(
-        data.selectedArticleText,
-        parseInt(ellipsisLength, 10)
-      )} is ${createTypeWords(GetReply.type)}!`,
+      title: t`Hey someone else says "${content} is ${contentType}!`,
       subtitle: `Please refer to ${articleUrl} for other replies to this message and references!`,
       buttons: [
         {
@@ -110,7 +109,11 @@ export default async function askingReplyFeedback(params) {
             type: 'template',
             payload: {
               template_type: 'button',
-              text: t`📲 Don't forget to forward the messages above to others and share with them!\n💁 And feel free to submit your own reply if you have anything to say about this!`,
+              text:
+                '📲 ' +
+                t`Don't forget to forward the messages above to others and share with them!` +
+                '\n💁 ' +
+                `And feel free to submit your own reply if you have anything to say about this!`,
               buttons: [
                 {
                   type: 'element_share',

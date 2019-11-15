@@ -9,9 +9,10 @@ export default function defaultState(params) {
     {
       type: 'text',
       content: {
-        // Sorry I don't understand :(
-        // Please try again
-        text: t`Sorry I don't understand :(\nPlease try again.`,
+        text:
+          t`Sorry I don't understand your message :(` +
+          '\n' +
+          t`Please try again.`,
       },
     },
   ];

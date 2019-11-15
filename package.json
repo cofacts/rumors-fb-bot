@@ -10,7 +10,7 @@
     "build": "babel src -d build",
     "renew": "node build/renew.js",
     "i18n:init": "ttag init $LANG i18n/$LANG.po",
-    "i18n:extract": "ttag update i18n/$LANG.po src/handlers/askingArticleSubmission.js"
+    "i18n:extract": "ttag update i18n/$LANG.po src/"
   },
   "author": "changhc",
   "license": "MIT",

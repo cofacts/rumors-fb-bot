@@ -32,7 +32,7 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
-          text: t`Reason you just input:\n"${reason}"`,
+          text: t`Reason you just input` + ':\n"${reason}"',
         },
       },
       {

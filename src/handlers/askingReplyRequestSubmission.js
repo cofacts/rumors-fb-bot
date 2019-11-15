@@ -9,6 +9,7 @@ import { getArticleURL } from './utils';
 export default async function askingArticleSubmission(params) {
   let { data, state, event, issuedAt, userId, replies, isSkipUser } = params;
   const { selectedArticleId } = data;
+  const articleUrl = getArticleURL(selectedArticleId);
 
   if (!data.searchedText) {
     throw new Error('searchText not set in data');
@@ -34,14 +35,10 @@ export default async function askingArticleSubmission(params) {
           text: ngettext(
             msgid`We've recorded your reason. ${
               CreateReplyRequest.replyRequestCount
-            } other user is also waiting for clarification. Please refer to this page for updates: ${getArticleURL(
-              selectedArticleId
-            )}`,
+            } other user is also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
             `We've recorded your reason. ${
               CreateReplyRequest.replyRequestCount
-            } other users are also waiting for clarification. Please refer to this page for updates: ${getArticleURL(
-              selectedArticleId
-            )}`,
+            } other users are also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
             CreateReplyRequest.replyRequestCount
           ),
         },
@@ -66,14 +63,10 @@ export default async function askingArticleSubmission(params) {
           text: ngettext(
             msgid`We've recorded your reason. ${
               CreateReplyRequest.replyRequestCount
-            } other user is also waiting for clarification. Please refer to this page for updates: ${getArticleURL(
-              selectedArticleId
-            )}`,
+            } other user is also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
             `We've recorded your reason. ${
               CreateReplyRequest.replyRequestCount
-            } other users are also waiting for clarification. Please refer to this page for updates: ${getArticleURL(
-              selectedArticleId
-            )}`,
+            } other users are also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
             CreateReplyRequest.replyRequestCount
           ),
         },

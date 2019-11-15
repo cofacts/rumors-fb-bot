@@ -6,7 +6,423 @@ msgstr ""
 "mime-version: 1.0\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: src/handlers/initState.js:229
+#: src/handlers/initState.js:255
 #, javascript-format
 msgid "We're checking \"${ articleSummary }\" for you..."
 msgstr "幫您查詢「${articleSummary}」的相關回應。"
+
+#: src/handlers/askingArticleSubmission.js:39
+#, javascript-format
+msgid "Your submission is now recorded at ${ articleUrl }"
+msgstr ""
+
+#: src/handlers/askingArticleSubmission.js:42
+msgid "Thank you"
+msgstr ""
+
+#: src/handlers/askingArticleSubmission.js:52
+#: src/handlers/askingArticleSubmissionReason.js:23
+msgid "The message is discarded. Thank you."
+msgstr ""
+
+#: src/handlers/askingArticleSubmission.js:60
+#: src/handlers/askingReplyRequestSubmission.js:80
+msgid "Sure. Please revise your reason."
+msgstr ""
+
+#: src/handlers/askingArticleSubmissionReason.js:41
+msgid ""
+"You're about to submit this article and your reason. If they are vague or "
+"improper, you may not be able to submit articles in the future."
+msgstr ""
+
+#: src/handlers/askingArticleSubmissionReason.js:51
+msgid "Please confirm:"
+msgstr ""
+
+#: src/handlers/askingArticleSubmissionReason.js:53
+#: src/handlers/askingNotUsefulFeedback.js:92
+#: src/handlers/askingReplyRequestReason.js:37
+msgid "Submit"
+msgstr ""
+
+#: src/handlers/askingArticleSubmissionReason.js:54
+#: src/handlers/askingNotUsefulFeedback.js:93
+#: src/handlers/askingReplyRequestReason.js:38
+msgid "Revise"
+msgstr ""
+
+#: src/handlers/askingArticleSubmissionReason.js:55
+#: src/handlers/utils.js:114
+#: src/handlers/utils.js:115
+msgid "Discard"
+msgstr ""
+
+#: src/handlers/askingNotUsefulFeedback.js:55
+#: src/handlers/askingNotUsefulFeedbackSubmission.js:54
+#: src/handlers/askingReplyFeedback.js:97
+msgid "We've received feedback from you and {otherFeedbackCount} other user!"
+msgid_plural "We've received feedback from you and {otherFeedbackCount} other users!"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/handlers/askingNotUsefulFeedback.js:60
+#: src/handlers/askingNotUsefulFeedbackSubmission.js:59
+#: src/handlers/askingReplyFeedback.js:102
+msgid "Thanks. You're the first one who gave feedback on this reply!"
+msgstr ""
+
+#: src/handlers/askingNotUsefulFeedback.js:90
+msgid "Fact checkers will see why you find this reply not helpful. Please confirm."
+msgstr ""
+
+#: src/handlers/askingNotUsefulFeedback.js:94
+#: src/handlers/askingNotUsefulFeedbackSubmission.js:83
+#: src/handlers/askingReplyFeedback.js:155
+#: src/handlers/askingReplyRequestReason.js:39
+#: src/handlers/choosingArticle.js:259
+msgid "Skip"
+msgstr ""
+
+#: src/handlers/askingNotUsefulFeedbackSubmission.js:67
+#, javascript-format
+msgid ""
+"If you have something to say about this article, feel free to submit your "
+"own reply at ${ articleUrl } :)"
+msgstr ""
+
+#: src/handlers/askingNotUsefulFeedbackSubmission.js:82
+msgid "Okay. Please revise your reason."
+msgstr ""
+
+#: src/handlers/askingReplyFeedback.js:79
+#, javascript-format
+msgid "Hey someone else says \"${ content } is ${ contentType }!"
+msgstr ""
+
+#: src/handlers/askingReplyFeedback.js:85
+msgid "See other replies"
+msgstr ""
+
+#: src/handlers/askingReplyFeedback.js:133
+msgid "Submit a new reply"
+msgstr ""
+
+#: src/handlers/askingReplyFeedback.js:154
+msgid ""
+"Why do you find this reply not helpful? Please tell us in messages. If you "
+"want to skip this, click the skip button below."
+msgstr ""
+
+#: src/handlers/askingReplyRequestReason.js:25
+msgid ""
+"You are about to submit this article and your reason. If they are vague or "
+"improper, you may not be able to submit articles in the future."
+msgstr ""
+
+#: src/handlers/askingReplyRequestReason.js:35
+msgid "Please confirm"
+msgstr ""
+
+#: src/handlers/askingReplyRequestReason.js:64
+#: src/handlers/askingReplyRequestSubmission.js:35
+#, javascript-format
+msgid ""
+"We've recorded your reason. ${ CreateReplyRequest.replyRequestCount } other "
+"user is also waiting for clarification. Please refer to this page for "
+"updates: ${ articleUrl }"
+msgid_plural ""
+"We've recorded your reason. ${ CreateReplyRequest.replyRequestCount } other "
+"users are also waiting for clarification. Please refer to this page for "
+"updates: ${ articleUrl }"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/handlers/askingReplyRequestSubmission.js:63
+msgid ""
+"We've recorded your reason. ${ _CreateReplyRequest.replyRequestCount } "
+"other user is also waiting for clarification. Please refer to this page for "
+"updates: ${ articleUrl }"
+msgid_plural ""
+"We've recorded your reason. ${ _CreateReplyRequest.replyRequestCount } "
+"other users are also waiting for clarification. Please refer to this page "
+"for updates: ${ articleUrl }"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/handlers/choosingArticle.js:75
+#, javascript-format
+msgid "Please enter 1～${ data.foundArticleIds.length } to choose a reply."
+msgstr ""
+
+#: src/handlers/choosingArticle.js:135
+msgid "${ count.RUMOR } person(s) consider this to be a rumor"
+msgstr ""
+
+#: src/handlers/choosingArticle.js:137
+#, javascript-format
+msgid "${ count.NOT_RUMOR } person(s) think this can be a truth"
+msgstr ""
+
+#: src/handlers/choosingArticle.js:139
+msgid "${ count.OPINIONATED } person(s) think this is simply personal opinion"
+msgstr ""
+
+#: src/handlers/choosingArticle.js:141
+#, javascript-format
+msgid ""
+"${ count.NOT_ARTICLE } person(s) thinks it's off-topic and Cofacts need not "
+"to handle this message"
+msgstr ""
+
+#: src/handlers/choosingArticle.js:195
+msgid "Read this reply"
+msgstr ""
+
+#: src/handlers/choosingArticle.js:212
+#, javascript-format
+msgid "Please refer to ${ articleUrl } for more replies."
+msgstr ""
+
+#: src/handlers/choosingArticle.js:228
+msgid "Tell us about your concern"
+msgstr ""
+
+#: src/handlers/choosingArticle.js:230
+msgid "Sorry, no one has replied to this article yet!"
+msgstr ""
+
+#: src/handlers/choosingArticle.js:232
+msgid ""
+"If you consider this a rumor, please tell us your concern and why we should "
+"figure this out as soon as possible."
+msgstr ""
+
+#: src/handlers/choosingArticle.js:235
+msgid "Please send us in messages the reason why you consider this a rumor."
+msgstr ""
+
+#: src/handlers/choosingArticle.js:258
+msgid "To skip this, click \"Skip\""
+msgstr ""
+
+#: src/handlers/choosingReply.js:34
+#, javascript-format
+msgid "Please enter 1～${ data.foundReplyIds.length } to choose a reply."
+msgstr ""
+
+#: src/handlers/choosingReply.js:62
+msgid "Someone marked this message as \"${ articleType }\" because:"
+msgstr ""
+
+#: src/handlers/choosingReply.js:82
+#, javascript-format
+msgid ""
+"These replies are provided by some nice volunteers. Please refer to ${ "
+"articleUrl } for more information, replies and references."
+msgstr ""
+
+#: src/handlers/choosingReply.js:92
+msgid "Is this reply helpful?"
+msgstr ""
+
+#: src/handlers/choosingReply.js:94
+msgid "Yes"
+msgstr ""
+
+#: src/handlers/choosingReply.js:95
+msgid "No"
+msgstr ""
+
+#: src/handlers/initState.js:131
+#, javascript-format
+msgid "${ count.RUMOR } user considers that this contains misinformation"
+msgid_plural "${ count.RUMOR } users consider that this contains misinformation"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/handlers/initState.js:140
+msgid "${ count.NOT_RUMOR } user thinks that this contains true information"
+msgid_plural "${ count.NOT_RUMOR } users think that this contains true information"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/handlers/initState.js:151
+#, javascript-format
+msgid "${ count.OPINIONATED } user thinks that this is simply a personal opinion"
+msgid_plural "${ count.OPINIONATED } users think that this is simply a personal opinion"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/handlers/initState.js:163
+msgid ", and"
+msgstr ""
+
+#: src/handlers/initState.js:169
+#, javascript-format
+msgid ""
+"but ${ count.NOT_ARTICLE } user thinks that this is off-topic and Cofacts "
+"need not to handle it"
+msgid_plural ""
+"but ${ count.NOT_ARTICLE } users think that this is off-topic and Cofacts "
+"need not to handle it"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/handlers/initState.js:190
+#, javascript-format
+msgid ""
+"Hey there are some articles on #Cofacts that are ${ similarity }% similar "
+"to this one: ${ summary }"
+msgstr ""
+
+#: src/handlers/initState.js:192
+msgid "Go to Cofacts' website for more information!"
+msgstr ""
+
+#: src/handlers/initState.js:234
+msgid "Similarity"
+msgstr ""
+
+#: src/handlers/initState.js:236
+#: src/handlers/initState.js:244
+msgid "Choose this one"
+msgstr ""
+
+#: src/handlers/initState.js:243
+msgid "None of these messages matches mine :("
+msgstr ""
+
+#: src/handlers/initState.js:261
+msgid "Which message below matches what you just sent to us?"
+msgstr ""
+
+#: src/handlers/initState.js:271
+#: src/handlers/initState.js:272
+msgid "I want to contact Cofacts team"
+msgstr ""
+
+#: src/handlers/choosingArticle.js:58
+#: src/handlers/initState.js:293
+msgid "Sorry, please provide more information."
+msgstr ""
+
+#: src/handlers/initState.js:318
+#: src/handlers/initState.js:333
+#. from a comment
+#. for issue #2, keep links in replies when nothing is found
+#. since it contains less information that should be broadcast
+#, javascript-format
+msgid "We didn't find anything about ${ articleSummary } :("
+msgstr ""
+
+#: src/handlers/initState.js:320
+#. from a comment
+#. for issue #2, keep links in replies when nothing is found
+#. since it contains less information that should be broadcast
+msgid "You can try these websites again:"
+msgstr ""
+
+#: src/handlers/initState.js:323
+#. from a comment
+#. for issue #2, keep links in replies when nothing is found
+#. since it contains less information that should be broadcast
+msgid "Or report this article to us!"
+msgstr ""
+
+#: src/handlers/utils.js:22
+msgid "No rating for this reply"
+msgstr ""
+
+#: src/handlers/utils.js:26
+#, javascript-format
+msgid "${ positive } user considers this helpful"
+msgid_plural "${ positive } users consider this helpful"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/handlers/utils.js:33
+msgid "${ negative } user considers this not useful"
+msgid_plural "${ negative } users consider this not useful"
+msgstr[0] ""
+msgstr[1] ""
+
+#: src/handlers/utils.js:49
+msgid "CONTAINS MISINFO"
+msgstr ""
+
+#: src/handlers/utils.js:51
+msgid "CONTAINS TRUE INFO"
+msgstr ""
+
+#: src/handlers/utils.js:53
+msgid "OPINIONATED"
+msgstr ""
+
+#: src/handlers/utils.js:55
+msgid "OFF TOPIC"
+msgstr ""
+
+#: src/handlers/utils.js:69
+msgid "Other replies"
+msgstr ""
+
+#: src/handlers/utils.js:69
+msgid "References"
+msgstr ""
+
+#: src/handlers/utils.js:72
+msgid "This reply doesn't have any reference so it may not be credible."
+msgstr ""
+
+#: src/handlers/utils.js:74
+msgid "This is the only reply to this issue and it may be biased."
+msgstr ""
+
+#: src/handlers/utils.js:89
+msgid ""
+"If you think this can be a rumor, please submit it such that other people "
+"can help fact-check and clarify."
+msgstr ""
+
+#: src/handlers/utils.js:91
+msgid ""
+"Though you don't receive the result of fact-checking soon, this is a big "
+"help to those who receive similar messages in the future."
+msgstr ""
+
+#: src/handlers/utils.js:92
+msgid ""
+"Please tell us WHY YOU CONSIDER THIS A RUMOR so that we can understand the "
+"problem of this suspicious message."
+msgstr ""
+
+#: src/handlers/choosingArticle.js:60
+#: src/handlers/initState.js:295
+msgid "Please refer to our user's manual"
+msgstr ""
+
+#: src/handlers/defaultState.js:13
+msgid "Sorry I don't understand your message :("
+msgstr ""
+
+#: src/handlers/defaultState.js:15
+msgid "Please try again."
+msgstr ""
+
+#: src/handlers/utils.js:87
+msgid "Submit this message?"
+msgstr ""
+
+#: src/handlers/askingArticleSubmissionReason.js:35
+#: src/handlers/askingReplyRequestReason.js:19
+msgid "Reason you just input"
+msgstr ""
+
+#: src/handlers/askingNotUsefulFeedback.js:80
+msgid "The following is your reason:"
+msgstr ""
+
+#: src/handlers/askingReplyFeedback.js:114
+msgid "Don't forget to forward the messages above to others and share with them!"
+msgstr ""

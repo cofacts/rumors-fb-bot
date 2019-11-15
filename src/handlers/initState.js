@@ -1,6 +1,5 @@
 import { t, ngettext, msgid } from 'ttag';
 import stringSimilarity from 'string-similarity';
-import { t } from 'ttag';
 import gql from '../gql';
 import {
   createPostbackAction,
@@ -161,7 +160,8 @@ export default async function initState(params) {
         : '';
 
       let summary =
-        t`, and\n` +
+        t`, and` +
+        ' \n' +
         `${rumorSummary}` +
         `${notRumorSummary}` +
         `${opinionatedSummary}`;
@@ -293,8 +293,8 @@ export default async function initState(params) {
             text:
               t`Sorry, please provide more information.` +
               '\n' +
-              t`Please refer to our 📖 user's manual` +
-              ' http://bit.ly/cofacts-fb-users',
+              t`Please refer to our user's manual` +
+              ' 📖 http://bit.ly/cofacts-fb-users',
           },
         },
       ];

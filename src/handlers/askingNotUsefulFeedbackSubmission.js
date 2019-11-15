@@ -44,6 +44,7 @@ export default async function askingNotUsefulFeedbackSubmission(params) {
     );
 
     const otherFeedbackCount = feedbackCount - 1;
+    const articleUrl = getArticleURL(data.selectedArticleId);
     replies = [
       {
         type: 'text',
@@ -61,9 +62,9 @@ export default async function askingNotUsefulFeedbackSubmission(params) {
       {
         type: 'text',
         content: {
-          text: t`💁 If you have something to say about this article, feel free to submit your own reply at ${getArticleURL(
-            data.selectedArticleId
-          )} :)`,
+          text:
+            '💁 ' +
+            t`If you have something to say about this article, feel free to submit your own reply at ${articleUrl} :)`,
         },
       },
     ];

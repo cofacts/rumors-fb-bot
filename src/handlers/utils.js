@@ -84,7 +84,7 @@ export function createReferenceWords({ reference, type }) {
 export function createAskArticleSubmissionReply() {
   const replyText =
     '【' +
-    t`送出訊息到公開資料庫？` +
+    t`Submit this message?` +
     '】\n' +
     t`If you think this can be a rumor, please submit it such that other people can help fact-check and clarify.` +
     '\n\n' +

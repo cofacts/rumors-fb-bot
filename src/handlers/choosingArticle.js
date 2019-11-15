@@ -54,7 +54,11 @@ export default async function choosingArticle(params) {
       {
         type: 'text',
         content: {
-          text: t`Sorry, please provide more information.\nPlease refer to our user's manual 📖 http://bit.ly/cofacts-fb-users`,
+          text:
+            t`Sorry, please provide more information.` +
+            '\n' +
+            t`Please refer to our user's manual` +
+            ' 📖 http://bit.ly/cofacts-fb-users',
         },
       },
     ];
@@ -111,26 +115,33 @@ export default async function choosingArticle(params) {
       dt: data.selectedArticleText,
     });
 
-    const count = {};
+    const count = {
+      RUMOR: 0,
+      NOT_RUMOR: 0,
+      OPINIONATED: 0,
+      NOT_ARTICLE: 0,
+    };
 
     GetArticle.articleReplies.forEach(ar => {
       // Track which Reply is searched. And set tracking event as non-interactionHit.
       visitor.event({ ec: 'Reply', ea: 'Search', el: ar.reply.id, ni: true });
 
       const type = ar.reply.type;
-      if (!count[type]) {
-        count[type] = 1;
-      } else {
-        count[type]++;
-      }
+      count[type] += 1;
     });
 
     const articleReplies = reorderArticleReplies(GetArticle.articleReplies);
-    const summary = t`${count.RUMOR ||
-      0} person(s) consider this to be a rumor ❌\n${count.NOT_RUMOR ||
-      0} person(s) think this can be a truth ⭕\n${count.OPINIONATED ||
-      0} person(s) think this is simply personal opinion 💬\n${count.NOT_ARTICLE ||
-      0} person(s) thinks it's off-topic and Cofacts need not to handle this message ⚠️️\n`;
+    const summary =
+      t`${count.RUMOR} person(s) consider this to be a rumor` +
+      ' ❌\n' +
+      t`${count.NOT_RUMOR} person(s) think this can be a truth` +
+      ' ⭕\n' +
+      t`${count.OPINIONATED} person(s) think this is simply personal opinion` +
+      ' 💬\n' +
+      t`${
+        count.NOT_ARTICLE
+      } person(s) thinks it's off-topic and Cofacts need not to handle this message` +
+      ' ⚠️️\n';
 
     replies = [
       {
@@ -193,13 +204,12 @@ export default async function choosingArticle(params) {
         },
       });
 
+      const articleUrl = getArticleURL(selectedArticleId);
       if (articleReplies.length > 10) {
         replies.push({
           type: 'text',
           content: {
-            text: t`Please refer to ${getArticleURL(
-              selectedArticleId
-            )} for more replies.`,
+            text: t`Please refer to ${articleUrl} for more replies.`,
           },
         });
       }
@@ -213,8 +223,17 @@ export default async function choosingArticle(params) {
         el: selectedArticleId,
       });
 
-      const replyText = t`【Tell us about your concern】\nSorry, no one has replied to this article yet!\n\nIf you consider this a rumor, please tell us your concern and why we should figure this out as soon as possible\n\n`;
-      const promptText = t`Please send us in messages the reason why you consider this a rumor.\n`;
+      const replyText =
+        '【' +
+        t`Tell us about your concern` +
+        '】\n' +
+        t`Sorry, no one has replied to this article yet!` +
+        '\n\n' +
+        t`If you consider this a rumor, please tell us your concern and why we should figure this out as soon as possible.` +
+        '\n\n';
+      const promptText =
+        t`Please send us in messages the reason why you consider this a rumor.` +
+        '\n';
 
       replies = [
         {

@@ -16,7 +16,7 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
-          text: t`Reason you just input:\n"${reason}"`,
+          text: t`Reason you just input` + ':\n"${reason}"',
         },
       },
       {
@@ -56,6 +56,7 @@ export default async function askingArticleSubmission(params) {
       }
     `({ id: selectedArticleId }, { userId });
 
+    const articleUrl = getArticleURL(selectedArticleId);
     replies = [
       {
         type: 'text',
@@ -63,14 +64,10 @@ export default async function askingArticleSubmission(params) {
           text: ngettext(
             msgid`We've recorded your reason. ${
               CreateReplyRequest.replyRequestCount
-            } other user is also waiting for clarification. Please refer to this page for updates: ${getArticleURL(
-              selectedArticleId
-            )}`,
+            } other user is also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
             `We've recorded your reason. ${
               CreateReplyRequest.replyRequestCount
-            } other users are also waiting for clarification. Please refer to this page for updates: ${getArticleURL(
-              selectedArticleId
-            )}`,
+            } other users are also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
             CreateReplyRequest.replyRequestCount
           ),
         },

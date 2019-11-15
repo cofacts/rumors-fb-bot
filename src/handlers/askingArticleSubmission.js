@@ -31,13 +31,12 @@ export default async function askingArticleSubmission(params) {
       }
     `({ text: data.searchedText, reason }, { userId });
 
+    const articleUrl = getArticleURL(CreateArticle.id);
     replies = [
       {
         type: 'text',
         content: {
-          text: t`Your submission is now recorded at ${getArticleURL(
-            CreateArticle.id
-          )}`,
+          text: t`Your submission is now recorded at ${articleUrl}`,
         },
       },
       { type: 'text', content: { text: t`Thank you` } },
