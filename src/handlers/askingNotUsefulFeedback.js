@@ -53,8 +53,8 @@ export default async function askingNotUsefulFeedback(params) {
           text:
             otherFeedbackCount > 0
               ? ngettext(
-                  msgid`We've received feedback from you and {otherFeedbackCount} other user!`,
-                  `We've received feedback from you and {otherFeedbackCount} other users!`,
+                  msgid`We've received feedback from you and ${otherFeedbackCount} other user!`,
+                  `We've received feedback from you and ${otherFeedbackCount} other users!`,
                   otherFeedbackCount
                 )
               : t`Thanks. You're the first one who gave feedback on this reply!`,

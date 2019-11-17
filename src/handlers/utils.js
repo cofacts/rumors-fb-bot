@@ -66,7 +66,7 @@ export function createTypeWords(type) {
  * @returns {string} The reference message to send
  */
 export function createReferenceWords({ reference, type }) {
-  const prompt = type === 'OPINIONATED' ? t`Other replies` : t`References`;
+  const prompt = type === 'OPINIONATED' ? t`Other perspectives` : t`References`;
 
   if (reference) return `${prompt}：${reference}`;
   let warning = t`This reply doesn't have any reference so it may not be credible.`;

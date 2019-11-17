@@ -76,7 +76,7 @@ export default async function askingReplyFeedback(params) {
     const content = ellipsis(data.selectedArticleText, ellipsisLength);
     const contentType = createTypeWords(GetReply.type);
     const sharedContent = {
-      title: t`Hey someone else says "${content} is ${contentType}!`,
+      title: t`Hey someone else says “${content}” is ${contentType}!`,
       subtitle: `Please refer to ${articleUrl} for other replies to this message and references!`,
       buttons: [
         {
@@ -95,8 +95,8 @@ export default async function askingReplyFeedback(params) {
           text:
             otherFeedbackCount > 0
               ? ngettext(
-                  msgid`We've received feedback from you and {otherFeedbackCount} other user!`,
-                  `We've received feedback from you and {otherFeedbackCount} other users!`,
+                  msgid`We've received feedback from you and ${otherFeedbackCount} other user!`,
+                  `We've received feedback from you and ${otherFeedbackCount} other users!`,
                   otherFeedbackCount
                 )
               : t`Thanks. You're the first one who gave feedback on this reply!`,

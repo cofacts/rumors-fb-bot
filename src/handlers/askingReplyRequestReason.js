@@ -22,7 +22,7 @@ export default async function askingArticleSubmission(params) {
       {
         type: 'text',
         content: {
-          text: t`You are about to submit this article and your reason. If they are vague or improper, you may not be able to submit articles in the future.`,
+          text: t`You're about to submit this article and your reason. If they are vague or improper, you may not be able to submit articles in the future.`,
         },
       },
       {

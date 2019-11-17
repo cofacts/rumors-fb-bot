@@ -52,8 +52,8 @@ export default async function askingNotUsefulFeedbackSubmission(params) {
           text:
             otherFeedbackCount > 0
               ? ngettext(
-                  msgid`We've received feedback from you and {otherFeedbackCount} other user!`,
-                  `We've received feedback from you and {otherFeedbackCount} other users!`,
+                  msgid`We've received feedback from you and ${otherFeedbackCount} other user!`,
+                  `We've received feedback from you and ${otherFeedbackCount} other users!`,
                   otherFeedbackCount
                 )
               : t`Thanks. You're the first one who gave feedback on this reply!`,
@@ -79,7 +79,7 @@ export default async function askingNotUsefulFeedbackSubmission(params) {
             type: 'template',
             payload: {
               template_type: 'button',
-              text: t`Okay. Please revise your reason.`,
+              text: t`Sure. Please revise your reason.`,
               buttons: [createPostbackAction(t`Skip`, 'n')],
             },
           },
