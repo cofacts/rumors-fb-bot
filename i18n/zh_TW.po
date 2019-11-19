@@ -276,6 +276,7 @@ msgstr "請問下列文章中，哪一篇是您剛才傳送的訊息呢？"
 
 #: src/handlers/initState.js:272
 #: src/handlers/initState.js:273
+#: src/messageHandler.js:101
 msgid "I want to contact Cofacts team"
 msgstr "我是要找 Cofacts 的人啦"
 
@@ -433,3 +434,20 @@ msgid ""
 "And feel free to submit your own reply if you have anything to say about "
 "this!"
 msgstr "若您認為自己能回應得更好，歡迎提出新的回應唷！"
+
+#: src/messageHandler.js:36
+#. Set default result
+#. format of a reply: { type, content }
+msgid "Sorry, currently we only support text messages :("
+msgstr "我們還不支援文字以外的訊息唷！"
+
+#: src/messageHandler.js:110
+#, javascript-format
+msgid "We can be reached at ${ contactEmail } :)"
+msgstr "請寫信到\n${ contactEmail }\n我們都會收信喔~"
+
+#: src/messageHandler.js:148
+msgid ""
+"Oops, there is something wrong with the bot. Could you please resend your "
+"message?"
+msgstr "糟糕，bot 故障了。可以再傳一次嗎？ QQ"
