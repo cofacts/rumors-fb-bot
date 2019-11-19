@@ -22,7 +22,7 @@ Please finish the following settings before starting development.
 
 Please follow all the steps in [Facebook Messenger Platform](https://developers.facebook.com/docs/messenger-platform/getting-started).
 
-Note that we need permission `manage_pages`, `publish_pages`, `Page Public Content Access`, and `pages_messaging` for your app. Tests passed on 2019.1.1 using Graph API _v3.1_ and Send API _v2.6_.
+Note that we need permission `manage_pages`, `publish_pages`, `Page Public Content Access`, and `pages_messaging` for your app. Tests passed on 2019.11.1 using Graph API _v3.3_ and Send API _v2.6_.
 
 **Important**: Please refer to [this page](https://github.com/cofacts/rumors-fb-bot/blob/dev/FacebookToken.md) for Facebook access tokens.
 
@@ -41,6 +41,7 @@ APP_SECRET=<paste your Facebook app secret here>
 
 Other customizable env vars are:
 
+* `LOCALE`: Your locale for building with i18n. `en_US` is used if not given.
 * `REDIS_URL`: If not given, `redis://127.0.0.1:6379` is used.
 * `PORT`: Which port the bot server will listen at.
 * `GOOGLE_DRIVE_IMAGE_FOLDER`: Google drive folder id is needed when you want to test uploading image.
@@ -71,15 +72,13 @@ and the server will be started on `localhost:5000`. (Or the `PORT` you specified
 
 ### Get Facebook webhook events from your local machine
 
-We recommend [using `ngrok`](https://medium.com/@Oskarr3/developing-messenger-bot-with-ngrok-5d23208ed7c8#.csc8rum8s) to create a public address that directs the traffic from Facebook server to your local machine. With `ngrok` in your path, just execute
+We recommend [using `localtunnel`](https://github.com/localtunnel/localtunnel) to create a public address that directs the traffic from Facebook server to your local machine. With `localtunnel` installed globally in your path, just execute
 
 ```
-$ ngrok http 5000
+$ lt -s <custom subdomain> -p <port>
 ```
 
-`ngrok` will give you a public URL. Use this to set the webhook URL of your Page (See the tutorial in [Facebook Messenger Platform](https://developers.facebook.com/docs/messenger-platform/webhook)).
-
-We recommend using [ngrok configuration file](https://ngrok.com/docs#config) to setup a tunnel with a fixed `subdomain`. In this way the public URL can be fixed (means no repeatitive copy-pasting to Facebook Webhook settings!) as long as the `subdomain` is not occupied by others.
+`localtunnel` will give you a public URL. Use this to set the webhook URL of your Page (See the tutorial in [Facebook Messenger Platform](https://developers.facebook.com/docs/messenger-platform/webhook)).
 
 ### Upload image/video
 
@@ -132,6 +131,8 @@ $ heroku config:set VERIFY_TOKEN=<Your webhook verification token>
 $ heroku config:set APP_SECRET=<Your Facebook app secret>
 $ heroku config:set GOOGLE_CREDENTIALS=<Your google credential (optional)>
 ```
+
+**Note**: To deploy a build with i18n, `LOCALE` needs to be set _BEFORE_ the next deployment.
 
 ## Google Analytics Events table
 
