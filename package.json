@@ -7,11 +7,11 @@
     "test": "jest",
     "start": "node main.js",
     "lint": "eslint .",
-    "build": "ttag replace i18n/$LANG.po src src && babel src -d build",
+    "build": "babel src -d build",
     "renew": "node build/renew.js",
-    "i18n:init": "ttag init $LANG i18n/$LANG.po",
-    "i18n:extract": "ttag update i18n/$LANG.po src/",
-    "i18n:validate": "ttag validate i18n/$LANG.po"
+    "i18n:init": "ttag init $LOCALE i18n/$LOCALE.po",
+    "i18n:extract": "ttag update i18n/$LOCALE.po src/",
+    "i18n:validate": "ttag validate i18n/$LOCALE.po"
   },
   "author": "changhc",
   "license": "MIT",
