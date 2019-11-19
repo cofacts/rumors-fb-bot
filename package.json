@@ -7,7 +7,7 @@
     "test": "jest",
     "start": "node main.js",
     "lint": "eslint .",
-    "build": "babel src -d build",
+    "build": "ttag replace i18n/$LANG.po src src && babel src -d build",
     "renew": "node build/renew.js",
     "i18n:init": "ttag init $LANG i18n/$LANG.po",
     "i18n:extract": "ttag update i18n/$LANG.po src/",
