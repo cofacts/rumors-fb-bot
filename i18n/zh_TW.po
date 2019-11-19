@@ -274,25 +274,10 @@ msgstr "這裡沒有一篇是我傳的訊息。"
 msgid "Which message below matches what you just sent to us?"
 msgstr "請問下列文章中，哪一篇是您剛才傳送的訊息呢？"
 
-#: src/handlers/initState.js:272
-#: src/handlers/initState.js:273
-#: src/messageHandler.js:101
-msgid "I want to contact Cofacts team"
-msgstr "我是要找 Cofacts 的人啦"
-
 #: src/handlers/choosingArticle.js:58
 #: src/handlers/initState.js:294
 msgid "Sorry, please provide more information."
 msgstr "你傳的資訊資訊太少，無法為你搜尋資料庫噢！"
-
-#: src/handlers/initState.js:319
-#: src/handlers/initState.js:334
-#. from a comment
-#. for issue #2, keep links in replies when nothing is found
-#. since it contains less information that should be broadcast
-#, javascript-format
-msgid "We didn't find anything about ${ articleSummary } :("
-msgstr "找不到關於「${articleSummary}」的訊息耶"
 
 #: src/handlers/initState.js:321
 #. from a comment
@@ -444,10 +429,28 @@ msgstr "我們還不支援文字以外的訊息唷！"
 #: src/messageHandler.js:110
 #, javascript-format
 msgid "We can be reached at ${ contactEmail } :)"
-msgstr "請寫信到\n${ contactEmail }\n我們都會收信喔~"
+msgstr ""
+"請寫信到\n"
+"${ contactEmail }\n"
+"我們都會收信喔~"
 
 #: src/messageHandler.js:148
 msgid ""
 "Oops, there is something wrong with the bot. Could you please resend your "
 "message?"
 msgstr "糟糕，bot 故障了。可以再傳一次嗎？ QQ"
+
+#: src/handlers/initState.js:272
+#: src/handlers/initState.js:273
+#: src/messageHandler.js:101
+msgid "Contact Cofacts team"
+msgstr "我是要找 Cofacts 的人啦"
+
+#: src/handlers/initState.js:319
+#: src/handlers/initState.js:334
+#. from a comment
+#. for issue #2, keep links in replies when nothing is found
+#. since it contains less information that should be broadcast
+#, javascript-format
+msgid "We didn't find anything about \"${ articleSummary }\" :("
+msgstr "找不到關於「${articleSummary}」的訊息耶 QQ"

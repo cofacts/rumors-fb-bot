@@ -269,8 +269,8 @@ export default async function initState(params) {
           quick_replies: [
             {
               content_type: 'text',
-              title: t`I want to contact Cofacts team`,
-              payload: t`I want to contact Cofacts team`,
+              title: t`Contact Cofacts team`,
+              payload: t`Contact Cofacts team`,
             },
           ],
         },
@@ -316,7 +316,7 @@ export default async function initState(params) {
             type: 'text',
             content: {
               text:
-                t`We didn't find anything about ${articleSummary} :(` +
+                t`We didn't find anything about "${articleSummary}" :(` +
                 '\n' +
                 t`You can try these websites again:` +
                 '\n' +
@@ -331,7 +331,7 @@ export default async function initState(params) {
           {
             type: 'text',
             content: {
-              text: t`We didn't find anything about ${articleSummary} :(`,
+              text: t`We didn't find anything about "${articleSummary}" :(`,
             },
           },
         ].concat(createAskArticleSubmissionReply());
