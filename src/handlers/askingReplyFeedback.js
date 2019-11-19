@@ -77,7 +77,7 @@ export default async function askingReplyFeedback(params) {
     const contentType = createTypeWords(GetReply.type);
     const sharedContent = {
       title: t`Hey someone else says “${content}” is ${contentType}!`,
-      subtitle: `Please refer to ${articleUrl} for other replies to this message and references!`,
+      subtitle: t`Please refer to ${articleUrl} for other replies to this message and references!`,
       buttons: [
         {
           type: 'web_url',
@@ -113,7 +113,7 @@ export default async function askingReplyFeedback(params) {
                 '📲 ' +
                 t`Don't forget to forward the messages above to others and share with them!` +
                 '\n💁 ' +
-                `And feel free to submit your own reply if you have anything to say about this!`,
+                t`And feel free to submit your own reply if you have anything to say about this!`,
               buttons: [
                 {
                   type: 'element_share',

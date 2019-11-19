@@ -414,3 +414,22 @@ msgstr "網路上有人說「${content}」${contentType}喔！"
 #: src/handlers/utils.js:69
 msgid "Other perspectives"
 msgstr "不同觀點請見"
+
+#: src/handlers/askingNotUsefulFeedback.js:68
+#, javascript-format
+msgid ""
+"If you have something to say about this article, feel free to submit us "
+"your own reply at ${ articleUrl } :)"
+msgstr "若您認為自己能回應得更好，歡迎到 ${ articleUrl } 提出新的回應唷！"
+
+#: src/handlers/askingReplyFeedback.js:80
+msgid ""
+"Please refer to ${ articleUrl } for other replies to this message and "
+"references!"
+msgstr "請至 ${ articleUrl } 看看鄉親們針對這則訊息的回應、理由，與所找的出處唷！"
+
+#: src/handlers/askingReplyFeedback.js:116
+msgid ""
+"And feel free to submit your own reply if you have anything to say about "
+"this!"
+msgstr "若您認為自己能回應得更好，歡迎提出新的回應唷！"

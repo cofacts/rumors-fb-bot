@@ -65,7 +65,7 @@ export default async function askingNotUsefulFeedback(params) {
         content: {
           text:
             '💁 ' +
-            `If you have something to say about this article, feel free to submit us your own reply at ${articleUrl} :)`,
+            t`If you have something to say about this article, feel free to submit us your own reply at ${articleUrl} :)`,
         },
       },
     ];
