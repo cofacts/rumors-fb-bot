@@ -24,16 +24,16 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "【送出訊息到公開資料庫？】
-若這是「轉傳訊息」，而且您覺得這很可能是一則「謠言」，請將這則訊息送進公開資料庫建檔，讓好心人查證與回覆。
+        "text": "【Submit this message?】
+If you think this can be a rumor, please submit it such that other people can help fact-check and clarify.
 
-雖然您不會立刻收到查證結果，但可以幫助到未來同樣收到這份訊息的人。",
+Though you don't receive the result of fact-checking soon, this is a big help to those who receive similar messages in the future.",
       },
       "type": "text",
     },
     Object {
       "content": Object {
-        "text": "請把「為何您會覺得這是一則謠言」的理由傳給我們，幫助闢謠編輯釐清您有疑惑之處。",
+        "text": "Please tell us WHY YOU CONSIDER THIS A RUMOR so that we can understand the problem of this suspicious message.",
       },
       "type": "text",
     },
@@ -44,12 +44,12 @@ Object {
             "buttons": Array [
               Object {
                 "payload": "n",
-                "title": "放棄送出",
+                "title": "Discard",
                 "type": "postback",
               },
             ],
             "template_type": "button",
-            "text": "若要放棄，請按「放棄送出」。",
+            "text": "Discard",
           },
           "type": "template",
         },
@@ -128,11 +128,10 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "這個訊息有：
-1 則回應標成 ❌ 含有不實訊息
-0 則回應標成 ⭕ 含有真實訊息
-1 則回應標成 💬 含有個人意見
-2 則回應標成 ⚠️️ 不在查證範圍
+        "text": "1 person(s) consider this to be a rumor ❌
+0 person(s) think this can be a truth ⭕
+1 person(s) think this is simply personal opinion 💬
+2 person(s) thinks it's off-topic and Cofacts need not to handle this message ⚠️️
 ",
       },
       "type": "text",
@@ -146,12 +145,12 @@ Object {
                 "buttons": Array [
                   Object {
                     "payload": 1,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "❌ 含有不實訊息
-[有 3 人覺得此回應有幫助]",
+                "subtitle": "❌ CONTAINS MISINFO
+[3 users consider this helpful]",
                 "title": "老榮民有住所，有月退俸，也不需要特別的醫療護理，因此較適合榮民之家養老，慈濟也一直關懷陪伴。護理之家有免費方案，入住資格和有無捐款沒有關係。
 慈善機構使用資源需",
               },
@@ -159,36 +158,36 @@ Object {
                 "buttons": Array [
                   Object {
                     "payload": 2,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "💬 含有個人意見
-[還沒有人針對此回應評價]",
+                "subtitle": "💬 OPINIONATED
+[No rating for this reply]",
                 "title": "慈濟自來有褒有貶，每人有各自的看法。",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 3,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "⚠️️ 不在查證範圍
-[還沒有人針對此回應評價]",
+                "subtitle": "⚠️️ OFF TOPIC
+[No rating for this reply]",
                 "title": "整個基督教徒的打手，自己不努力去牧人、募款，利用攻擊別人，三分真七分假，更利用多帳號來造勢及造風向，害我也差點相信了，各位有智慧的看官，看過之後，笑一笑即可，別",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 4,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "⚠️️ 不在查證範圍
-[還沒有人針對此回應評價]",
+                "subtitle": "⚠️️ OFF TOPIC
+[No rating for this reply]",
                 "title": "文章是假的 照片也是盜用我方家人的照片,嚴重影響我家人名譽,我方已對po文的人聯絡並打算提出告訴,請勿相信謠言.",
               },
             ],
@@ -243,11 +242,10 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "這個訊息有：
-6 則回應標成 ❌ 含有不實訊息
-2 則回應標成 ⭕ 含有真實訊息
-1 則回應標成 💬 含有個人意見
-2 則回應標成 ⚠️️ 不在查證範圍
+        "text": "6 person(s) consider this to be a rumor ❌
+2 person(s) think this can be a truth ⭕
+1 person(s) think this is simply personal opinion 💬
+2 person(s) thinks it's off-topic and Cofacts need not to handle this message ⚠️️
 ",
       },
       "type": "text",
@@ -261,120 +259,120 @@ Object {
                 "buttons": Array [
                   Object {
                     "payload": 1,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "❌ 含有不實訊息
-[還沒有人針對此回應評價]",
+                "subtitle": "❌ CONTAINS MISINFO
+[No rating for this reply]",
                 "title": "回應1",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 2,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "❌ 含有不實訊息
-[還沒有人針對此回應評價]",
+                "subtitle": "❌ CONTAINS MISINFO
+[No rating for this reply]",
                 "title": "回應2",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 3,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "⭕ 含有真實訊息
-[還沒有人針對此回應評價]",
+                "subtitle": "⭕ CONTAINS TRUE INFO
+[No rating for this reply]",
                 "title": "回應3",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 4,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "⭕ 含有真實訊息
-[還沒有人針對此回應評價]",
+                "subtitle": "⭕ CONTAINS TRUE INFO
+[No rating for this reply]",
                 "title": "回應4",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 5,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "❌ 含有不實訊息
-[還沒有人針對此回應評價]",
+                "subtitle": "❌ CONTAINS MISINFO
+[No rating for this reply]",
                 "title": "回應5",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 6,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "❌ 含有不實訊息
-[還沒有人針對此回應評價]",
+                "subtitle": "❌ CONTAINS MISINFO
+[No rating for this reply]",
                 "title": "回應6",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 7,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "💬 含有個人意見
-[還沒有人針對此回應評價]",
+                "subtitle": "💬 OPINIONATED
+[No rating for this reply]",
                 "title": "回應9",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 8,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "❌ 含有不實訊息
-[還沒有人針對此回應評價]",
+                "subtitle": "❌ CONTAINS MISINFO
+[No rating for this reply]",
                 "title": "回應10",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 9,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "❌ 含有不實訊息
-[還沒有人針對此回應評價]",
+                "subtitle": "❌ CONTAINS MISINFO
+[No rating for this reply]",
                 "title": "回應11",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 10,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "⚠️️ 不在查證範圍
-[還沒有人針對此回應評價]",
+                "subtitle": "⚠️️ OFF TOPIC
+[No rating for this reply]",
                 "title": "回應7。
 ",
               },
@@ -388,7 +386,7 @@ Object {
     },
     Object {
       "content": Object {
-        "text": "更多回應請到：https://cofacts.g0v.tw/article/AV8d2-YtyCdS-nWhuhdi",
+        "text": "Please refer to https://cofacts.g0v.tw/article/AV8d2-YtyCdS-nWhuhdi for more replies.",
       },
       "type": "text",
     },
@@ -439,11 +437,10 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "這個訊息有：
-2 則回應標成 ❌ 含有不實訊息
-0 則回應標成 ⭕ 含有真實訊息
-0 則回應標成 💬 含有個人意見
-0 則回應標成 ⚠️️ 不在查證範圍
+        "text": "2 person(s) consider this to be a rumor ❌
+0 person(s) think this can be a truth ⭕
+0 person(s) think this is simply personal opinion 💬
+0 person(s) thinks it's off-topic and Cofacts need not to handle this message ⚠️️
 ",
       },
       "type": "text",
@@ -457,25 +454,25 @@ Object {
                 "buttons": Array [
                   Object {
                     "payload": 1,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "❌ 含有不實訊息
-[有 14 人覺得此回應有幫助
-有 2 人覺得此回應沒幫助]",
+                "subtitle": "❌ CONTAINS MISINFO
+[14 users consider this helpful
+2 users consider this not useful]",
                 "title": "查證這則謠言的過程中，約翰走鹿也發現其實網路早就有許多解答，就讓約翰走鹿來借花獻佛一下囉。多家媒體都有針對這則「吃生魚片會有海獸胃腺蟲附著胃壁」的謠言請教醫師，",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 2,
-                    "title": "閱讀此回應",
+                    "title": "Read this reply",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "❌ 含有不實訊息
-[有 24 人覺得此回應有幫助]",
+                "subtitle": "❌ CONTAINS MISINFO
+[24 users consider this helpful]",
                 "title": "過去台灣只有一個海獸胃腺蟲鑽入胃壁的病例，而且僅有一隻蟲。而經查詢，台北馬偕醫院也沒有名為林清風的醫師。",
               },
             ],
@@ -520,11 +517,10 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "這個訊息有：
-1 則回應標成 ❌ 含有不實訊息
-0 則回應標成 ⭕ 含有真實訊息
-0 則回應標成 💬 含有個人意見
-0 則回應標成 ⚠️️ 不在查證範圍
+        "text": "1 person(s) consider this to be a rumor ❌
+0 person(s) think this can be a truth ⭕
+0 person(s) think this is simply personal opinion 💬
+0 person(s) thinks it's off-topic and Cofacts need not to handle this message ⚠️️
 ",
       },
       "type": "text",
@@ -560,10 +556,10 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "【跟編輯說您的疑惑】
-抱歉這篇訊息還沒有人回應過唷！
+        "text": "【Tell us about your concern】
+Sorry, no one has replied to this article yet!
 
-若您覺得這是一則謠言，請指出您有疑惑之處，說服編輯這是一份應該被闢謠的訊息。
+If you consider this a rumor, please tell us your concern and why we should figure this out as soon as possible.
 
 ",
       },
@@ -571,7 +567,7 @@ Object {
     },
     Object {
       "content": Object {
-        "text": "請把「為何您會覺得這是一則謠言」的理由打字傳給我們，幫助闢謠編輯釐清您有疑惑之處；
+        "text": "Please send us in messages the reason why you consider this a rumor.
 ",
       },
       "type": "text",
@@ -583,12 +579,12 @@ Object {
             "buttons": Array [
               Object {
                 "payload": "n",
-                "title": "我不想填理由",
+                "title": "Skip",
                 "type": "postback",
               },
             ],
             "template_type": "button",
-            "text": "若想跳過，請按「我不想填理由」。",
+            "text": "To skip this, click \\"Skip\\"",
           },
           "type": "template",
         },

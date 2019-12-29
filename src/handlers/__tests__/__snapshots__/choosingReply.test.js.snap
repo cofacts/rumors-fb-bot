@@ -25,7 +25,7 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "請輸入 1～1 的數字，來選擇回應。",
+        "text": "Please enter 1～1 to choose a reply.",
       },
       "type": "text",
     },
@@ -64,7 +64,7 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "有人標記這個訊息 ⚠️️ 不在查證範圍，理由是：",
+        "text": "Someone marked this message as \\"⚠️️ OFF TOPIC\\" because:",
       },
       "type": "text",
     },
@@ -76,13 +76,13 @@ Object {
     },
     Object {
       "content": Object {
-        "text": "􀂅 ⚠️️ 此回應沒有出處，請自行斟酌回應之可信度。⚠️️  􀂅",
+        "text": "􀂅 ⚠️️ This reply doesn't have any reference so it may not be credible. ⚠️️  􀂅",
       },
       "type": "text",
     },
     Object {
       "content": Object {
-        "text": "💁 以上訊息由好心人提供。建議至 https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz 觀看完整的訊息內容、其他鄉親的回應，以及他們各自所提出的理由與出處。",
+        "text": "💁 These replies are provided by some nice volunteers. Please refer to https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz for more information, replies and references.",
       },
       "type": "text",
     },
@@ -93,17 +93,17 @@ Object {
             "buttons": Array [
               Object {
                 "payload": "y",
-                "title": "是",
+                "title": "Yes",
                 "type": "postback",
               },
               Object {
                 "payload": "n",
-                "title": "否",
+                "title": "No",
                 "type": "postback",
               },
             ],
             "template_type": "button",
-            "text": "請問上面回應是否有幫助？",
+            "text": "Is this reply helpful?",
           },
           "type": "template",
         },

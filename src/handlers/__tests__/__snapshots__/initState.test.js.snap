@@ -23,13 +23,13 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "幫您查詢「計程車上有裝悠遊卡感⋯⋯」的相關回應。",
+        "text": "We're checking \\"計程車上有裝悠遊卡感⋯⋯\\" for you...",
       },
       "type": "text",
     },
     Object {
       "content": Object {
-        "text": "請問下列文章中，哪一篇是您剛才傳送的訊息呢？",
+        "text": "Which message below matches what you just sent to us?",
       },
       "type": "text",
     },
@@ -42,22 +42,22 @@ Object {
                 "buttons": Array [
                   Object {
                     "payload": 1,
-                    "title": "選擇此則",
+                    "title": "Choose this one",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "[相似度:52.41%]",
+                "subtitle": "[Similarity 52.41%]",
                 "title": "計程車上有裝悠遊卡感應器，老人悠悠卡可以享受優惠部分由政府補助，不影響司機收入，下車時使用老人悠遊卡，跳錶車資105元，優惠32元，只扣73元，哈哈，這是屬於我",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 0,
-                    "title": "選擇",
+                    "title": "Choose this one",
                     "type": "postback",
                   },
                 ],
-                "title": "這裡沒有一篇是我傳的訊息。",
+                "title": "None of these messages matches mine :(",
               },
             ],
             "template_type": "generic",
@@ -67,8 +67,8 @@ Object {
         "quick_replies": Array [
           Object {
             "content_type": "text",
-            "payload": "我是要找 Cofacts 的人啦",
-            "title": "我是要找 Cofacts 的人啦",
+            "payload": "Contact Cofacts team",
+            "title": "Contact Cofacts team",
           },
         ],
       },
@@ -103,13 +103,13 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "#Cofacts 上有訊息跟這則有 52% 像，而且有：
-1 個人覺得 ❌ 含有不實訊息
-1 個人覺得 ⭕ 含有真實訊息
-1 個人覺得 💬 含有個人意見
-，不過有 2 個人覺得 ⚠️️ 不在 Cofacts查證範圍
+        "text": "Hey there are some articles on #Cofacts that are 52% similar to this one: , and 
+1 user considers that this contains misinformation ❌
+1 user thinks that this contains true information ⭕
+1 user thinks that this is simply a personal opinion 💬
+but 2 users think that this is off-topic and Cofacts need not to handle it
 
-到 Cofacts 上面看看相關訊息吧！
+Go to Cofacts' website for more information!
 https://cofacts.g0v.tw/article/AVvY-yizyCdS-nWhuYWx",
       },
       "type": "text",
@@ -144,13 +144,13 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "幫您查詢「YouTube · ⋯⋯」的相關回應。",
+        "text": "We're checking \\"YouTube · ⋯⋯\\" for you...",
       },
       "type": "text",
     },
     Object {
       "content": Object {
-        "text": "請問下列文章中，哪一篇是您剛才傳送的訊息呢？",
+        "text": "Which message below matches what you just sent to us?",
       },
       "type": "text",
     },
@@ -163,22 +163,22 @@ Object {
                 "buttons": Array [
                   Object {
                     "payload": 1,
-                    "title": "選擇此則",
+                    "title": "Choose this one",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "[相似度:100.00%]",
+                "subtitle": "[Similarity 100.00%]",
                 "title": "YouTube  ·  寻找健康人生",
               },
               Object {
                 "buttons": Array [
                   Object {
                     "payload": 2,
-                    "title": "選擇此則",
+                    "title": "Choose this one",
                     "type": "postback",
                   },
                 ],
-                "subtitle": "[相似度:100.00%]",
+                "subtitle": "[Similarity 100.00%]",
                 "title": "YouTube
 ·
 寻找健康人生",
@@ -191,8 +191,8 @@ Object {
         "quick_replies": Array [
           Object {
             "content_type": "text",
-            "payload": "我是要找 Cofacts 的人啦",
-            "title": "我是要找 Cofacts 的人啦",
+            "payload": "Contact Cofacts team",
+            "title": "Contact Cofacts team",
           },
         ],
       },
@@ -250,22 +250,22 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "找不到關於「YouTube · ⋯⋯」訊息耶 QQ",
+        "text": "We didn't find anything about \\"YouTube · ⋯⋯\\" :(",
       },
       "type": "text",
     },
     Object {
       "content": Object {
-        "text": "【送出訊息到公開資料庫？】
-若這是「轉傳訊息」，而且您覺得這很可能是一則「謠言」，請將這則訊息送進公開資料庫建檔，讓好心人查證與回覆。
+        "text": "【Submit this message?】
+If you think this can be a rumor, please submit it such that other people can help fact-check and clarify.
 
-雖然您不會立刻收到查證結果，但可以幫助到未來同樣收到這份訊息的人。",
+Though you don't receive the result of fact-checking soon, this is a big help to those who receive similar messages in the future.",
       },
       "type": "text",
     },
     Object {
       "content": Object {
-        "text": "請把「為何您會覺得這是一則謠言」的理由傳給我們，幫助闢謠編輯釐清您有疑惑之處。",
+        "text": "Please tell us WHY YOU CONSIDER THIS A RUMOR so that we can understand the problem of this suspicious message.",
       },
       "type": "text",
     },
@@ -276,12 +276,12 @@ Object {
             "buttons": Array [
               Object {
                 "payload": "n",
-                "title": "放棄送出",
+                "title": "Discard",
                 "type": "postback",
               },
             ],
             "template_type": "button",
-            "text": "若要放棄，請按「放棄送出」。",
+            "text": "Discard",
           },
           "type": "template",
         },
@@ -314,11 +314,10 @@ Object {
   "replies": Array [
     Object {
       "content": Object {
-        "text": "找不到關於「YouTube · ⋯⋯」的訊息耶 QQ
-可以嘗試到這些地方找找相關訊息：
-
-              蘭姆酒吐司Rumor & Truth https://www.facebook.com/rumtoast/
-或者到 LINE 上面把謠言傳給我們~
+        "text": "We didn't find anything about \\"YouTube · ⋯⋯\\" :(
+You can try these websites again:
+蘭姆酒吐司Rumor & Truth https://www.facebook.com/rumtoast/
+Or report this article to us!
 http://bit.ly/cofacts-line-users",
       },
       "type": "text",

@@ -34,12 +34,12 @@ Object {
             "buttons": Array [
               Object {
                 "payload": "n",
-                "title": "我不想填理由",
+                "title": "Skip",
                 "type": "postback",
               },
             ],
             "template_type": "button",
-            "text": "請問您為什麼覺得好心人的回應沒有幫助？請把理由打字傳給我們，幫助闢謠編輯釐清問題所在；若不想填，請按「我不想填理由」按鈕。",
+            "text": "Why do you find this reply not helpful? Please tell us in messages. If you want to skip this, click the skip button below.",
           },
           "type": "template",
         },
@@ -91,7 +91,7 @@ https://line.me/S/sticker/10207",
   "replies": Array [
     Object {
       "content": Object {
-        "text": "感謝您的回饋，您是第一個評論這個回應的人 :)",
+        "text": "Thanks. You're the first one who gave feedback on this reply!",
       },
       "type": "text",
     },
@@ -108,13 +108,15 @@ https://line.me/S/sticker/10207",
                         Object {
                           "buttons": Array [
                             Object {
-                              "title": "看看別人的回應",
+                              "title": "See other replies",
                               "type": "web_url",
                               "url": "https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz",
                             },
                           ],
-                          "subtitle": "請至 https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz 看看鄉親們針對這則訊息的回應、理由，與所找的出處唷！",
-                          "title": "網路上有人說「(0)(1)(/)(0)(⋯⋯」⚠️️ 不在查證範圍喔！",
+                          "subtitle": "Please refer to https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz for other replies to this message and references!",
+                          "title": "Hey someone else says “(0)(1)(/)(0)(9)(line)免費貼圖
+
+「⋯⋯” is ⚠️️ OFF TOPIC!",
                         },
                       ],
                       "template_type": "generic",
@@ -125,14 +127,14 @@ https://line.me/S/sticker/10207",
                 "type": "element_share",
               },
               Object {
-                "title": "提出新回應",
+                "title": "Submit a new reply",
                 "type": "web_url",
                 "url": "https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz",
               },
             ],
             "template_type": "button",
-            "text": "📲 別忘了把上面的回應轉傳回您的聊天室，給其他人也看看！
-💁 若您認為自己能回應得更好，歡迎提交新的回應唷！",
+            "text": "📲 Don't forget to forward the messages above to others and share with them!
+💁 And feel free to submit your own reply if you have anything to say about this!",
           },
           "type": "template",
         },
@@ -184,7 +186,7 @@ https://line.me/S/sticker/10207",
   "replies": Array [
     Object {
       "content": Object {
-        "text": "感謝您與其他 1 人的回饋。",
+        "text": "We've received feedback from you and 1 other user!",
       },
       "type": "text",
     },
@@ -201,13 +203,15 @@ https://line.me/S/sticker/10207",
                         Object {
                           "buttons": Array [
                             Object {
-                              "title": "看看別人的回應",
+                              "title": "See other replies",
                               "type": "web_url",
                               "url": "https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz",
                             },
                           ],
-                          "subtitle": "請至 https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz 看看鄉親們針對這則訊息的回應、理由，與所找的出處唷！",
-                          "title": "網路上有人說「(0)(1)(/)(0)(⋯⋯」⚠️️ 不在查證範圍喔！",
+                          "subtitle": "Please refer to https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz for other replies to this message and references!",
+                          "title": "Hey someone else says “(0)(1)(/)(0)(9)(line)免費貼圖
+
+「⋯⋯” is ⚠️️ OFF TOPIC!",
                         },
                       ],
                       "template_type": "generic",
@@ -218,14 +222,14 @@ https://line.me/S/sticker/10207",
                 "type": "element_share",
               },
               Object {
-                "title": "提出新回應",
+                "title": "Submit a new reply",
                 "type": "web_url",
                 "url": "https://cofacts.g0v.tw/article/AWDZYXxAyCdS-nWhumlz",
               },
             ],
             "template_type": "button",
-            "text": "📲 別忘了把上面的回應轉傳回您的聊天室，給其他人也看看！
-💁 若您認為自己能回應得更好，歡迎提交新的回應唷！",
+            "text": "📲 Don't forget to forward the messages above to others and share with them!
+💁 And feel free to submit your own reply if you have anything to say about this!",
           },
           "type": "template",
         },
