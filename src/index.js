@@ -32,7 +32,9 @@ const groupHandler = async (req, type, replyToken, userId, otherFields) => {
 
 router.post('*', checkSignatureAndParse);
 router.post('/callback', ctx => {
-  if (ctx.request.body.entry[0].hasOwnProperty('changes')) {
+  if (
+    Object.prototype.hasOwnProperty.call(ctx.request.body.entry[0], 'changes')
+  ) {
     const messageInstances = ctx.request.body.entry[0].changes;
     messageInstances.forEach(instance => {
       if (
@@ -46,7 +48,9 @@ router.post('/callback', ctx => {
       mentionEventHandler(ctx.request, instance);
     });
     ctx.status = 200;
-  } else if (ctx.request.body.entry[0].hasOwnProperty('messaging')) {
+  } else if (
+    Object.prototype.hasOwnProperty.call(ctx.request.body.entry[0], 'messaging')
+  ) {
     // uncomment to enable chatbot
     const messageInstances = ctx.request.body.entry[0].messaging;
     messageInstances.forEach(instance => {

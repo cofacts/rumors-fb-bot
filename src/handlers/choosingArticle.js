@@ -72,9 +72,7 @@ export default async function choosingArticle(params) {
       {
         type: 'text',
         content: {
-          text: t`Please enter 1～${
-            data.foundArticleIds.length
-          } to choose a reply.`,
+          text: t`Please enter 1～${data.foundArticleIds.length} to choose a reply.`,
         },
       },
     ];
@@ -138,9 +136,7 @@ export default async function choosingArticle(params) {
       ' ⭕\n' +
       t`${count.OPINIONATED} person(s) think this is simply personal opinion` +
       ' 💬\n' +
-      t`${
-        count.NOT_ARTICLE
-      } person(s) thinks it's off-topic and Cofacts need not to handle this message` +
+      t`${count.NOT_ARTICLE} person(s) thinks it's off-topic and Cofacts need not to handle this message` +
       ' ⚠️️\n';
 
     replies = [

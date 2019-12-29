@@ -137,7 +137,7 @@ export async function pagePublicContentAccess(postId) {
 
   let msg = '';
   for (let field of fields) {
-    if (results.hasOwnProperty(field)) {
+    if (Object.prototype.hasOwnProperty.call(results, field)) {
       msg += `${results[field]}\n`;
     }
   }
@@ -179,26 +179,24 @@ export async function replyToComment(commentId, msg) {
  * @returns {Promise} Promise wrapping a request for long-lived tokens
  */
 export function getLongLivedPageAccessToken() {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     if (process.env.APP_ID === undefined) {
       reject(new Error(`Invalid page id: ${process.env.APP_ID}`));
       return;
     }
 
     let token = process.env.PAGE_ACCESS_TOKEN;
-    const redisToken = await redis.get('pageAccessToken');
+    const redisToken = Promise.resolve(redis.get('pageAccessToken'));
     if (redisToken) {
       token = redisToken;
     }
 
     fetch(
-      `${URL}/oauth/access_token?grant_type=fb_exchange_token&client_id=${
-        process.env.APP_ID
-      }&client_secret=${process.env.APP_SECRET}&fb_exchange_token=${token}`
+      `${URL}/oauth/access_token?grant_type=fb_exchange_token&client_id=${process.env.APP_ID}&client_secret=${process.env.APP_SECRET}&fb_exchange_token=${token}`
     )
       .then(res => res.json())
       .then(res => {
-        if (!res.hasOwnProperty('access_token')) {
+        if (!Object.prototype.hasOwnProperty.call(res, 'access_token')) {
           throw new Error(
             'Failed to get a page access token: ' + JSON.stringify(res)
           );
@@ -223,13 +221,14 @@ export async function checkCommentCommentable(commentId) {
     return false;
   }
   const resp = await fetch(
-    `${URL}/${graphApiVersion}/${commentId}?access_token=${
-      process.env.PAGE_ACCESS_TOKEN
-    }&fields=can_comment`,
+    `${URL}/${graphApiVersion}/${commentId}?access_token=${process.env.PAGE_ACCESS_TOKEN}&fields=can_comment`,
     { method: 'POST' }
   );
   const results = await resp.json();
-  if (resp.status !== 200 || !results.hasOwnProperty('can_comment')) {
+  if (
+    resp.status !== 200 ||
+    !Object.prototype.hasOwnProperty.call(results, 'can_comment')
+  ) {
     console.error(
       'Error when fetching comment meta: ' + JSON.stringify(results, null, '  ')
     );

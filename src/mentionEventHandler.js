@@ -11,7 +11,10 @@ import handleInput from './handleInput';
  * @param {object} instance message instance
  */
 const mentionEventHandler = async (context, instance) => {
-  if (!instance.value || !instance.value.hasOwnProperty('post_id')) {
+  if (
+    !instance.value ||
+    !Object.prototype.hasOwnProperty.call(instance.value, 'post_id')
+  ) {
     return;
   }
   // Track reported page whenever mentioned

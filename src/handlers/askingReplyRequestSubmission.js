@@ -33,12 +33,8 @@ export default async function askingArticleSubmission(params) {
         type: 'text',
         content: {
           text: ngettext(
-            msgid`We've recorded your reason. ${
-              CreateReplyRequest.replyRequestCount
-            } other user is also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
-            `We've recorded your reason. ${
-              CreateReplyRequest.replyRequestCount
-            } other users are also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
+            msgid`We've recorded your reason. ${CreateReplyRequest.replyRequestCount} other user is also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
+            `We've recorded your reason. ${CreateReplyRequest.replyRequestCount} other users are also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
             CreateReplyRequest.replyRequestCount
           ),
         },
@@ -61,12 +57,8 @@ export default async function askingArticleSubmission(params) {
         type: 'text',
         content: {
           text: ngettext(
-            msgid`We've recorded your reason. ${
-              CreateReplyRequest.replyRequestCount
-            } other user is also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
-            `We've recorded your reason. ${
-              CreateReplyRequest.replyRequestCount
-            } other users are also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
+            msgid`We've recorded your reason. ${CreateReplyRequest.replyRequestCount} other user is also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
+            `We've recorded your reason. ${CreateReplyRequest.replyRequestCount} other users are also waiting for clarification. Please refer to this page for updates: ${articleUrl}`,
             CreateReplyRequest.replyRequestCount
           ),
         },

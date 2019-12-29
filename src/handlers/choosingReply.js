@@ -31,9 +31,7 @@ export default async function choosingReply(params) {
       {
         type: 'text',
         content: {
-          text: t`Please enter 1～${
-            data.foundReplyIds.length
-          } to choose a reply.`,
+          text: t`Please enter 1～${data.foundReplyIds.length} to choose a reply.`,
         },
       },
     ];

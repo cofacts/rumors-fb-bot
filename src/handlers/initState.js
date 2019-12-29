@@ -129,32 +129,22 @@ export default async function initState(params) {
 
       const rumorSummary = count.RUMOR
         ? ngettext(
-            msgid`${
-              count.RUMOR
-            } user considers that this contains misinformation`,
+            msgid`${count.RUMOR} user considers that this contains misinformation`,
             `${count.RUMOR} users consider that this contains misinformation`,
             count.RUMOR
           ) + ' ❌\n'
         : '';
       const notRumorSummary = count.NOT_RUMOR
         ? ngettext(
-            msgid`${
-              count.NOT_RUMOR
-            } user thinks that this contains true information`,
-            `${
-              count.NOT_RUMOR
-            } users think that this contains true information`,
+            msgid`${count.NOT_RUMOR} user thinks that this contains true information`,
+            `${count.NOT_RUMOR} users think that this contains true information`,
             count.NOT_RUMOR
           ) + ' ⭕\n'
         : '';
       const opinionatedSummary = count.OPINIONATED
         ? ngettext(
-            msgid`${
-              count.OPINIONATED
-            } user thinks that this is simply a personal opinion`,
-            `${
-              count.OPINIONATED
-            } users think that this is simply a personal opinion`,
+            msgid`${count.OPINIONATED} user thinks that this is simply a personal opinion`,
+            `${count.OPINIONATED} users think that this is simply a personal opinion`,
             count.OPINIONATED
           ) + ' 💬\n'
         : '';
@@ -168,12 +158,8 @@ export default async function initState(params) {
       if (count.NOT_ARTICLE) {
         const notArticleSummary =
           ngettext(
-            msgid`but ${
-              count.NOT_ARTICLE
-            } user thinks that this is off-topic and Cofacts need not to handle it`,
-            `but ${
-              count.NOT_ARTICLE
-            } users think that this is off-topic and Cofacts need not to handle it`,
+            msgid`but ${count.NOT_ARTICLE} user thinks that this is off-topic and Cofacts need not to handle it`,
+            `but ${count.NOT_ARTICLE} users think that this is off-topic and Cofacts need not to handle it`,
             count.NOT_ARTICLE
           ) + '\n';
         summary += notArticleSummary;
