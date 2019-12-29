@@ -1,6 +1,6 @@
 {
   "name": "rumors-fb-bot",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "FB bot that checks if a message contains internet rumor. A side project under Cofacts.",
   "main": "index.js",
   "scripts": {
@@ -45,13 +45,13 @@
     "babel-eslint": "^10.0.3",
     "babel-jest": "^24.9.0",
     "coveralls": "^3.0.0",
-    "eslint": "^5.0.0",
+    "eslint": "^6.8.0",
     "eslint-config-prettier": "^2.0.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-prettier": "^2.0.1",
     "jest-cli": "^24.9.0",
     "prettier": "=1.12.1",
-    "ttag-cli": "^1.7.25"
+    "ttag-cli": "^1.7.27"
   },
   "jest": {
     "testEnvironment": "node",
