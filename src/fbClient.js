@@ -178,37 +178,28 @@ export async function replyToComment(commentId, msg) {
  * @param {undefined}
  * @returns {Promise} Promise wrapping a request for long-lived tokens
  */
-export function getLongLivedPageAccessToken() {
-  return new Promise((resolve, reject) => {
-    if (process.env.APP_ID === undefined) {
-      reject(new Error(`Invalid page id: ${process.env.APP_ID}`));
-      return;
-    }
+export async function getLongLivedPageAccessToken() {
+  if (process.env.APP_ID === undefined) {
+    throw new Error(`Invalid page id: ${process.env.APP_ID}`);
+  }
 
-    let token = process.env.PAGE_ACCESS_TOKEN;
-    const redisToken = Promise.resolve(redis.get('pageAccessToken'));
-    if (redisToken) {
-      token = redisToken;
-    }
+  let token = process.env.PAGE_ACCESS_TOKEN;
+  const redisToken = await redis.get('pageAccessToken');
+  if (redisToken) {
+    token = redisToken;
+  }
 
-    fetch(
-      `${URL}/oauth/access_token?grant_type=fb_exchange_token&client_id=${process.env.APP_ID}&client_secret=${process.env.APP_SECRET}&fb_exchange_token=${token}`
-    )
-      .then(res => res.json())
-      .then(res => {
-        if (!Object.prototype.hasOwnProperty.call(res, 'access_token')) {
-          throw new Error(
-            'Failed to get a page access token: ' + JSON.stringify(res)
-          );
-        }
-        process.env.PAGE_ACCESS_TOKEN = res.access_token;
-        redis.set('pageAccessToken', res.access_token);
-        resolve();
-      })
-      .catch(e => {
-        reject(e);
-      });
-  });
+  const res = await fetch(
+    `${URL}/oauth/access_token?grant_type=fb_exchange_token&client_id=${process.env.APP_ID}&client_secret=${process.env.APP_SECRET}&fb_exchange_token=${token}`
+  );
+  const resBody = await res.json();
+  if (!Object.prototype.hasOwnProperty.call(resBody, 'access_token')) {
+    throw new Error(
+      'Failed to get a page access token: ' + JSON.stringify(resBody)
+    );
+  }
+  process.env.PAGE_ACCESS_TOKEN = resBody.access_token;
+  await redis.set('pageAccessToken', resBody.access_token);
 }
 
 /**

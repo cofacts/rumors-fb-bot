@@ -75,16 +75,17 @@ app.use(router.routes());
 app.use(router.allowedMethods());
 
 // get page access token and then start listening
-getLongLivedPageAccessToken()
-  .then(() => {
+(async () => {
+  try {
+    await getLongLivedPageAccessToken();
     console.log('Long-lived page access token fetched');
 
     app.listen(process.env.PORT, () => {
       // eslint-disable-next-line no-console
       console.log('Listening port', process.env.PORT);
     });
-  })
-  .catch(e => {
+  } catch (e) {
     console.error(e);
     process.exit();
-  });
+  }
+})();
