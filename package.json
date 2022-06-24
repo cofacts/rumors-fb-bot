@@ -24,7 +24,7 @@
     "koa": "^2.5.0",
     "koa-router": "^7.4.0",
     "koa-static": "^5.0.0",
-    "node-fetch": "^2.0.0",
+    "node-fetch": "^2.6.7",
     "pm2": "=2.10.4",
     "raw-body": "^2.3.3",
     "redis": "^2.6.5",
